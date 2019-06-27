@@ -6509,6 +6509,11 @@ ignite-animatable@^1.0.2:
   resolved "https://registry.yarnpkg.com/ignite-animatable/-/ignite-animatable-1.0.2.tgz#d568153677edb2c64f95f0cba35df8aa6b426341"
   integrity sha512-FQIoAXE2WrJMMOJgSyZ7HD+Zqv89dqoVRcRicExf329eWHxiJ3b2M+bEk4NVgJkZ/jF5dYGRtudRVIn6ngpGYQ==
 
+ignite-dev-screens@^2.4.5:
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/ignite-dev-screens/-/ignite-dev-screens-2.4.5.tgz#9b72dc625faa5aec377229c036937f6d2ac13918"
+  integrity sha512-QsPyO9AveV4KvtUMzJqS5Ztbm/17tU2NqfSXkf6zs460ef4OhtXNIWR9yoMnmg7vXyvDoXbHYPueFoebvmOzrg==
+
 ignite-i18n@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/ignite-i18n/-/ignite-i18n-1.2.0.tgz#092653d7e5d35adc8c22b31831de7a9175c3570d"
