@@ -6456,6 +6456,11 @@ https-browserify@^1.0.0:
   resolved "https://registry.yarnpkg.com/https-browserify/-/https-browserify-1.0.0.tgz#ec06c10e0a34c0f2faf199f7fd7fc78fffd03c73"
   integrity sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=
 
+i18n-js@^3.0.11:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/i18n-js/-/i18n-js-3.3.0.tgz#05512f7184b5117c087ab597be649720a834c068"
+  integrity sha512-+m8jh84IIWlFwEJgwrWCkeIwIES9ilJKBOj5qx8ZTLLmlPz7bjKnCdxf254wRf6M4pkQHtgXGT9r9lGk0e9aug==
+
 iconv-lite@0.4.24, iconv-lite@^0.4.17, iconv-lite@^0.4.24, iconv-lite@^0.4.4, iconv-lite@~0.4.13:
   version "0.4.24"
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.24.tgz#2022b4b25fbddc21d2f524974a474aafe733908b"
@@ -6498,6 +6503,11 @@ ignite-andross@^4.0.5:
   integrity sha512-9i+wep98zIb0Nug0TzwvgK5+FjqNNvSIEIAdAZYADmwE/y0DUIwb0MKpeSl3p99IJGTpObb58fHPBNbMGdtJdA==
   dependencies:
     ramda "^0.26.1"
+
+ignite-i18n@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/ignite-i18n/-/ignite-i18n-1.2.0.tgz#092653d7e5d35adc8c22b31831de7a9175c3570d"
+  integrity sha512-tOTsPX9NZ75sx678Ii3oir1vGCkN+CU2lNT4PMIf1KMt0Pj01c/to1cQf7IbTyKuSzPGwnwq1GAKYOoz3uOY/A==
 
 ignite-redux-persist@1.1.2:
   version "1.1.2"
@@ -10184,6 +10194,13 @@ react-native-gesture-handler@1.0.9:
     hoist-non-react-statics "^2.3.1"
     invariant "^2.2.2"
     prop-types "^15.5.10"
+
+react-native-i18n@2.0.14:
+  version "2.0.14"
+  resolved "https://registry.yarnpkg.com/react-native-i18n/-/react-native-i18n-2.0.14.tgz#21503bd6cb21988d67aa6cfa39f495dede740325"
+  integrity sha512-Cv38EgAfZTWjRBj0yPSb8c68qPME554d6k0dxGKM/wlHL8xV3bdvzP5F60MyNWdmTOUC4V2jFmGDvVU5VkFIpg==
+  dependencies:
+    i18n-js "^3.0.11"
 
 react-native-safe-area-view@^0.14.1:
   version "0.14.5"
