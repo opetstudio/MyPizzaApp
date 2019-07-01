@@ -83,7 +83,9 @@
     "reactotron-redux": "^2.1.0",
     "reactotron-redux-saga": "^3.0.0",
     "snazzy": "^8.0.0",
-    "standard": "10.0.2"
+    "standard": "10.0.2",
+    "websocket": "^1.0.28",
+    "ws": "^7.0.1"
   },
   "jest": {
     "preset": "react-native",
