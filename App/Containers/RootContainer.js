@@ -9,6 +9,12 @@ import ReduxPersist from '../Config/ReduxPersist'
 import styles from './Styles/RootContainerStyles'
 
 class RootContainer extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+    this._renderUnLogedinRouter = this._renderUnLogedinRouter.bind(this)
+    this._renderLogedinRouter = this._renderLogedinRouter.bind(this)
+  }
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
@@ -16,6 +22,22 @@ class RootContainer extends Component {
     }
   }
 
+  _renderUnLogedinRouter () {
+    return (
+      <View style={styles.applicationView}>
+        <StatusBar barStyle='light-content' />
+        <ReduxNavigation />
+      </View>
+    )
+  }
+  _renderLogedinRouter () {
+    return (
+      <View style={styles.applicationView}>
+        <StatusBar barStyle='light-content' />
+        <ReduxNavigation />
+      </View>
+    )
+  }
   render () {
     return (
       <View style={styles.applicationView}>
@@ -26,9 +48,15 @@ class RootContainer extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    // isLoggedIn: state.login
+  }
+}
+
 // wraps dispatch to create nicer functions to call within our component
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup())
 })
 
-export default connect(null, mapDispatchToProps)(RootContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)

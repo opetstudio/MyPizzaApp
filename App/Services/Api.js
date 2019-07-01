@@ -1,5 +1,6 @@
 // a library to wrap and simplify api calls
 import apisauce from 'apisauce'
+import { merge } from 'ramda'
 
 // our "constructor"
 const create = (baseURL = 'https://api.github.com/') => {
@@ -50,11 +51,21 @@ const create = (baseURL = 'https://api.github.com/') => {
   // because it is scoped privately.  This is one way to create truly
   // private scoped goodies in JavaScript.
   //
-  return {
-    // a list of the API functions from step 2
+  // return {
+  //   // a list of the API functions from step 2
+  //   getRoot,
+  //   getRate,
+  //   getUser
+  // }
+  let apiMerged = {
     getRoot,
     getRate,
     getUser
+  }
+  apiMerged = merge(apiMerged, require('../Containers/Login/LoginApi').create(api))
+  apiMerged = merge(apiMerged, {})
+  return {
+    ...apiMerged
   }
 }
 

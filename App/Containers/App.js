@@ -19,6 +19,7 @@ const store = createStore()
  */
 class App extends Component {
   render () {
+    console.log('teeeeeeeeessss')
     return (
       <Provider store={store}>
         <RootContainer />
