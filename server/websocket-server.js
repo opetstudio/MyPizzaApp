@@ -86,7 +86,8 @@ wsServer.on('request', function (request) {
     //     json.data = { editorContent, userActivity }
     //   }
     //   sendMessage(JSON.stringify(json))
-      sendToMGM(JSON.stringify(dataFromClient))
+      // sendToMGM(JSON.stringify(dataFromClient))
+      sendMessage(JSON.stringify(dataFromClient))
     } else {
       console.log('error. messge typ not utf8')
     }
@@ -110,7 +111,7 @@ socket.onopen = (e) => {
 //   socket.send(JSON.stringify({type: 'greet', payload: 'Hello Mr. Server!'}))
 }
 socket.onerror = (err) => {
-  console.log('on error err=', err)
+  // console.log('on error err=', err)
 }
 socket.onmessage = (msg) => {
   console.log('on message from mgm', msg.data)

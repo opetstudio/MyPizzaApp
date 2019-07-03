@@ -20,7 +20,7 @@ export const INITIAL_STATE = Immutable({
 
 /* ------------- Selectors ------------- */
 
-export const LoginSelectors = {
+export const SessionSelectors = {
   isLoggedIn: state => state.isLoggedIn
 }
 

@@ -1,6 +1,13 @@
-import { put, select } from 'redux-saga/effects'
+import { put, select, call, take, delay, apply, fork, cancelled, cancel, cps } from 'redux-saga/effects'
+import { eventChannel, END } from 'redux-saga'
+
 import GithubActions, { GithubSelectors } from '../Redux/GithubRedux'
+
+import WebsocketActions from '../Redux/WebsocketRedux'
 import { is } from 'ramda'
+
+// Use this to actually throw exceptions, allows for easier debugging.
+const dispatch = put.resolve
 
 // exported to make available for tests
 export const selectAvatar = GithubSelectors.selectAvatar

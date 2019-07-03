@@ -7,6 +7,6 @@ export default {
   allowTextFontScaling: true,
   authHeader: '',
   websocketEndpoin: {
-    server1: 'wss://10.0.2.2:3000'
+    server1: 'ws://10.0.2.2:3000'
   }
 }

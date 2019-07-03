@@ -9,6 +9,7 @@ import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { SessionTypes } from '../Redux/SessionRedux'
 import { LoginTypes } from '../Containers/Login/LoginRedux'
+import { WebsocketTypes } from '../Redux/WebsocketRedux'
 
 /* ------------- Sagas ------------- */
 
@@ -16,6 +17,7 @@ import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { sessionUpdate } from './SessionSagas'
 import { loginRequest } from '../Containers/Login/LoginSagas'
+import { websocketSetup } from './WebsocketSagas'
 
 /* ------------- API ------------- */
 
@@ -29,6 +31,7 @@ export default function * root () {
   yield all([
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
+    takeLatest(WebsocketTypes.WEBSOCKET_SETUP, websocketSetup),
 
     takeLatest(LoginTypes.LOGIN_REQUEST, loginRequest, API.create('http://www.google.com')),
 
