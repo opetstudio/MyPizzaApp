@@ -34,7 +34,7 @@ let client = null
 class LoginScreen extends Component {
   constructor (props) {
     super(props)
-    this.props.sessionUpdate({isLogedIn: 'yes'})
+    // this.props.sessionUpdate({isLogedIn: 'yes'})
     this.state = {
       open: false,
       email: '',
@@ -155,7 +155,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    sessionUpdate: data => dispatch(SessionActions.sessionUpdate(data)),
+    // sessionUpdate: data => dispatch(SessionActions.sessionUpdate(data)),
     loginRequest: data => dispatch(LoginActions.loginRequest(data))
   }
 }

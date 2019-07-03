@@ -22,5 +22,15 @@
    "themeSettings": "Theme Settings",
    "deviceDetails": "Device Details",
    "noItems": "No Items",
-   "search": "Search"
+   "search": "Search",
+   "tab-content": "Content",
+   "tab-comments": "Comments",
+   "login-method-text1": "Login With",  
+   "drawer-support": "Support",
+   "drawer-logout": "Logout", 
+   "drawer-login": "Login",
+   "content-more": "more",
+   "content-less": "less",
+   "ERROR_LOGIN_NETWORK_ERROR": "Server Busy. This action cannot be completed because the other program is busy.",  
+   "APP_DESCRIPTION": "app desc"
 }

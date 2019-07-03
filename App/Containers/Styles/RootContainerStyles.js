@@ -20,5 +20,14 @@ export default StyleSheet.create({
     width: 200,
     height: 200,
     alignSelf: 'center'
+  },
+  fixBackgroundTop: {
+    backgroundColor: Colors.colorPrimaryDark,
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    left: 0,
+    height: 100,
+    zIndex: -1000
   }
 })
