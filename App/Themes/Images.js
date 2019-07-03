@@ -19,7 +19,22 @@ const images = {
   chevronRight: require('../Images/Icons/chevron-right.png'),
   hamburger: require('../Images/Icons/hamburger.png'),
   backButton: require('../Images/Icons/back-button.png'),
-  closeButton: require('../Images/Icons/close-button.png')
+  closeButton: require('../Images/Icons/close-button.png'),
+
+  headerBar: require('../Images/header_bar.png'),
+  hamburgerMenu: require('../Images/menu/hamburger_menu.png'),
+  backWhite: require('../Images/back_white.png'),
+  headerHome: require('../Images/home/home.png'),
+  searchWhite: require('../Images/search_white/search.png'),
+  bg: require('../Images/bg1.png'),
+  drawerCover: require('../Images/drawer-cover.png'),
+  drawerImage: require('../Images/logo-kitchen-sink.png'),
+  movieIcon: require('../Images/movieIcon.png'),
+  sdabooksIcon: require('../Images/sdabooksicon.png'),
+  powerpointIcon: require('../Images/powerpointicon.png'),
+  launchscreenBg: require('../Images/launchscreen-bg.png'),
+  launchscreenLogo: require('../Images/logo-kitchen-sink.png'),
+  menufaces: require('../Images/menu/faces.png')
 }
 
 export default images

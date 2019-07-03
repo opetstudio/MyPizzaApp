@@ -19,10 +19,32 @@ class ReduxNavigation extends React.Component {
     if (Platform.OS === 'ios') return
     BackHandler.addEventListener('hardwareBackPress', () => {
       const { dispatch, nav } = this.props
-      // change to whatever is your first screen, otherwise unpredictable results may occur
-      if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
-        return false
+
+      // gets the current screen from navigation state
+      const getCurrentRouteName = (navigationState) => {
+        if (!navigationState) {
+          return null
+        }
+        const route = navigationState.routes[navigationState.index]
+        // dive into nested navigators
+        if (route.routes) {
+          return getCurrentRouteName(route)
+        }
+        return route.routeName
       }
+      // change to whatever is your first screen, otherwise unpredictable results may occur
+      // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
+      if (getCurrentRouteName(nav) === 'HomeScreen') {
+        console.log(nav.routes)
+        if (nav.routes.length > 0 && !nav.routes[0].isDrawerOpen) return false
+          // if (nav.routes.length > 1 && (nav.routes[0].index === 0 && nav.index === 0)) {
+        // return false
+      }
+
+      // change to whatever is your first screen, otherwise unpredictable results may occur
+      // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
+      //   return false
+      // }
       // if (shouldCloseApp(nav)) return false
       dispatch({ type: 'Navigation/BACK' })
       return true
