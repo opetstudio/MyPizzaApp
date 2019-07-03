@@ -22,6 +22,7 @@ import styles from './HomeScreenStyle'
 import { Images } from '../../Themes'
 import { Colors } from '../../../ignite/DevScreens/DevTheme'
 import AppConfig from '../../Config/AppConfig'
+import FooterComponent from '../../Components/Footer'
 
 const launchscreenBg = Images.launchscreenBg
 const launchscreenLogo = Images.launchscreenLogo
@@ -245,6 +246,7 @@ class HomeScreen extends Component {
             </View>
           </ScrollView>
         </ImageBackground>
+        <FooterComponent />
       </Container>
     )
   }
