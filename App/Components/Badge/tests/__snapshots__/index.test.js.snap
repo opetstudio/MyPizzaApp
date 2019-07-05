@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Badge should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "borderColor": "transparent",
+        "borderRadius": 4,
+        "borderWidth": 1,
+        "flexDirection": "row",
+        "height": 16,
+        "justifyContent": "center",
+        "maxWidth": 120,
+        "paddingLeft": 7,
+        "paddingRight": 11,
+      },
+      Object {
+        "backgroundColor": "#1D9940",
+      },
+      undefined,
+    ]
+  }
+>
+  <Image
+    source="test-file-stub"
+    style={
+      Object {
+        "height": 16,
+        "width": 16,
+      }
+    }
+  />
+  <View
+    style={undefined}
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={false}
+      ellipsizeMode="tail"
+      letterSpacing={4}
+      lineHeight={10}
+      numberOfLines={undefined}
+      onPress={undefined}
+      style={
+        Array [
+          Object {
+            "backgroundColor": "transparent",
+          },
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "HelveticaNeue-Bold",
+            "fontSize": 9.3,
+          },
+          undefined,
+        ]
+      }
+    >
+      
+    </Text>
+  </View>
+</View>
+`;

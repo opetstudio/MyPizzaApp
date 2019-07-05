@@ -34,7 +34,12 @@ const images = {
   powerpointIcon: require('../Images/powerpointicon.png'),
   launchscreenBg: require('../Images/launchscreen-bg.png'),
   launchscreenLogo: require('../Images/logo-kitchen-sink.png'),
-  menufaces: require('../Images/menu/faces.png')
+  menufaces: require('../Images/menu/faces.png'),
+  defaultImageBanner: require('../Images/default_image/banner/banner.png'),
+  liveIcon: require('../Images/live_icon/live.png'),
+  upcomingIcon: require('../Images/upcoming_icon/upcoming.png'),
+  replayIcon: require('../Images/replay_icon/replay.png'),
+  freeIcon: require('../Images/free_icon/free.png')
 }
 
 export default images
