@@ -32,5 +32,9 @@
    "content-more": "more",
    "content-less": "less",
    "ERROR_LOGIN_NETWORK_ERROR": "Server Busy. This action cannot be completed because the other program is busy.",  
-   "APP_DESCRIPTION": "app desc"
+   "APP_DESCRIPTION": "app desc",
+   "home-page-": "app desc",
+   "home-page-tab-three-title": "TAB 1",
+   "home-page-tab-one-title": "TAB 2",
+   "home-page-tab-two-title": "TAB 3"
 }

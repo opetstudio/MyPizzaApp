@@ -1,5 +1,24 @@
 import { StyleSheet } from 'react-native'
 // import { ApplicationStyles, Metrics, Colors } from '../../Themes/'
+import {Colors as colors, Metrics} from '../../Themes'
+
+const width = Metrics.screenWidth
+const height = Metrics.screenHeight
+
+export const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colors.darkNavyBluePrimary,
+    width,
+    height
+  },
+  noContentMessage: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    marginTop: 24,
+    flex: 1
+  }
+})
 
 export default StyleSheet.create({
   imageContainer: {

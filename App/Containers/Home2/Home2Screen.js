@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { ImageBackground, ScrollView } from 'react-native'
+import { ImageBackground, ScrollView, View } from 'react-native'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
+import { filter, concat, map, find, isEmpty } from 'lodash'
 import {
   Container
 } from 'native-base'
@@ -21,6 +22,8 @@ import { Images } from '../../Themes'
 import AppConfig from '../../Config/AppConfig'
 import FooterComponent from '../../Components/Footer'
 import TrendingNow from '../../Components/TrendingNow'
+import SegmentedController from '../../Components/SegmentedController'
+import VideoCarousels from './VideoCarousels'
 
 const launchscreenBg = Images.launchscreenBg
 
@@ -28,13 +31,22 @@ const propTypes = {
   featuredData: PropTypes.array,
   wcmsUrl: PropTypes.string,
   locale: PropTypes.string,
-  providers: PropTypes.array
+  providers: PropTypes.array,
+  categoriesConfig: PropTypes.array,
+  genresConfigList: PropTypes.array,
+  carousalData: PropTypes.array,
+  onClickMoreCategory: PropTypes.func.isRequired,
+  onClickMoreGenre: PropTypes.func.isRequired,
+  showPopup: PropTypes.func
   // onClickItem: PropTypes.func.isRequired
 }
 const defaultProps = {
   featuredData: [],
   wcmsUrl: '',
-  providers: []
+  providers: [],
+  categoriesConfig: [],
+  genresConfigList: [],
+  carousalData: []
 }
 
 class Home2Screen extends Component {
@@ -55,8 +67,75 @@ class Home2Screen extends Component {
       featuredData,
       wcmsUrl,
       locale,
-      providers
+      providers,
+      categoriesConfig,
+      genresConfigList,
+      carousalData,
+      onClickMoreCategory,
+      onClickMoreGenre,
+      showPopup
     } = this.props
+
+    const combinedConfig = concat(categoriesConfig, genresConfigList)
+
+    const inAppData = filter(carousalData, c => {
+      return c.tab === 'in-app'
+    })
+
+    const marketPlaceData = filter(carousalData, c => {
+      return c.tab === 'marketplace'
+    })
+
+    const liveEventsData = filter(carousalData, c => {
+      return c.tab === 'live'
+    })
+
+    const marketPlaceContent = (
+      <View>
+        <VideoCarousels
+          config={combinedConfig}
+          data={marketPlaceData}
+          locale={locale}
+          onClickMoreCategory={onClickMoreCategory}
+          onClickMoreGenre={onClickMoreGenre}
+          onItemPress={this.navigateToContentDetailScreen}
+          wcmsUrl={wcmsUrl}
+          providers={providers}
+        />
+      </View>
+    )
+
+    const liveEventsContent = (
+      <View>
+        <VideoCarousels
+          isLiveEvents
+          liveError={isEmpty(liveEventsData)}
+          config={combinedConfig}
+          data={liveEventsData}
+          locale={locale}
+          onClickMoreCategory={onClickMoreCategory}
+          onClickMoreGenre={onClickMoreGenre}
+          onItemPress={this.navigateToContentDetailScreen}
+          wcmsUrl={wcmsUrl}
+          providers={providers}
+        />
+      </View>
+    )
+
+    const inAppContent = (
+      <VideoCarousels
+        config={categoriesConfig}
+        data={inAppData}
+        locale={locale}
+        onClickMoreCategory={onClickMoreCategory}
+        onClickMoreGenre={onClickMoreGenre}
+        onItemPress={this.navigateToContentDetailScreen}
+        wcmsUrl={wcmsUrl}
+        providers={providers}
+        showPopup={showPopup}
+      />
+    )
+
     return (
       <Container>
         <HeaderMenu
@@ -71,10 +150,31 @@ class Home2Screen extends Component {
             <TrendingNow
               items={featuredData}
               // onItemPress={this.navigateToContentDetailScreen}
-              onItemPress={() => alert('test')}
+              onItemPress={(id) => alert(`gambar ${id}`)}
               rootURL={wcmsUrl}
               locale={locale}
               providers={providers}
+            />
+            <SegmentedController
+              tabs={[
+                {
+                  i18nKey: 'home-page-tab-three-title',
+                  id: 'tab-live-events',
+                  content: liveEventsContent
+                },
+                {
+                  i18nKey: 'home-page-tab-one-title',
+                  id: 'tab-in-app',
+                  content: inAppContent
+                },
+                {
+                  i18nKey: 'home-page-tab-two-title',
+                  id: 'tab-marketplace',
+                  content: marketPlaceContent
+                }
+              ]}
+              upperCase
+              selectedId={'tab-live-events'}
             />
           </ScrollView>
         </ImageBackground>
@@ -127,7 +227,13 @@ const mapStateToProps = (state) => {
     ],
     wcmsUrl: '',
     locale: '',
-    providers: ''
+    providers: '',
+    categoriesConfig: [],
+    genresConfigList: [],
+    carousalData: [],
+    onClickMoreCategory: () => {},
+    onClickMoreGenre: () => {},
+    showPopup: () => {}
   }
 }
 

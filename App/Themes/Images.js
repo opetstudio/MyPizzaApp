@@ -36,10 +36,15 @@ const images = {
   launchscreenLogo: require('../Images/logo-kitchen-sink.png'),
   menufaces: require('../Images/menu/faces.png'),
   defaultImageBanner: require('../Images/default_image/banner/banner.png'),
+  defaultImageBannerLandscape: require('../Images/default_image/banner_landscape/banner_landscape.png'),
+  defaultImageCarousal: require('../Images/default_image/carousal/carousal.png'),
   liveIcon: require('../Images/live_icon/live.png'),
   upcomingIcon: require('../Images/upcoming_icon/upcoming.png'),
   replayIcon: require('../Images/replay_icon/replay.png'),
-  freeIcon: require('../Images/free_icon/free.png')
+  freeIcon: require('../Images/free_icon/free.png'),
+  nextArrow: require('../Images/next_arrow/next_arrow.png'),
+  info: require('../Images/info.png'),
+  chevronRight2: require('../Images/chevron_right.png')
 }
 
 export default images
