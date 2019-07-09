@@ -1,0 +1,229 @@
+{
+  "carousalData": [
+    {
+      "id": 1,
+      "resourceId": "resourceId1",
+      "i18nkey": "Category1",
+      "circleImage": "1",
+      "tab": "in-app",
+      "type": "categories",
+      "contentItems": [
+        {
+          "id": 1,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title1"
+        },
+        {
+          "id": 2,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title2"
+        },
+        {
+          "id": 3,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title3"
+        },
+        {
+          "id": 4,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title4"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "resourceId": "resourceId1",
+      "i18nkey": "Category2",
+      "circleImage": "1",
+      "tab": "in-app",
+      "type": "categories",
+      "contentItems": [
+        {
+          "id": 1,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title1"
+        },
+        {
+          "id": 2,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title2"
+        },
+        {
+          "id": 3,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title3"
+        },
+        {
+          "id": 4,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title4"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "resourceId": "resourceId1",
+      "i18nkey": "Category1",
+      "circleImage": "0",
+      "tab": "live",
+      "type": "categories",
+      "contentItems": [
+        {
+          "id": 1,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title1"
+        },
+        {
+          "id": 2,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title2"
+        },
+        {
+          "id": 3,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title3"
+        },
+        {
+          "id": 4,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title4"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "resourceId": "resourceId1",
+      "i18nkey": "Category2",
+      "circleImage": "0",
+      "tab": "live",
+      "type": "categories",
+      "contentItems": [
+        {
+          "id": 1,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title1"
+        },
+        {
+          "id": 2,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title2"
+        },
+        {
+          "id": 3,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title3"
+        },
+        {
+          "id": 4,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title4"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "resourceId": "resourceId1",
+      "i18nkey": "Category2",
+      "circleImage": "0",
+      "tab": "marketplace",
+      "displayMore": true,
+      "contentItems": [
+        {
+          "id": 1,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title1"
+        },
+        {
+          "id": 2,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title2"
+        },
+        {
+          "id": 3,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title3"
+        },
+        {
+          "id": 4,
+          "start_time": "",
+          "end_time": "",
+          "provider": "resourceId1",
+          "title": "title4"
+        }
+      ]
+    }
+  ],
+  "featuredData": [
+    {
+      "id": 1,
+      "images": {
+        "banner": {
+          "mdpi": "https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg",
+          "hdpi": "https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg",
+          "xhdpi": "https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg",
+          "xxhdpi": "https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "images": {
+        "banner": {
+          "mdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg",
+          "hdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg",
+          "xhdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg",
+          "xxhdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "images": {
+        "banner": {
+          "mdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg",
+          "hdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg",
+          "xhdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg",
+          "xxhdpi": "https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg"
+        }
+      }
+    }
+  ]
+}

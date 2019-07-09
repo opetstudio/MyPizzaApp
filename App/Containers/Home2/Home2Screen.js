@@ -25,6 +25,8 @@ import TrendingNow from '../../Components/TrendingNow'
 import SegmentedController from '../../Components/SegmentedController'
 import VideoCarousels from './VideoCarousels'
 
+const datastructure = require('../../Data/datastructure.json')
+
 const launchscreenBg = Images.launchscreenBg
 
 const propTypes = {
@@ -53,14 +55,14 @@ class Home2Screen extends Component {
   constructor (props) {
     super(props)
     this.state = {}
-    // this.navigateToContentDetailScreen = this.navigateToContentDetailScreen.bind(this)
+    this.navigateToContentDetailScreen = this.navigateToContentDetailScreen.bind(this)
   }
   componentWillMount () {
     this.props.setStatusBarIsHidden(false)
   }
-  // navigateToContentDetailScreen (id) {
-  //   this.props.onClickItem(id)
-  // }
+  navigateToContentDetailScreen (id) {
+    this.props.onClickItem(id)
+  }
   componentDidMount () {}
   render () {
     const {
@@ -149,8 +151,7 @@ class Home2Screen extends Component {
           <ScrollView style={{ flex: 1 }}>
             <TrendingNow
               items={featuredData}
-              // onItemPress={this.navigateToContentDetailScreen}
-              onItemPress={(id) => alert(`gambar ${id}`)}
+              onItemPress={this.navigateToContentDetailScreen}
               rootURL={wcmsUrl}
               locale={locale}
               providers={providers}
@@ -190,56 +191,39 @@ Home2Screen.defaultProps = defaultProps
 const mapStateToProps = (state) => {
   return {
     currentUser: SessionSelectors.getCurrentUser(state.session),
-    featuredData: [
-      {
-        id: 1,
-        images: {
-          banner: {
-            mdpi: 'https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg',
-            hdpi: 'https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg',
-            xhdpi: 'https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg',
-            xxhdpi: 'https://www.telkomsel.com/sites/default/files/box_media/right/desktop/widget-desk-paket-MaxAG-800x450_0.jpg'
-          }
-        }
-      },
-      {
-        id: 2,
-        images: {
-          banner: {
-            mdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg',
-            hdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg',
-            xhdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg',
-            xxhdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/pesta_kuota_agt480_1.jpg'
-          }
-        }
-      },
-      {
-        id: 3,
-        images: {
-          banner: {
-            mdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg',
-            hdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg',
-            xhdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg',
-            xxhdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg'
-          }
-        }
-      }
-    ],
+    featuredData: datastructure.featuredData,
     wcmsUrl: '',
     locale: '',
-    providers: '',
-    categoriesConfig: [],
+    providers: [
+      {
+        tid: 'resourceId1',
+        name: 'providername'
+      }
+    ],
+    categoriesConfig: [{
+      tid: 'resourceId1',
+      i18nKey: 'xxxxx',
+      images: {
+        mdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg',
+        hdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg',
+        xhdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg',
+        xxhdpi: 'https://www.telkomsel.com/sites/default/files/thumbnails/15/Mob-Cloudmax-480x270.jpg'
+      },
+      orientation: 'portrait' // portrait landscape
+    }],
     genresConfigList: [],
-    carousalData: [],
+    carousalData: datastructure.carousalData,
     onClickMoreCategory: () => {},
     onClickMoreGenre: () => {},
-    showPopup: () => {}
+    showPopup: () => {},
+    onClickItem: (id) => alert(id)
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setStatusBarIsHidden: (data) => dispatch(AppActions.appStatusbar(data))
+    setStatusBarIsHidden: (data) => dispatch(AppActions.appStatusbar(data)),
+    
   }
 }
 

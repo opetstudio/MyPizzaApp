@@ -28,6 +28,7 @@ export default class VodCarousalItem extends PureComponent {
         title={item.title}
         wcmsUrl={wcmsUrl}
         provider={provider}
+        accessCode={{}}
       />
     )
   }

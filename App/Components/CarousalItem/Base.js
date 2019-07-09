@@ -43,6 +43,9 @@ const propTypes = {
   title: PropTypes.string,
   wcmsUrl: PropTypes.string
 }
+const defaultProps = {
+  accessCode: {}
+}
 
 const renderTitle = text => {
   if (!text) {
@@ -192,5 +195,6 @@ class Base extends PureComponent {
 }
 
 Base.propTypes = propTypes
+Base.defaultProps = defaultProps
 
 export default Base

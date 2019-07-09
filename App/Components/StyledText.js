@@ -20,7 +20,7 @@ export default class StyledText extends Component {
     onPress: PropTypes.func,
     textStyle: PropTypes.string,
     upperCase: PropTypes.bool,
-    wrapStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    wrapStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number])
   }
   //
   // // Defaults for props
