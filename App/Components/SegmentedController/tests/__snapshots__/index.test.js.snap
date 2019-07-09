@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SegmentedController correctly 1`] = `
+<View>
+  <View
+    style={
+      Object {
+        "alignItems": "flex-start",
+        "flex": 1,
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "marginBottom": 20,
+      }
+    }
+  >
+    <View
+      key="tab-1"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#0f2236",
+            "borderBottomColor": "transparent",
+            "borderBottomWidth": 2,
+            "flex": 1,
+            "height": 48,
+            "justifyContent": "center",
+          },
+          undefined,
+          Object {
+            "borderBottomColor": "#e5131d",
+          },
+          undefined,
+        ]
+      }
+    >
+      <Button
+        i18nKey="tab-1-title"
+        onPress={[Function]}
+      />
+    </View>
+    <View
+      key="tab-2"
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#0f2236",
+            "borderBottomColor": "transparent",
+            "borderBottomWidth": 2,
+            "flex": 1,
+            "height": 48,
+            "justifyContent": "center",
+          },
+          undefined,
+        ]
+      }
+    >
+      <Button
+        i18nKey="tab-2-title"
+        onPress={[Function]}
+      />
+    </View>
+  </View>
+  <View>
+    <View
+      key="tab-1"
+      style={
+        Object {
+          "display": null,
+        }
+      }
+    >
+      <View
+        id="tab-1-content"
+      />
+    </View>
+    <View
+      key="tab-2"
+      style={
+        Object {
+          "display": "none",
+        }
+      }
+    >
+      <View
+        id="tab-2-content"
+      />
+    </View>
+  </View>
+</View>
+`;

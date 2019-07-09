@@ -1,5 +1,8 @@
 import {Platform} from 'react-native'
 import Colors from './Colors'
+
+const colors = Colors
+
 const type = {
   // base: 'Avenir-Black',
   base: 'Avenir-Book',
@@ -7,19 +10,22 @@ const type = {
   emphasis: 'HelveticaNeue-Italic',
   light: Platform.OS === 'ios' ? 'HelveticaNeue-Light' : 'HelveticaNeueLight',
   bold: Platform.OS === 'ios' ? 'HelveticaNeue-Bold' : 'HelveticaNeueBold',
-  medium:
-    Platform.OS === 'ios' ? 'HelveticaNeue-Medium' : 'HelveticaNeueMedium',
+  medium: Platform.OS === 'ios' ? 'HelveticaNeue-Medium' : 'HelveticaNeueMedium',
   regular: 'HelveticaNeue',
   thin: Platform.OS === 'ios' ? 'HelveticaNeue-Thin' : 'HelveticaNeueThin'
 }
+const fontFamily = type
 
 const size = {
-  h1: 38,
-  h2: 34,
-  h3: 30,
-  h4: 26,
-  h5: 20,
-  h6: 19,
+  h1: 53.3,
+  h2: 24,
+  h3: 16,
+  h4: 13.3,
+  h5: 11,
+  h6: 10.7,
+  h7: 9.3,
+  h8: 8,
+  h9: 20.1,
   h10: 15.9,
   h11: 14.1,
   h12: 12,
@@ -38,6 +44,7 @@ const size = {
   small: 12,
   tiny: 8.5
 }
+const fontSize = size
 
 const style = {
   h1: {
@@ -214,6 +221,17 @@ const style = {
     props: {
       lineHeight: 4.7,
       letterSpacing: 0.1
+    }
+  },
+  h5RegGreyS2: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.regular,
+      color: colors.greySecondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5
     }
   }
 }

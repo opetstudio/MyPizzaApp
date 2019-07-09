@@ -68,7 +68,11 @@ const colors = {
   darkSlateBluePrimary: '#0f2944',
   darkSlateBlueTertiaryOpacity: '#101D2C',
   darkSlateBlueSecondary: '#0f2135',
-  darkSlateBlueTertiary: '#142838'
+  darkSlateBlueTertiary: '#142838',
+
+  blackPrimary: '#000000',
+  blackSecondaryOpacity: 'rgba(0,0,0,0.5)',
+  blackPrimaryOpacity: 'rgba(0,0,0,0.6)'
 }
 
 export default colors
