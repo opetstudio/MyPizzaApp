@@ -3,6 +3,7 @@ import { View, StatusBar } from 'react-native'
 import { Root } from 'native-base'
 import { connect } from 'react-redux'
 import {SafeAreaView} from 'react-navigation'
+import SplashScreen from 'react-native-splash-screen'
 
 import ReduxNavigation from '../Navigation/ReduxNavigation'
 import {isIphoneX} from '../Lib/helper/platform'
@@ -36,6 +37,7 @@ class RootContainer extends Component {
     this._renderLogedinRouter = this._renderLogedinRouter.bind(this)
   }
   componentDidMount () {
+    SplashScreen.hide()
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
       this.props.startup()
