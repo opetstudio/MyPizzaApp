@@ -6,41 +6,54 @@ import Drawer from '../../Components/Drawer'
 
 import { Images } from '../../Themes'
 
-const movieIcon = Images.movieIcon
-const sdabooksIcon = Images.sdabooksIcon
-const powerpointIcon = Images.powerpointIcon
+// const isiSaldoIcon = Images.
+// const riwayatIcon = Images.
+// const pengaturanIcon = Images.
+// const mengundangIcon = Images.
+// const pusatBantuanIcon = Images.
+const globeIcon = Images.globe
 
 const datas = [
   {
-    name: 'Home',
-    route: 'HomeScreen',
-    icon: 'home',
-    bg: '#C5F442',
-    fontColor: '#00bfff'
-  },
-  {
-    name: 'Books',
-    route: 'BookScreen',
+    name: 'Isi Saldo',
+    route: '',
     icon: 'heart',
     bg: '#C5F442',
     fontColor: '#00bfff',
-    iconPicture: sdabooksIcon
+    // iconPicture: globeIcon
   },
   {
-    name: 'Power Point',
+    name: 'Riwayat',
+    route: '',
+    icon: 'heart',
+    bg: '#C5F442',
+    fontColor: '#00bfff',
+    // iconPicture: globeIcon
+  },
+  {
+    name: 'Pengaturan',
     route: 'PowerpointScreen',
     icon: 'heart',
     bg: '#C5F442',
     fontColor: '#00bfff',
-    iconPicture: powerpointIcon
+    // iconPicture: globeIcon
   },
   {
-    name: 'Movies',
+    name: 'Mengundang',
     route: 'MovieScreen',
-    icon: 'phone-portrait',
+    icon: 'heart',
     bg: '#477EEA',
+    fontColor: '#00bfff'
         // types: "10",
-    iconPicture: movieIcon
+    // iconPicture: globeIcon
+  },
+  {
+    name: 'Pusat Bantuan',
+    route: 'PowerpointScreen',
+    icon: 'heart',
+    bg: '#C5F442',
+    fontColor: '#00bfff',
+    // iconPicture: globeIcon
   }
 ]
 

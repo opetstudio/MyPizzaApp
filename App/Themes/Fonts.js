@@ -79,108 +79,385 @@ const style = {
     fontFamily: type.base,
     fontSize: size.medium
   },
-  h4MedWhiteP: {
+  h1MedDarkGreyP: {
     style: {
-      fontSize: size.h4,
-      fontFamily: type.medium,
-      color: Colors.whitePrimary
+      fontSize: fontSize.h1,
+      fontFamily: fontFamily.medium,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 19.6
+    }
+  },
+  h1RegDarkGreyP: {
+    style: {
+      fontSize: fontSize.h1,
+      fontFamily: fontFamily.regular,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 19.6
+    }
+  },
+  h1LtWhiteT: {
+    style: {
+      fontSize: fontSize.h1,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 19.6
+    }
+  },
+
+  h7BoldWhiteT: {
+    style: {
+      fontSize: fontSize.h7,
+      fontFamily: fontFamily.bold,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 4,
+      lineHeight: 10
+    }
+  },
+  h1RegGreyS2: {
+    style: {
+      fontSize: fontSize.h1,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 4,
+      lineHeight: 5
+    }
+  },
+  h1LtDarkGreyP: {
+    style: {
+      fontSize: fontSize.h1,
+      fontFamily: fontFamily.light,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 19.6
+    }
+  },
+  h2LtDarkGreyP: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 19.6
+    }
+  },
+  h2LtGreyS: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5.3
+    }
+  },
+  h2LtWhiteS: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5.3
+    }
+  },
+  h2TnWhiteP: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.thin,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.24,
+      lineHeight: 53
+    }
+  },
+  h3LtDarkGreyP: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.light,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 3.6
+    }
+  },
+  h3MedWhiteS: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.medium,
+      color: colors.white.secondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 32
+    }
+  },
+  h3MedWhiteTO: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiaryOpacity
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 32
+    }
+  },
+  h3RegGreyP: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.primary
+    },
+    props: {
+      letterSpacing: 0.2
+    }
+  },
+  h3RegWhiteS: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.regular,
+      color: colors.white.secondary
+    },
+    props: {
+      letterSpacing: 0.2,
+      lineHeight: 32
+    }
+  },
+  h5MedWhiteP: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.medium,
+      color: colors.white.primary
     },
     props: {
       letterSpacing: 0.5,
       lineHeight: -8
     }
   },
-  h10LtWhiteT: {
+  h5MedWhiteS: {
     style: {
-      fontSize: size.h10,
-      fontFamily: type.light,
-      color: Colors.whiteTertiary
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.medium,
+      color: colors.white.secondary
     },
     props: {
-      lineHeight: 6.7
+      letterSpacing: 0.5,
+      lineHeight: -8
     }
   },
-  h11MedWhiteT: {
+  h4MedWhiteS: {
     style: {
-      fontSize: size.h11,
-      fontFamily: type.medium,
-      color: Colors.whiteTertiary
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.white.secondary
     },
     props: {
-      lineHeight: 4.7,
-      letterSpacing: 0.4
+      letterSpacing: 0.5,
+      lineHeight: -8
     }
   },
-  h13MedWhiteT: {
+  h5MedWhiteTO: {
     style: {
-      fontSize: size.h13,
-      fontFamily: type.medium,
-      color: Colors.whiteTertiary
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiaryOpacity
     },
     props: {
-      lineHeight: 4.7,
-      letterSpacing: 0.4
+      letterSpacing: 0.5,
+      lineHeight: -8
     }
   },
-  h11LtGreyS: {
+  h6MedWhiteP: {
     style: {
-      fontSize: size.h11,
-      fontFamily: type.light,
-      color: Colors.greySecondary
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.medium,
+      color: colors.white.primary
     },
     props: {
-      lineHeight: 7
+      letterSpacing: 0.5,
+      lineHeight: -8
     }
   },
-  h11LtGreyS2: {
+  h3LtWhiteT: {
     style: {
-      fontSize: size.h11,
-      fontFamily: type.light,
-      color: Colors.greySecondary
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
     },
     props: {
-      lineHeight: 5.6,
-      letterSpacing: 0.1
+      letterSpacing: 0.5,
+      lineHeight: 5.3
     }
   },
-  h11MedRedP: {
+  h3RegGreySO: {
     style: {
-      fontSize: size.h11,
-      fontFamily: type.medium,
-      color: Colors.redPrimary
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary,
+      opacity: colors.grey.secondaryOpacity
     },
     props: {
-      lineHeight: 4.7,
-      letterSpacing: 0.1
+      letterSpacing: 0.01
     }
   },
-  h11MedWhiteT3: {
+  h3RegGreyS: {
     style: {
-      fontSize: size.h11,
-      fontFamily: type.medium,
-      color: Colors.whiteTertiary
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
     },
     props: {
-      lineHeight: 5.6,
-      letterSpacing: 0.1
+      letterSpacing: 0.01,
+      lineHeight: 5.3
     }
   },
-  h11MedWhiteT3O: {
+  h3RegGreyS2: {
     style: {
-      fontSize: size.h11,
-      fontFamily: type.medium,
-      color: Colors.whiteTertiaryOpacity
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
     },
     props: {
-      lineHeight: 5.6,
-      letterSpacing: 0.1
+      letterSpacing: 0.2
+    }
+  },
+  h3RegGreyS3: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 1,
+      lineHeight: 5.3
+    }
+  },
+  h3LtWhiteP: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5.3
+    }
+  },
+  h3LtBlueP: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.light,
+      color: colors.darkNavyBlue.primary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5.3
+    }
+  },
+  h3LtWhiteS: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.2,
+      lineHeight: 24
+    }
+  },
+  h4LtWhiteS: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.2,
+      lineHeight: 24
+    }
+  },
+  h4MedWhiteTO: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiaryOpacity
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: -8
+    }
+  },
+  h4MedWhiteP: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: -8
+    }
+  },
+  h4MedWhiteT: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.1,
+      lineHeight: 5.3
+    }
+  },
+  h4MedWhiteT2: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 2.5,
+      lineHeight: 0
+    }
+  },
+  h4MedWhiteT2NLS: {
+    // NLS stands for No line space
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 0
     }
   },
   h21MedWhiteT2NLS: {
+    // NLS stands for No line space
     style: {
-      fontSize: size.h21,
-      fontFamily: type.medium,
-      color: Colors.whiteTertiary,
+      fontSize: fontSize.h21,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary,
       // this letterSpacing will be used in iOS
       letterSpacing: 2.1
     },
@@ -190,22 +467,712 @@ const style = {
       letterSpacing: 2.1
     }
   },
-  h7BoldWhiteT: {
+  h4RegGreyP: {
     style: {
-      fontSize: size.h7,
-      fontFamily: type.bold,
-      color: Colors.whiteTertiary
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.primary
     },
     props: {
-      letterSpacing: 4,
-      lineHeight: 10
+      letterSpacing: 0.3
+    }
+  },
+  h4RegGreyP2: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.primary
+    },
+    props: {
+      letterSpacing: 0.01
+    }
+  },
+  h4RegGreyP3: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.primary
+    },
+    props: {
+      letterSpacing: 4
+    }
+  },
+  h4RegGreyS: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5.3
+    }
+  },
+  h4RegGreyS2: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 5.3
+    }
+  },
+  h4RegWhiteT: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -8
+    }
+  },
+  h4RegWhiteP: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.1,
+      lineHeight: 5.3
+    }
+  },
+  h4RegWhiteP2: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: -8
+    }
+  },
+  h4RegWhiteP3: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.1,
+      lineHeight: 14.7
+    }
+  },
+  h4RegWhiteP4: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.regular,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.3,
+      lineHeight: 29.3
+    }
+  },
+  h4LtWhiteP: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.light,
+      color: colors.grey.primary
+    },
+    props: {
+      letterSpacing: 0.27,
+      lineHeight: 18
+    }
+  },
+  h4LtWhiteP1: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.light,
+      color: colors.grey.primary
+    },
+    props: {
+      letterSpacing: 0.3,
+      lineHeight: 18.7
+    }
+  },
+  h4LtGreyS: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 5.3
+    }
+  },
+  h4LtGreyS2: {
+    style: {
+      fontSize: fontSize.h9,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5.3
+    }
+  },
+  h4LtWhiteT: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary,
+      backgroundColor: 'transparent'
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 24.2
+    }
+  },
+  h4LtDarkGreyP: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.light,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 6.3
+    }
+  },
+  h5RegGreyS: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: -5.7
+    }
+  },
+  h5RegGreyS2: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.01,
+      lineHeight: 5
+    }
+  },
+  h5RegGreyS3: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.1,
+      lineHeight: 17.3
+    }
+  },
+  h5RegYellow: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.regular,
+      color: colors.yellow.primary
+    },
+    props: {
+      letterSpacing: 0.1,
+      lineHeight: 17.3
+    }
+  },
+  h5RegRedP: {
+    style: {
+      fontSize: fontSize.h5,
+      fontFamily: fontFamily.regular,
+      color: colors.red.primary
+    },
+    props: {
+      letterSpacing: 0.1,
+      lineHeight: 17.3
+    }
+  },
+  h6RegWhiteP: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.regular,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -5.3
+    }
+  },
+  h8RegGreyS: {
+    style: {
+      fontSize: fontSize.h8,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -5.3
+    }
+  },
+  h6RegGreyS: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -5.3
+    }
+  },
+  h6RegGreyS2: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 11.7,
+      lineHeight: 0.2
+    }
+  },
+  h6RegDarkGreyS: {
+    style: {
+      fontSize: 20,
+      fontFamily: fontFamily.regular,
+      color: colors.darkGrey.secondary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -5.3
+    }
+  },
+  h6RegRedP: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.regular,
+      color: colors.red.primary,
+      paddingHorizontal: 10,
+      paddingVertical: 7
+    },
+    props: {
+      letterSpacing: 17.3,
+      lineHeight: 0.1
+    }
+  },
+  h6MedRedP: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.medium,
+      color: colors.red.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: -8
+    }
+  },
+  h6MedGreyS: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.medium,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.21,
+      lineHeight: 5.3
+    }
+  },
+  h6LtDarkGreyP: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.light,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 1.1,
+      lineHeight: 8.9
+    }
+  },
+  h6RegWhiteT: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.regular,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.2,
+      lineHeight: 11.7
+    }
+  },
+
+  h6LtWhiteT: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.2,
+      lineHeight: 11.7
+    }
+  },
+  h7BdWhiteT: {
+    style: {
+      fontSize: fontSize.h7,
+      fontFamily: fontFamily.bold,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: 6.3
+    }
+  },
+  h7MedGreyS: {
+    style: {
+      fontSize: fontSize.h7,
+      fontFamily: fontFamily.medium,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -4
+    }
+  },
+  h7MedDarkGreyP: {
+    style: {
+      fontSize: fontSize.h7,
+      fontFamily: fontFamily.medium,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 1.1,
+      lineHeight: 10.3
+    }
+  },
+  h8MedDarkGreyP: {
+    style: {
+      fontSize: fontSize.h8,
+      fontFamily: fontFamily.medium,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      letterSpacing: 1.1,
+      lineHeight: 11.6
+    }
+  },
+  h8MedWhiteT: {
+    style: {
+      fontSize: fontSize.h8,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.06,
+      lineHeight: -2.7
+    }
+  },
+
+  h2LtWhiteP: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 5.3
+    }
+  },
+  h2LtWhiteP2: {
+    style: {
+      fontSize: fontSize.h3,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 5.3
+    }
+  },
+  h2LtWhiteT: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 9.7
+    }
+  },
+  h4MedGreyS: {
+    style: {
+      fontSize: fontSize.h4,
+      fontFamily: fontFamily.medium,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 5.3
+    }
+  },
+  h15BoldWhiteT: {
+    style: {
+      fontSize: fontSize.h8,
+      fontFamily: fontFamily.bold,
+      color: colors.white.tertiary
+    },
+    props: {
+      letterSpacing: 0.5,
+      lineHeight: 5.3
+    }
+  },
+  h15LtWhiteP: {
+    style: {
+      fontSize: fontSize.h8,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      lineHeight: 9.7
+    }
+  },
+  h15RegGreyS: {
+    style: {
+      fontSize: fontSize.h15,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 0.2,
+      lineHeight: 9.6
+    }
+  },
+  h2LtWhiteT2: {
+    style: {
+      fontSize: fontSize.h2,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 9.7
+    }
+  },
+  h9LtWhiteP: {
+    style: {
+      fontSize: fontSize.h9,
+      fontFamily: fontFamily.light,
+      color: colors.white.primary
+    },
+    props: {
+      lineHeight: 8.1
+    }
+  },
+  h9LtGreyS: {
+    style: {
+      fontSize: fontSize.h9,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary,
+      backgroundColor: 'transparent'
+    },
+    props: {
+      lineHeight: 21
+    }
+  },
+  h10LtWhiteT: {
+    style: {
+      fontSize: fontSize.h10,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 6.7
+    }
+  },
+  h10BdWhiteT: {
+    style: {
+      fontSize: fontSize.h10,
+      fontFamily: fontFamily.bold,
+      color: colors.white.tertiary,
+      backgroundColor: 'transparent'
+    },
+    props: {
+      lineHeight: 21
+    }
+  },
+  h10MedWhiteT: {
+    style: {
+      fontSize: fontSize.h10,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary,
+      backgroundColor: 'transparent'
+    },
+    props: {
+      lineHeight: 6.7
+    }
+  },
+  h10LtGreyS: {
+    style: {
+      fontSize: fontSize.h10,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary,
+      backgroundColor: 'transparent'
+    },
+    props: {
+      lineHeight: 21
+    }
+  },
+  h11MedWhiteT: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.4
+    }
+  },
+  h13MedWhiteT: {
+    style: {
+      fontSize: fontSize.h13,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.4
+    }
+  },
+  h14MedWhiteT: {
+    style: {
+      fontSize: fontSize.h13,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.4
+    }
+  },
+  h11MedWhiteT2: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h11MedWhiteT3: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h11MedWhiteT3O: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiaryOpacity
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h12MedWhiteT3: {
+    style: {
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h12MedWhiteT3O: {
+    style: {
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiaryOpacity
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h11LtWhiteT: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 7,
+      letterSpacing: 0.1
+    }
+  },
+  h11LtGreyS: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
+    },
+    props: {
+      lineHeight: 7
+    }
+  },
+
+  h11LtGreyS2: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
+    },
+    props: {
+      lineHeight: 5.6,
+      letterSpacing: 0.1
+    }
+  },
+  h11MedRedP: {
+    style: {
+      fontSize: fontSize.h11,
+      fontFamily: fontFamily.medium,
+      color: colors.red.primary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h12LtWhiteT: {
+    style: {
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
     }
   },
   h12LtGreyS: {
     style: {
-      fontSize: size.h12,
-      fontFamily: type.light,
-      color: Colors.greySecondary
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
     },
     props: {
       lineHeight: 14,
@@ -214,24 +1181,199 @@ const style = {
   },
   h12MedGreyS: {
     style: {
-      fontSize: size.h12,
-      fontFamily: type.medium,
-      color: Colors.greySecondary
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.medium,
+      color: colors.grey.secondary
     },
     props: {
       lineHeight: 4.7,
       letterSpacing: 0.1
     }
   },
-  h5RegGreyS2: {
+  h12MedWhiteT: {
     style: {
-      fontSize: fontSize.h5,
-      fontFamily: fontFamily.regular,
-      color: colors.greySecondary
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
     },
     props: {
-      letterSpacing: 0.01,
+      lineHeight: 0,
+      letterSpacing: 2.5
+    }
+  },
+  h12MedGreyP: {
+    style: {
+      fontSize: fontSize.h12,
+      fontFamily: fontFamily.medium,
+      color: colors.darkGrey.primary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h13LtGreyS: {
+    style: {
+      fontSize: fontSize.h13,
+      fontFamily: fontFamily.light,
+      color: colors.grey.secondary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h13LtWhiteT: {
+    style: {
+      fontSize: fontSize.h13,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h13LtRedP: {
+    style: {
+      fontSize: fontSize.h13,
+      fontFamily: fontFamily.light,
+      color: colors.red.primary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h13MedRedP: {
+    style: {
+      fontSize: fontSize.h13,
+      fontFamily: fontFamily.medium,
+      color: colors.red.primary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.1
+    }
+  },
+  h14MedGreyS: {
+    style: {
+      fontSize: fontSize.h14,
+      fontFamily: fontFamily.medium,
+      color: colors.grey.secondary
+    },
+    props: {
+      lineHeight: 3.9,
+      letterSpacing: 0.1
+    }
+  },
+  h8MedWhiteT2: {
+    style: {
+      fontSize: fontSize.h8,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 0,
+      letterSpacing: 0
+    }
+  },
+  h14RegGreyS: {
+    style: {
+      fontSize: fontSize.h14,
+      fontFamily: fontFamily.medium,
+      color: colors.grey.secondary
+    },
+    props: {
+      lineHeight: 3.9,
+      letterSpacing: 0.1
+    }
+  },
+  h16LtCoolGreyP: {
+    style: {
+      fontSize: fontSize.h16,
+      fontFamily: fontFamily.light,
+      color: colors.coolGrey.primary
+    },
+    props: {
+      lineHeight: 4.7,
+      letterSpacing: 0.07
+    }
+  },
+  h17LtWhiteT: {
+    style: {
+      fontSize: fontSize.h17,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 7,
+      letterSpacing: 0.1
+    }
+  },
+  h17MedWhiteT: {
+    style: {
+      fontSize: fontSize.h17,
+      fontFamily: fontFamily.medium,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 7,
+      letterSpacing: 0.1
+    }
+  },
+  h18RegGreyS2: {
+    style: {
+      fontSize: fontSize.h18,
+      fontFamily: fontFamily.regular,
+      color: colors.grey.secondary
+    },
+    props: {
+      letterSpacing: 4,
       lineHeight: 5
+    }
+  },
+  h19TnWhiteP: {
+    style: {
+      fontSize: fontSize.h19,
+      fontFamily: fontFamily.thin,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.24,
+      lineHeight: 53
+    }
+  },
+  h20TnWhiteP: {
+    style: {
+      fontSize: fontSize.h19,
+      fontFamily: fontFamily.thin,
+      color: colors.white.primary
+    },
+    props: {
+      letterSpacing: 0.24,
+      lineHeight: 53
+    }
+  },
+  h9LtWhiteT: {
+    style: {
+      fontSize: fontSize.h9,
+      fontFamily: fontFamily.light,
+      color: colors.white.tertiary
+    },
+    props: {
+      lineHeight: 24.2
+    }
+  },
+  h6RegOrangeS: {
+    style: {
+      fontSize: fontSize.h6,
+      fontFamily: fontFamily.regular,
+      color: colors.orange.secondary
+    },
+    props: {
+      letterSpacing: 0.21,
+      lineHeight: 11.7
     }
   }
 }

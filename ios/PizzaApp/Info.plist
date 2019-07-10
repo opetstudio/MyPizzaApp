@@ -73,6 +73,19 @@
 		<string>Roboto_medium.ttf</string>
 		<string>Roboto.ttf</string>
 		<string>rubicon-icon-font.ttf</string>
+		<string>HelveticaBold.ttf</string>
+		<string>HelveticaBold.woff</string>
+		<string>HelveticaNeue.ttf</string>
+		<string>HelveticaNeue.woff</string>
+		<string>HelveticaNeueBold.ttf</string>
+		<string>HelveticaNeueBold.woff</string>
+		<string>HelveticaNeueLight.ttf</string>
+		<string>HelveticaNeueLight.woff</string>
+		<string>HelveticaNeueLTPro-Lt.otf</string>
+		<string>HelveticaNeueThin.ttf</string>
+		<string>HelveticaNeueThin.woff</string>
+		<string>tselicon.ttf</string>
+		<string>tselicon.woff</string>
 	</array>
 </dict>
 </plist>

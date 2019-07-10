@@ -65,6 +65,20 @@ export default StyleSheet.create({
     marginLeft: 5,
     paddingHorizontal: 9,
     paddingVertical: 1
+  },
+  drawerFooter2: {
+    flex: 0,
+    bottom: 0,
+    flexDirection: 'column',
+    paddingVertical: 5,
+  },
+  drawHeader: {
+    flex: 0,
+    top: 0,
+    flexDirection: 'row',
+    marginTop: 30,
+    marginBottom: 15,
+    marginLeft: 20
   }
 })
 

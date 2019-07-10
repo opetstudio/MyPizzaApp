@@ -87,7 +87,7 @@ export default class HeaderMenu extends Component {
         )}
         {!noTitle && (
           <StyledText textStyle='h21MedWhiteT2NLS' upperCase>
-            {title ? textMessage(title) : 'PizzaApp'}
+            {title ? textMessage(title) : 'Bayar2'}
           </StyledText>
         )}
       </View>

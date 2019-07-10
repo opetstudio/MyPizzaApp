@@ -4,7 +4,9 @@ import { connect } from 'react-redux'
 import {
   Container,
   Text,
-  Button
+  Button,
+  Footer,
+  FooterTab
 } from 'native-base'
 import {path} from 'ramda'
 // import { LoginButton } from 'react-native-fbsdk'
@@ -23,6 +25,7 @@ import { Images } from '../../Themes'
 import { Colors } from '../../../ignite/DevScreens/DevTheme'
 import AppConfig from '../../Config/AppConfig'
 import FooterComponent from '../../Components/Footer'
+import FooterMenu from '../Layout/FooterMenu'
 
 const launchscreenBg = Images.launchscreenBg
 const launchscreenLogo = Images.launchscreenLogo
@@ -218,16 +221,16 @@ class HomeScreen extends Component {
     return (
       <Container>
         <HeaderMenu
-          isHomePage
+          // isHomePage
           hasHamburger
-          hasSearch
+          // hasSearch
           navigation={this.props.navigation}
-          title={AppConfig.appName}
+          // title={AppConfig.appName}
         />
-        <ImageBackground source={launchscreenBg} style={styles.imageContainer}>
-          <ScrollView style={{ flex: 1 }}>
-            <View style={styles.logoContainer}>
-              <Image source={launchscreenLogo} style={styles.logo} />
+        {/* <ImageBackground source={launchscreenBg} style={styles.imageContainer}> */}
+        <ScrollView style={{ flex: 1 }}>
+            <View>
+              {/* <Image source={launchscreenLogo} style={styles.logo} /> */}
               {/* <ImageBackground source={launchscreenLogo} style={styles.logo} /> */}
             </View>
             <View
@@ -240,13 +243,13 @@ class HomeScreen extends Component {
               }}
             >
 
-              {!this.props.currentUser && this.renderUnloggedinSection()}
-              {this.props.currentUser && this.renderLoggedInSection()}
+              {/* {!this.props.currentUser && this.renderUnloggedinSection()}
+              {this.props.currentUser && this.renderLoggedInSection()} */}
               {/* <LoginOption /> */}
             </View>
           </ScrollView>
-        </ImageBackground>
-        <FooterComponent />
+        {/* </ImageBackground> */}
+        <FooterMenu />
       </Container>
     )
   }
