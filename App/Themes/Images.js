@@ -44,7 +44,10 @@ const images = {
   freeIcon: require('../Images/free_icon/free.png'),
   nextArrow: require('../Images/next_arrow/next_arrow.png'),
   info: require('../Images/info.png'),
-  chevronRight2: require('../Images/chevron_right.png')
+  chevronRight2: require('../Images/chevron_right.png'),
+  landingPageBan: require('../Containers/Assets/landingPageBanner.png'),
+  globe: require('../Images/globe.png'),
+  logoBayar2: require('../Components/Assets/bayar2.png')
 }
 
 export default images

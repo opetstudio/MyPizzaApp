@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, StatusBar } from 'react-native'
+import { View, StatusBar, Text } from 'react-native'
 import { Root } from 'native-base'
 import { connect } from 'react-redux'
 import {SafeAreaView} from 'react-navigation'
@@ -21,6 +21,7 @@ import styles from './Styles/RootContainerStyles'
 import { Colors } from '../Themes'
 
 import PopupActions, { PopupSelectors } from '../Redux/PopupRedux'
+import RouterUnlogedin from '../Navigation/RouterUnlogedin'
 
 // let client = new W3CWebSocket(AppConfig.websocketEndpoin.server1)
 
@@ -33,8 +34,6 @@ class RootContainer extends Component {
       tokenCopyFeedback: '',
       isAuthenticated: false
     }
-    this._renderUnLogedinRouter = this._renderUnLogedinRouter.bind(this)
-    this._renderLogedinRouter = this._renderLogedinRouter.bind(this)
   }
   componentDidMount () {
     SplashScreen.hide()
@@ -47,25 +46,14 @@ class RootContainer extends Component {
     }
     this.props.websocketSetup({timestamp: new Date()})
   }
-
-  _renderUnLogedinRouter () {
-    return (
-      <View style={styles.applicationView}>
-        <StatusBar barStyle='light-content' />
-        <ReduxNavigation />
-      </View>
-    )
-  }
-  _renderLogedinRouter () {
-    return (
-      <View style={styles.applicationView}>
-        <StatusBar barStyle='light-content' />
-        <ReduxNavigation />
-      </View>
-    )
-  }
   render () {
-    const navigator = (<ReduxNavigation />)
+    // const navigator = (<ReduxNavigation />)
+    const navigator = (<RouterUnlogedin
+      screenProps={{
+        // onLogedIn: this._onLogedIn,
+        // hideSplashScreen: this.props.hideSplashScreen
+      }}
+     />)
     return (
       <Root>
         <StyledView style={{ paddingHorizontal: 0 }} isLoading={false}>

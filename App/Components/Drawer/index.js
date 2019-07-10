@@ -10,12 +10,15 @@ import {
   Left,
   Right,
   Badge,
-  Thumbnail
+  Thumbnail,
+  Button,
+  Body
 } from 'native-base'
 import styles from './Styles'
 import { Images } from '../../Themes'
 import DrawerHeader from './DrawerHeader'
 import DrawerFooter from './DrawerFooter'
+import DrawerFooter2 from './DrawerFooter2';
 import AppConfig from '../../Config/AppConfig'
 
 // const drawerCover = Images.drawerCover
@@ -55,10 +58,13 @@ export default class Drawer extends Component {
             style={styles.scrollView}
             contentContainerStyle={styles.scrollViewContentContainer}
           >
-            <DrawerHeader
+            {/* <DrawerHeader
               currentUser={this.props.currentUser}
               navigation={this.props.navigation}
-            />
+            /> */}
+            <View style={styles.drawHeader}>
+              <Left><Text style={{fontSize: 24 }}>Menu</Text></Left><Body/><Right/>
+            </View>
             <View style={styles.contentView}>
               <List
                 dataArray={this.props.datas}
@@ -105,7 +111,7 @@ export default class Drawer extends Component {
                   </ListItem>}
               />
             </View>
-            {AppConfig.isDrawerFooterActive && <DrawerFooter
+            {AppConfig.isDrawerFooterActive && <DrawerFooter2
               navigation={this.props.navigation}
               currentUser={this.props.currentUser}
               popupShow={this.props.popupShow}
