@@ -21,7 +21,6 @@ import styles from './Styles/RootContainerStyles'
 import { Colors } from '../Themes'
 
 import PopupActions, { PopupSelectors } from '../Redux/PopupRedux'
-import RouterUnlogedin from '../Navigation/RouterUnlogedin'
 
 // let client = new W3CWebSocket(AppConfig.websocketEndpoin.server1)
 
@@ -47,13 +46,13 @@ class RootContainer extends Component {
     this.props.websocketSetup({timestamp: new Date()})
   }
   render () {
-    // const navigator = (<ReduxNavigation />)
-    const navigator = (<RouterUnlogedin
-      screenProps={{
-        // onLogedIn: this._onLogedIn,
-        // hideSplashScreen: this.props.hideSplashScreen
-      }}
-     />)
+    const navigator = (<ReduxNavigation />)
+    // const navigator = (<RouterUnlogedin
+    //   screenProps={{
+    //     onLogedIn: 'this._onLogedInxxxxxx',
+    //     hideSplashScreen: 'this.props.hideSplashScreenxxxxx'
+    //   }}
+    //  />)
     return (
       <Root>
         <StyledView style={{ paddingHorizontal: 0 }} isLoading={false}>

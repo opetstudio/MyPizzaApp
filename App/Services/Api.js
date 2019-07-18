@@ -62,7 +62,7 @@ const create = (baseURL = 'https://api.github.com/') => {
     getRate,
     getUser
   }
-  apiMerged = merge(apiMerged, require('../Containers/Login/LoginApi').create(api))
+  apiMerged = merge(apiMerged, require('../Containers/ScreenLogin/api').create(api))
   apiMerged = merge(apiMerged, {})
   return {
     ...apiMerged

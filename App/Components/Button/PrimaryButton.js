@@ -5,7 +5,6 @@ import {Colors, Fonts, Metrics} from '../../Themes'
 import PropTypes from 'prop-types'
 
 export default class PrimaryButton extends Component {
-
   static propTypes = {
     onPress: PropTypes.func,
     title: PropTypes.string,
@@ -14,30 +13,30 @@ export default class PrimaryButton extends Component {
     colors: PropTypes.string
   }
 
-  constructor(props) {
+  constructor (props) {
     super(props)
-    gradientColor = ['#647BFF', '#0BCDFF']
-    bgColor = this.props.colors === 'gradient' ? gradientColor : this.props.colors === undefined ? ['#fff', '#fff'] : [this.props.colors, this.props.colors]
-    txtStyle = this.props.colors === 'gradient' ? styles.customBtnTextGradient : styles.customBtnText
+    let gradientColor = ['#647BFF', '#0BCDFF']
+    this.state = {
+      bgColor: this.props.colors === 'gradient' ? gradientColor : this.props.colors === undefined ? ['#fff', '#fff'] : [this.props.colors, this.props.colors],
+      txtStyle: this.props.colors === 'gradient' ? styles.customBtnTextGradient : styles.customBtnText
+    }
   }
 
   render () {
     return (
       <TouchableHighlight onPress={this.props.onPress} underlayColor={'transparent'}>
-        <LinearGradient colors={bgColor} style={styles.customBtnBG} start={{x: 0, y: 1}} end={{x: 1, y: 1}}>
-          <Text style={txtStyle} >{this.props.title}</Text>
+        <LinearGradient colors={this.state.bgColor} style={styles.customBtnBG} start={{x: 0, y: 1}} end={{x: 1, y: 1}}>
+          <Text style={this.state.txtStyle} >{this.props.title}</Text>
         </LinearGradient>
       </TouchableHighlight>
     )
   }
 }
 
-
-
 const styles = StyleSheet.create({
 
   customBtnTextGradient: {
-    color: Colors.snow ,
+    color: Colors.snow,
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: Fonts.size.medium,
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
   },
 
   customBtnText: {
-    color: Colors.blackSecondaryOpacity ,
+    color: Colors.blackSecondaryOpacity,
     textAlign: 'center',
     fontWeight: 'bold',
     fontSize: Fonts.size.medium,

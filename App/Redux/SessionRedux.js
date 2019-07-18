@@ -1,3 +1,4 @@
+import {AsyncStorage} from 'react-native'
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 
@@ -22,6 +23,7 @@ export const INITIAL_STATE = Immutable({
   fetching: null,
   loginWith: null,
   currentUser: null,
+  sessionToken: null,
   payload: null,
   error: null,
   errorMessage: null,
@@ -33,6 +35,7 @@ export const INITIAL_STATE = Immutable({
 export const SessionSelectors = {
   getData: state => state.data,
   getCurrentUser: state => state.currentUser,
+  getSessionToken: state => state.sessionToken,
   getFetching: state => state.fetching,
   getIsLoginCompleted: state => state.isLoginCompleted,
   isError: state => state.error,
@@ -64,7 +67,8 @@ export const success = (state, {payload}) => {
   __DEV__ && console.log('[SessionRedux] success payload', payload)
   __DEV__ && console.log('[SessionRedux] success state', state)
   // const { loginWith, currentUser } = payload
-  return state.merge({ isLoginCompleted: true, fetching: false, error: null, payload, currentUser: payload.currentUser, loginWith: payload.loginWith })
+  AsyncStorage.setItem('sessionToken', payload.sessionToken)
+  return state.merge({ isLoginCompleted: true, fetching: false, error: null, payload, currentUser: payload.currentUser, loginWith: payload.loginWith, sessionToken: payload.sessionToken })
 }
 
 // Something went wrong somewhere.
@@ -72,8 +76,11 @@ export const failure = (state, {errorMessage}) => {
   // __DEV__ && console.log('===>p1', { errorMessage })
   return state.merge({ isLoginCompleted: true, fetching: false, error: true, payload: null, errorMessage })
 }
-export const logout = state =>
-  state.merge({ isLoginCompleted: true, fetching: false, error: false, payload: null, currentUser: null })
+export const logout = (state) => {
+  AsyncStorage.clear()
+  console.log('do logout')
+  return state.merge({ isLoginCompleted: true, fetching: false, error: false, payload: null, currentUser: null, sessionToken: '' })
+}
 
 /* ------------- Hookup Reducers To Types ------------- */
 

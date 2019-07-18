@@ -8,7 +8,7 @@ import DebugConfig from '../Config/DebugConfig'
 import { StartupTypes } from '../Redux/StartupRedux'
 import { GithubTypes } from '../Redux/GithubRedux'
 import { SessionTypes } from '../Redux/SessionRedux'
-import { LoginTypes } from '../Containers/Login/LoginRedux'
+import { LoginTypes } from '../Containers/ScreenLogin/redux'
 import { WebsocketTypes } from '../Redux/WebsocketRedux'
 
 /* ------------- Sagas ------------- */
@@ -16,7 +16,7 @@ import { WebsocketTypes } from '../Redux/WebsocketRedux'
 import { startup } from './StartupSagas'
 import { getUserAvatar } from './GithubSagas'
 import { sessionUpdate } from './SessionSagas'
-import { loginRequest } from '../Containers/Login/LoginSagas'
+import { loginRequest } from '../Containers/ScreenLogin/sagas'
 import { websocketSetup } from './WebsocketSagas'
 
 /* ------------- API ------------- */
@@ -33,7 +33,7 @@ export default function * root () {
     takeLatest(StartupTypes.STARTUP, startup),
     takeLatest(WebsocketTypes.WEBSOCKET_SETUP, websocketSetup),
 
-    takeLatest(LoginTypes.LOGIN_REQUEST, loginRequest, API.create('http://www.google.com')),
+    takeLatest(LoginTypes.LOGIN_REQUEST, loginRequest, API.create('http://202.158.24.186:8090/api-v1/processor-user')),
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api)

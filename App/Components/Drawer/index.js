@@ -31,7 +31,8 @@ export default class Drawer extends Component {
     popupShow: PropTypes.func.isRequired,
     popupHide: PropTypes.func.isRequired,
     sessionLogout: PropTypes.func.isRequired,
-    navigation: PropTypes.object.isRequired
+    navigation: PropTypes.object.isRequired,
+    sessionToken: PropTypes.string.isRequired
   }
   //
   // // Defaults for props
@@ -117,6 +118,7 @@ export default class Drawer extends Component {
               popupShow={this.props.popupShow}
               popupHide={this.props.popupHide}
               sessionLogout={this.props.sessionLogout}
+              sessionToken={this.props.sessionToken}
             />}
           </ScrollView>
         </View>

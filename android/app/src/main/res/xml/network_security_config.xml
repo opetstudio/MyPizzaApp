@@ -13,5 +13,6 @@
         </trust-anchors>
     </domain-config>
 
-    <base-config cleartextTrafficPermitted="false" />
+    <!-- <base-config cleartextTrafficPermitted="false" /> -->
+    <base-config cleartextTrafficPermitted="true" />
 </network-security-config>

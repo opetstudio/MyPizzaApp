@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Image, ScrollView, Text } from 'react-native'
 import Images from '../../Themes/Images'
 // import RoundedButton from '../../Components/RoundedButton'
-import CustomButton from '../../Components/CustomButton'
+import PrimaryButton from '../../Components/Button/PrimaryButton'
 
 import styles from '../LandingPage/LandingScreenStyles'
 
@@ -24,8 +24,8 @@ export default class LandingScreen extends Component {
             <Image source={Images.launch} style={styles.logo} />
           </View>
           <View style={{marginTop: 30}}>
-            <CustomButton onPress={() => this._doLogin()} title={'LOGIN'} />
-            <CustomButton onPress={() => this._doSignup()} title={'SIGNUP'} />
+            <PrimaryButton onPress={() => this._doLogin() } title={'LOGIN'} />
+            <PrimaryButton onPress={() => this._doSignup() } title={'SIGNUP'} />
           </View>
         </ScrollView>
       </View>
@@ -33,6 +33,7 @@ export default class LandingScreen extends Component {
   }
   // move to login page
   _doLogin () {
+    console.log("otw login page")
     this.props.navigation.navigate('LoginScreen2')
   }
   // move to signup page

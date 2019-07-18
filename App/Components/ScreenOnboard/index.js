@@ -16,8 +16,8 @@ class ScreenOnboard extends React.PureComponent {
             <Image source={Images.logoBayar2} style={styles.logo} />
           </View>
           <View style={{marginTop: 30}}>
-            <PrimaryButton colors={'gradient'} title={'LOGIN'} />
-            <PrimaryButton title={'SIGNUP'} /> 
+            <PrimaryButton colors={'gradient'} onPress={() => this.props.navigation.navigate('ScreenLogin')} title={'LOGIN'} />
+            <PrimaryButton title={'SIGNUP'} />
           </View>
         </ScrollView>
       </View>
@@ -28,7 +28,7 @@ class ScreenOnboard extends React.PureComponent {
 const styles = StyleSheet.create({
 
   container: {
-  paddingBottom: Metrics.baseMargin
+    paddingBottom: Metrics.baseMargin
   },
   logo: {
     marginTop: Metrics.doubleSection,
@@ -46,6 +46,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 })
-
 
 export default ScreenOnboard

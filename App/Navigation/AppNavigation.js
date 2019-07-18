@@ -1,5 +1,5 @@
 import React from 'react'
-import { createStackNavigator as StackNavigator, createDrawerNavigator as DrawerNavigator } from 'react-navigation'
+import { createStackNavigator as StackNavigator, createDrawerNavigator as DrawerNavigator, createSwitchNavigator } from 'react-navigation'
 // import DrawerFooter from '../Containers/DrawerFooter'
 // import DrawerHeader from '../Containers/DrawerHeader'
 import LoginMethodScreen from '../Containers/Auth/LoginMethodScreen'
@@ -11,6 +11,8 @@ import LandingScreen from '../Containers/LandingPage/LandingScreen';
 import Drawer from '../Containers/Drawer'
 import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
+import ScreenLogin from '../Containers/ScreenLogin'
+import AuthLoadingScreen from '../Containers/AuthLoadingScreen'
 
 import styles from './Styles/NavigationStyles'
 
@@ -33,16 +35,45 @@ navigatorHelper.setMenuNavigationRoutes(menuRoutes)
 const StackNav = StackNavigator({
   PrimaryNav: { screen: PrimaryNav },
   LoginMethodScreen: { screen: LoginMethodScreen },
-  LandingScreen : { screen: LandingScreen },
-  LoginScreen2: { screen: LoginScreen2}
+  LandingScreen: { screen: LandingScreen },
+  ScreenLogin: { screen: ScreenLogin },
+  LoginScreen2: {screen: LoginScreen2}
 }, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'LandingScreen',
+  initialRouteName: 'PrimaryNav',
   navigationOptions: {
     headerStyle: styles.header
   },
   cardStyle: isIphoneX ? { shadowColor: 'transparent' } : {}
 })
 
-export default StackNav
+const AppStack = StackNav
+const AuthStack = StackNavigator({
+  // PrimaryNav: { screen: PrimaryNav },
+  LoginMethodScreen: { screen: LoginMethodScreen },
+  LandingScreen: { screen: LandingScreen },
+  ScreenLogin: { screen: ScreenLogin },
+  LoginScreen2: {screen: LoginScreen2}
+}, {
+  // Default config for all screens
+  headerMode: 'none',
+  initialRouteName: 'ScreenLogin',
+  navigationOptions: {
+    headerStyle: styles.header
+  },
+  cardStyle: isIphoneX ? { shadowColor: 'transparent' } : {}
+})
+
+const xxx = createSwitchNavigator(
+  {
+    AuthLoading: AuthLoadingScreen,
+    App: AppStack,
+    Auth: AuthStack
+  },
+  {
+    initialRouteName: 'AuthLoading'
+  }
+)
+
+export default xxx

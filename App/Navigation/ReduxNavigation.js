@@ -6,13 +6,16 @@ import {
 } from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'
+// import AppNavigationUnlogedin from './AppNavigationUnlogedin'
+// import {createRootNavigator} from './RootNavigator'
+// const Layout = createRootNavigator(true)
 
 export const appNavigatorMiddleware = createReactNavigationReduxMiddleware(
   'root',
   (state) => state.nav
 )
-
 const ReduxAppNavigator = reduxifyNavigator(AppNavigation, 'root')
+// const ReduxAppNavigatorUnlogedin = reduxifyNavigator(AppNavigationUnlogedin, 'root')
 
 class ReduxNavigation extends React.Component {
   componentDidMount () {
@@ -34,6 +37,7 @@ class ReduxNavigation extends React.Component {
       }
       // change to whatever is your first screen, otherwise unpredictable results may occur
       // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
+        console.log('back navigation getCurrentRouteName(nav)===', getCurrentRouteName(nav))
       if (getCurrentRouteName(nav) === 'HomeScreen') {
         console.log(nav.routes)
         if (nav.routes.length > 0 && !nav.routes[0].isDrawerOpen) return false
@@ -57,7 +61,11 @@ class ReduxNavigation extends React.Component {
   }
 
   render () {
+    // if(false) {
+    //   return <ReduxAppNavigator dispatch={this.props.dispatch} state={this.props.nav} />
+    // } else {
     return <ReduxAppNavigator dispatch={this.props.dispatch} state={this.props.nav} />
+    // }
   }
 }
 
