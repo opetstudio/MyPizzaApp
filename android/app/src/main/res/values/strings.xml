@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">PizzaApp</string>
+	
+    <!--For App2 pushcode-->
+    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">deployment-key-here</string>
+    <string name="CodePushPublicKey">
+    -----BEGIN PUBLIC KEY-----
+    MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAKxC9Z4j6nKpuy6tKPUA4EJIoUEk/M1N
+    BFy95cnuhb/U2+ZdDlJAuvYQJoR75Pk6pbQ2LYwKz+NtQ2SPtx6AnQ0CAwEAAQ==
+    -----END PUBLIC KEY-----
+  </string>
+  
 </resources>
