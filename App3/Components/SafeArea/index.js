@@ -1,0 +1,19 @@
+import React, { Component } from 'react'
+import {SafeAreaView, View} from 'react-navigation'
+import PropTypes from 'prop-types'
+
+import styles from './styles'
+
+export default class SafeArea extends Component {
+  static propTypes = {
+    navigator: PropTypes.node
+  }
+  render () {
+    return (
+      <SafeAreaView style={{ flex: 1 }} forceInset={{ bottom: 'never' }}>
+        {this.props.navigator}
+        {<View style={styles.fixBackgroundTop} />}
+      </SafeAreaView>
+    )
+  }
+}
