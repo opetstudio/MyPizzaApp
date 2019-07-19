@@ -10,7 +10,8 @@ export const reducers = combineReducers({
   session: require('./SessionRedux').reducer,
   websocket: require('./WebsocketRedux').reducer,
   app: require('./AppRedux').reducer,
-  popup: require('./PopupRedux').reducer
+  popup: require('./PopupRedux').reducer,
+  login: require('../Containers/ScreenLogin/redux').reducer
 })
 
 export default () => {

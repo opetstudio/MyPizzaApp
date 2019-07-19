@@ -27,7 +27,7 @@ class ScreenLogin extends React.Component {
   }
   componentDidUpdate (prevProps) {
     if (this.props.sessionToken !== null && !_.isEqual(prevProps.sessionToken, this.props.sessionToken)) {
-      this.props.navigation.navigate('App')
+      this.props.navigation.navigate('loggedinNavigator')
     }
   }
   _doLogin () {

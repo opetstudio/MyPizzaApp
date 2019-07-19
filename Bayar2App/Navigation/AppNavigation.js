@@ -3,37 +3,43 @@ import { createStackNavigator as StackNavigator, createDrawerNavigator as Drawer
 import Drawer from '../Containers/Drawer'
 import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
-import ScreenAuthLoading from '../Components/ScreenAuthLoading'
 
+// SCREEN
+import ScreenAuthLoading from '../Components/ScreenAuthLoading'
 import ScreenOnboard from '../Components/ScreenOnboard'
+import ScreenHome from '../Containers/ScreenHome'
+import ScreenLogin from '../Containers/ScreenLogin'
 
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const menuRoutes = {
-  ScreenOnboard: { screen: ScreenOnboard, navigationOptions: { drawerLabel: 'Home' } }
+  ScreenHome: { screen: ScreenHome, navigationOptions: { drawerLabel: 'Home' } }
 }
 navigatorHelper.setMenuNavigationRoutes(menuRoutes)
-const PrimaryNav = DrawerNavigator(menuRoutes, {
+const drawerMenuNavigator = DrawerNavigator(menuRoutes, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'ScreenOnboard',
+  initialRouteName: 'ScreenHome',
   navigationOptions: {
     headerStyle: styles.header
   },
   contentComponent: props => <Drawer {...props} />
 })
-const loggedinNavigator = StackNavigator({PrimaryNav: { screen: PrimaryNav }}, {
+const loggedinNavigator = StackNavigator({
+  drawerMenuNavigator: { screen: drawerMenuNavigator }
+}, {
   // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'PrimaryNav',
+  initialRouteName: 'drawerMenuNavigator',
   navigationOptions: {
     headerStyle: styles.header
   },
   cardStyle: isIphoneX ? { shadowColor: 'transparent' } : {}
 })
 const unloggedinNavigator = StackNavigator({
-  ScreenOnboard: { screen: ScreenOnboard }
+  ScreenOnboard: { screen: ScreenOnboard },
+  ScreenLogin: { screen: ScreenLogin }
 }, {
     // Default config for all screens
   headerMode: 'none',

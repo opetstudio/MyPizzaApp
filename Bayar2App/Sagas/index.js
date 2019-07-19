@@ -7,11 +7,13 @@ import DebugConfig from '../Config/DebugConfig'
 
 import { StartupTypes } from '../Redux/StartupRedux'
 import { WebsocketTypes } from '../Redux/WebsocketRedux'
+import { LoginTypes } from '../Containers/ScreenLogin/redux'
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { websocketSetup } from './WebsocketSagas'
+import { loginRequest } from '../Containers/ScreenLogin/sagas'
 
 /* ------------- API ------------- */
 
@@ -25,6 +27,7 @@ export default function * root () {
   yield all([
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
-    takeLatest(WebsocketTypes.WEBSOCKET_SETUP, websocketSetup)
+    takeLatest(WebsocketTypes.WEBSOCKET_SETUP, websocketSetup),
+    takeLatest(LoginTypes.LOGIN_REQUEST, loginRequest, API.create('http://202.158.24.186:8090/api-v1/processor-user'))
   ])
 }
