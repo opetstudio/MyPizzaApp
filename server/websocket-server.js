@@ -27,7 +27,7 @@ const originIsAllowed = (origin) => {
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
 var socket = new W3cwebsocket('wss://10.1.2.130:13472/Webapp10/endpoint')
 var sendToMGM = (msg) => {
-  console.log('send message to mgm. msg=', msg)
+  console.log('mgmclient send message to mgm. msg=', msg)
   socket.send(msg)
 }
 
@@ -86,7 +86,7 @@ wsServer.on('request', function (request) {
     //     json.data = { editorContent, userActivity }
     //   }
     //   sendMessage(JSON.stringify(json))
-      // sendToMGM(JSON.stringify(dataFromClient))
+      sendToMGM(JSON.stringify(dataFromClient))
       sendMessage(JSON.stringify(dataFromClient))
     } else {
       console.log('error. messge typ not utf8')
@@ -106,15 +106,15 @@ wsServer.on('request', function (request) {
 })
 
 socket.onopen = (e) => {
-  console.log('open websocket connection success.')
+  console.log('mgmclient open websocket connection success.')
 //   console.log('on open e=', e)
 //   socket.send(JSON.stringify({type: 'greet', payload: 'Hello Mr. Server!'}))
 }
 socket.onerror = (err) => {
-  // console.log('on error err=', err)
+  console.log('mgmclient on error err=', err)
 }
 socket.onmessage = (msg) => {
-  console.log('on message from mgm', msg.data)
+  console.log('mgmclient on message=', msg.data)
   sendMessage(JSON.stringify(msg.data))
 }
 
