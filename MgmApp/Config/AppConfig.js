@@ -7,6 +7,7 @@ export default {
   allowTextFontScaling: true,
   authHeader: '',
   websocketEndpoin: {
+    // server1: 'ws://192.168.201.202:3000'
     server1: 'ws://10.0.2.2:3000'
   },
   youtubeApiKey: 'AIzaSyC_o3QtJkKXN5WUWu1nL8I2zwWwmopEjm8',

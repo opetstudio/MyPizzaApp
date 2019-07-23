@@ -25,17 +25,6 @@ const originIsAllowed = (origin) => {
 }
 
 process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0
-var socket = new W3cwebsocket('wss://10.1.2.130:13472/Webapp10/endpoint')
-var sendToMGM = (msg) => {
-  console.log('mgmclient send message to mgm. msg=', msg)
-  socket.send(msg)
-}
-
-// Generates unique ID for every new connection
-const getUniqueID = () => {
-  const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
-  return s4() + s4() + '-' + s4()
-}
 
 // I'm maintaining all active connections in this object
 const clients = {}
@@ -51,6 +40,44 @@ const sendMessage = (json) => {
   Object.keys(clients).map((client) => {
     clients[client].sendUTF(json)
   })
+}
+
+let socket = null
+
+let connectToMgm = (cb) => {
+  socket = new W3cwebsocket('wss://10.1.2.130:13472/Webapp10/endpoint')
+  socket.onopen = (e) => {
+    console.log('mgmclient open websocket connection success.')
+  //   console.log('on open e=', e)
+  //   socket.send(JSON.stringify({type: 'greet', payload: 'Hello Mr. Server!'}))
+    if (cb) cb()
+  }
+  socket.onerror = (err) => {
+    console.log('mgmclient on error err=', err)
+  }
+  socket.onmessage = (msg) => {
+    console.log('mgmclient on message=', msg.data)
+    sendMessage(JSON.stringify(msg.data))
+  }
+}
+
+var sendToMGM = (msg) => {
+  console.log('mgmclient send message to mgm. msg=', msg)
+  console.log('mgmclient send message to mgm. msg=', socket.connected)
+  if (!socket.connected) {
+    connectToMgm(function () {
+      socket.send(msg)
+    })
+  } else {
+    socket.send(msg)
+  }
+}
+connectToMgm()
+
+// Generates unique ID for every new connection
+const getUniqueID = () => {
+  const s4 = () => Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1)
+  return s4() + s4() + '-' + s4()
 }
 
 const typesDef = {
@@ -104,19 +131,6 @@ wsServer.on('request', function (request) {
     sendMessage(JSON.stringify(json))
   })
 })
-
-socket.onopen = (e) => {
-  console.log('mgmclient open websocket connection success.')
-//   console.log('on open e=', e)
-//   socket.send(JSON.stringify({type: 'greet', payload: 'Hello Mr. Server!'}))
-}
-socket.onerror = (err) => {
-  console.log('mgmclient on error err=', err)
-}
-socket.onmessage = (msg) => {
-  console.log('mgmclient on message=', msg.data)
-  sendMessage(JSON.stringify(msg.data))
-}
 
 // const hostname = '127.0.0.1'
 // const port = 3000

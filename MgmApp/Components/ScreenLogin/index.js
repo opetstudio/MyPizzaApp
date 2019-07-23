@@ -38,7 +38,7 @@ class ScreenLogin extends React.Component {
     let password = this.state.password
 
     if (username !== '' && password !== '') {
-      this.props.loginRequest({userid: username, password: password}, this.state.sessionToken)
+      this.props.loginRequest({userid: username, pw: password, action: 'login'}, this.state.sessionToken)
     } else {
       Alert.alert('invalid userid or password')
     }
