@@ -1,0 +1,522 @@
+import React, { Component } from 'react'
+import { isUndefined } from 'lodash'
+import {
+  View,
+  Platform,
+  NativeModules,
+  DeviceEventEmitter,
+  BackHandler,
+  Image,
+  TouchableHighlight,
+  NativeEventEmitter,
+  AppState
+} from 'react-native'
+import PropTypes from 'prop-types'
+import { autobind } from 'core-decorators'
+import Orientation from 'react-native-orientation'
+import LinearGradient from 'react-native-linear-gradient'
+import {
+  styles,
+  LANDSCAPE_WIDTH,
+  LANDSCAPE_HEIGHT,
+  SCREEN_LANDSCAPE_WIDTH,
+  SCREEN_LANDSCAPE_HEIGHT
+} from './styles'
+import {Colors as colors} from '../../Themes'
+// import colors from '../../themes/colors'
+
+import Popup from '../Dialog'
+import Badge from 'components/Badge'
+import MaxStreamPlayer from 'components/MaxStreamPlayer'
+import Spinner from 'components/Spinner'
+
+import { textMessage } from '../../utils/helper/languageSelector'
+import {
+  actions,
+  trackEvent,
+  getCustomDimensionValues,
+  GAcategories
+} from 'utils/helper/analytics'
+import { isIphoneX } from '../../utils/helper/platform'
+import PrefersHomeIndicatorAutoHidden from 'react-native-home-indicator'
+
+const propTypes = {
+  content: PropTypes.object,
+  locale: PropTypes.string,
+  myPackagesList: PropTypes.array,
+  navigation: PropTypes.object,
+  setStatusBarHidden: PropTypes.func.isRequired,
+  userProfile: PropTypes.object
+}
+
+const AVPlayerPlaybackCallBack = NativeModules.AVPlayerPlaybackCallBack
+
+export default class VideoPlayerFullScreen extends Component {
+  constructor () {
+    super()
+
+    this.state = {
+      isOverlayShowing: false,
+      isLoading: false,
+      errorCode: 0,
+      appState: AppState.currentState,
+      playerClose: false
+    }
+    this.playbackStartTime = 0
+    this.errorMsg = ''
+
+    const iOSPlayerEventEmitter = new NativeEventEmitter(
+      AVPlayerPlaybackCallBack
+    )
+    if (Platform.OS === 'android') {
+      this.videoEventEmitter = DeviceEventEmitter
+    } else {
+      this.videoEventEmitter = iOSPlayerEventEmitter
+    }
+  }
+
+  componentDidMount () {
+    const { setStatusBarHidden } = this.props
+    setStatusBarHidden(true)
+
+    if (Platform.OS === 'ios') {
+      const RotationHelperIOS = NativeModules.RotationHelperIOS
+      RotationHelperIOS.forceRotateToLandscape()
+    } else {
+      Orientation.lockToLandscape()
+    }
+
+    if (this.videoEventEmitter) {
+      this.videoEventEmitter.addListener('onPlayerStart', this.onPlaybackStart)
+      this.videoEventEmitter.addListener('onPlayerStop', this.onPlaybackStop)
+      this.videoEventEmitter.addListener('onPlayerError', this.onPlaybackError)
+      this.videoEventEmitter.addListener('onLoading', this.onLoading)
+      this.videoEventEmitter.addListener('onStopLoading', this.onStopLoading)
+    }
+
+    BackHandler.addEventListener(
+      'hardwareBackPress',
+      this.onDeviceBackBtnPress
+    )
+    AppState.addEventListener('change', this._handleAppStateChange)
+    this.onLoading()
+  }
+
+  componentWillUnmount () {
+    this.props.setStatusBarHidden(false)
+    this.closePlayer()
+    this.clearOverlayTimer()
+    this.clearAnalyticsTimer()
+
+    if (this.videoEventEmitter) {
+      this.videoEventEmitter.removeListener(
+        'onPlayerStart',
+        this.onPlaybackStart
+      )
+      this.videoEventEmitter.removeListener(
+        'onPlayerStop',
+        this.onPlaybackStop
+      )
+      this.videoEventEmitter.removeListener(
+        'onPlayerError',
+        this.onPlaybackError
+      )
+      this.videoEventEmitter.removeListener('onLoading', this.onLoading)
+      this.videoEventEmitter.removeListener(
+        'onStopLoading',
+        this.onStopLoading
+      )
+    }
+
+    BackHandler.removeEventListener(
+      'hardwareBackPress',
+      this.onDeviceBackBtnPress
+    )
+    AppState.removeEventListener('change', this._handleAppStateChange)
+    this.videoEventEmitter = null
+  }
+
+  _handleAppStateChange = nextAppState => {
+    if (
+      this.state.appState.match(/inactive|background/) &&
+      nextAppState === 'active'
+    ) {
+      // App has come to the foreground!
+      if (Platform.OS === 'ios') {
+        AVPlayerPlaybackCallBack.comeBackToForeground()
+      }
+    }
+    this.setState({ appState: nextAppState })
+  };
+
+  @autobind
+  toggleOverlay () {
+    this.setState({
+      isOverlayShowing: !this.state.isOverlayShowing
+    })
+    this.clearOverlayTimer()
+    if (!this.state.isOverlayShowing) {
+      this.overlayTimer = setTimeout(() => {
+        this.clearOverlayTimer()
+        this.setState({ isOverlayShowing: false })
+      }, 5000)
+    }
+  }
+
+  clearOverlayTimer () {
+    if (this.overlayTimer) {
+      clearTimeout(this.overlayTimer)
+      this.overlayTimer = null
+    }
+  }
+
+  clearAnalyticsTimer () {
+    if (this.analyticsTimer) {
+      clearTimeout(this.analyticsTimer)
+      this.analyticsTimer = null
+    }
+  }
+
+  onDeviceBackBtnPress = () => {
+    this.goBack()
+    return true
+  };
+
+  onPlaybackError = params => {
+    if (params['errorCode']) {
+      this.errorMsg = this.getErrorMessage(params['errorCode'])
+      const { content } = this.props.navigation.state.params
+      this.triggerVideoErrorGA(
+        content,
+        this.props.userProfile,
+        this.props.myPackagesList,
+        params['errorCode'],
+        this.errorMsg
+      )
+      if (params['showErrorDialog']) {
+        this.setState({
+          errorCode: params['errorCode']
+        })
+      }
+    }
+  };
+
+  onLoading = () => {
+    this.setState({ isLoading: true })
+  };
+
+  onStopLoading = () => {
+    this.setState({ isLoading: false })
+  };
+
+  onPlaybackStart = () => {
+    this.setState({
+      isOverlayShowing: this.state.isOverlayShowing
+    })
+    if (this.playbackStartTime == 0) {
+      this.playbackStartTime = Math.floor(Date.now() / 1000)
+      this.analyticsTimer = setTimeout(() => {
+        this.clearAnalyticsTimer()
+        const { content } = this.props.navigation.state.params
+        this.triggerVideoPlayGA(
+          content,
+          this.props.userProfile,
+          this.props.myPackagesList
+        )
+      }, 5000)
+    }
+  };
+
+  onPlaybackStop = () => {
+    const { content } = this.props.navigation.state.params
+    this.triggerVideoStopGA(
+      content,
+      this.props.userProfile,
+      this.props.myPackagesList,
+      this.playbackStartTime
+    )
+    this.clearAnalyticsTimer()
+  };
+
+  triggerVideoPlayGA = (content, userProfile, myPackagesList) => {
+    const customDimentionObj = getCustomDimensionValues({
+      content: content,
+      userProfile: userProfile,
+      myPackagesList: myPackagesList
+    })
+    trackEvent({
+      category: GAcategories.VIDEO_PLAYER,
+      action: actions.VIDEO_PLAY,
+      customDimensionValues: customDimentionObj
+    })
+  };
+
+  triggerVideoStopGA = (
+    content,
+    userProfile,
+    myPackagesList,
+    playbackStartTime
+  ) => {
+    if (playbackStartTime > 0) {
+      const duration = Math.floor(Date.now() / 1000) - playbackStartTime
+      if (duration > 5) {
+        const customDimentionObj = getCustomDimensionValues({
+          content: content,
+          userProfile: userProfile,
+          myPackagesList: myPackagesList,
+          duration: duration
+        })
+        trackEvent({
+          category: GAcategories.VIDEO_PLAYER,
+          action: actions.VIDEO_STOP,
+          customDimensionValues: customDimentionObj
+        })
+      }
+    }
+  };
+
+  triggerVideoErrorGA = (
+    content,
+    userProfile,
+    myPackagesList,
+    errorCode,
+    errorMsg
+  ) => {
+    const customDimentionObj = getCustomDimensionValues({
+      content: content,
+      userProfile: userProfile,
+      myPackagesList: myPackagesList,
+      errorCode: errorCode,
+      errorMsg: errorMsg
+    })
+    trackEvent({
+      category: GAcategories.VIDEO_PLAYER,
+      action: actions.VIDEO_ERROR,
+      customDimensionValues: customDimentionObj
+    })
+  };
+
+  goBack = () => {
+    this.setState({
+      errorCode: 0,
+      playerClose: true
+    })
+    setTimeout(() => {
+      const navigation = this.props.navigation
+      const { content, isDeeplink } = navigation.state.params
+      Orientation.lockToPortrait()
+
+      if (Platform.OS === 'ios') {
+        const RotationHelperIOS = NativeModules.RotationHelperIOS
+        RotationHelperIOS.forceRotatePortraitFromLandscape()
+      }
+
+      if (isDeeplink) {
+        navigation.replace('ContentDetail', { contentId: content.contentId })
+      } else {
+        navigation.goBack()
+      }
+    }, 300)
+  };
+
+  closePlayer () {
+    if (Platform.OS === 'android') {
+      NativeModules.PlayerModule.closePlayer()
+    }
+    this.onPlaybackStop()
+  }
+
+  hidePopupAction = () => {
+    this.setState({ errorCode: 0 })
+  };
+
+  renderLiveBadge = () => {
+    if (!this.state.isOverlayShowing || this.state.playerClose) {
+      return null
+    }
+
+    return (
+      <TouchableHighlight
+        style={styles.badgeContainer}
+        onPress={this.toggleOverlay}
+      >
+        <Badge i18nKey='live' style={styles.badge} locale={this.props.locale} />
+      </TouchableHighlight>
+    )
+  };
+
+  renderBackButton = () => {
+    if (!this.state.isOverlayShowing || this.state.playerClose) {
+      return null
+    }
+
+    return (
+      <TouchableHighlight
+        style={styles.backButton}
+        underlayColor={colors.transparent}
+        onPress={this.goBack}
+      >
+        <Image
+          style={styles.backButtonIcon}
+          source={require('../../assets/back_white.png')}
+        />
+      </TouchableHighlight>
+    )
+  };
+
+  renderTopShadow = () => {
+    if (!this.state.isOverlayShowing || this.state.playerClose) {
+      return null
+    }
+
+    return (
+      <TouchableHighlight
+        underlayColor={colors.transparent}
+        style={[this.getPhoneWidthHeight(), styles.headerHighlight]}
+        onPress={this.toggleOverlay}
+      >
+        <LinearGradient
+          colors={[colors.black.primaryOpacity, colors.transparent]}
+          style={[this.getPhoneWidthHeight(), styles.header]}
+        />
+      </TouchableHighlight>
+    )
+  };
+
+  getErrorMessage = errorCode => {
+    if (errorCode === 10014) {
+      return textMessage('popup-player-geo-block-error-message')
+    } else if (errorCode > 10000 && errorCode < 11000) {
+      return textMessage('popup-player-error-message')
+    } else if (errorCode > 11000 && errorCode < 12000) {
+      return textMessage('popup-player-error-license-message')
+    }
+    return ''
+  };
+
+  renderErrorPopup = () => {
+    if (this.state.errorCode < 1 || this.state.playerClose) {
+      return null
+    }
+    const popupConf = {
+      title: {
+        template: 'popup-player-error-title'
+      },
+      body: `${this.errorMsg} #${this.state.errorCode}`,
+      actions: [
+        {
+          name: 'btn-player-error-ok',
+          handler: () => this.goBack()
+        }
+      ]
+    }
+    return (
+      <Popup
+        message={popupConf}
+        isOpen={this.state.errorCode > 0}
+        isLandscape
+        hidePopup={this.hidePopupAction}
+        isCancelable={false}
+      />
+    )
+  };
+
+  renderLoadingIcon = () => {
+    if (!this.state.isLoading) {
+      return null
+    }
+    return <Spinner />
+  };
+
+  getPhoneWidthHeight = () => {
+    if (Platform.os === 'ios') {
+      return {
+        height: LANDSCAPE_HEIGHT,
+        width: LANDSCAPE_WIDTH
+      }
+    } else {
+      return {
+        height:
+          this.playbackStartTime > 0
+            ? SCREEN_LANDSCAPE_HEIGHT
+            : SCREEN_LANDSCAPE_HEIGHT + 1, // this is for refreshing the player view on Android
+        width: SCREEN_LANDSCAPE_WIDTH
+      }
+    }
+  };
+
+  getPlayerUserID = () => {
+    const { userProfile } = this.props
+    return userProfile && !isUndefined(userProfile.user_id)
+      ? userProfile.user_id
+      : 'UUID'
+  };
+
+  renderPlayer = (url, userID, assetID, playerDrmAssetID) => {
+    if (this.state.playerClose) {
+      return null
+    }
+    return (
+      <MaxStreamPlayer
+        style={[styles.player, this.getPhoneWidthHeight()]}
+        playbackUrl={url}
+        userID={userID}
+        assetID={assetID}
+        drmAssetId={playerDrmAssetID}
+      />
+    )
+  };
+
+  render () {
+    const { url, content, drmAssetID } = this.props.navigation.state.params
+    const assetID = content ? content.contentId : ''
+    const userID = this.getPlayerUserID()
+    const playerDrmAssetID = drmAssetID || '';
+
+    return (
+      <View
+        style={[
+          styles.backgroundContainer,
+          this.getPhoneWidthHeight(),
+          isIphoneX && styles.iphoneXBackgroundContainer,
+          styles.backgroundPageContainer
+        ]}
+      >
+        <View
+          style={[
+            styles.upperLayer,
+            this.getPhoneWidthHeight(),
+            isIphoneX && styles.iphoneXUpperLayer
+          ]}
+        >
+          {this.renderPlayer(url, userID, assetID, playerDrmAssetID)}
+
+          <View
+            style={[
+              styles.spinnerContainer,
+              isIphoneX && styles.iphoneXSpinner
+            ]}
+          >
+            {this.renderLoadingIcon()}
+          </View>
+
+          <TouchableHighlight
+            underlayColor={colors.transparent}
+            style={[styles.touchPanel, this.getPhoneWidthHeight()]}
+            onPress={this.toggleOverlay}
+          >
+            <View style={styles.touchPanel} />
+          </TouchableHighlight>
+
+          {this.renderTopShadow()}
+          {this.renderBackButton()}
+          {this.renderLiveBadge()}
+          {this.renderErrorPopup()}
+        </View>
+        <PrefersHomeIndicatorAutoHidden />
+      </View>
+    )
+  }
+}
+
+VideoPlayerFullScreen.propTypes = propTypes
