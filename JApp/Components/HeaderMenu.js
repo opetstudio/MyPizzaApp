@@ -47,7 +47,11 @@ export default class HeaderMenu extends Component {
       title
     } = this.props
     const goToHome = () => navigation.navigate('Browse')
-    const toggleDrawer = () => navigation.navigate('DrawerOpen')
+    const toggleDrawer = () => {
+      // console.log('toggleDrawer navigation', navigation)
+      navigation.openDrawer()
+      // navigation.navigate('DrawerOpen')
+    }
     const goBack = () => navigation.goBack()
     const goToSearch = () => navigation.navigate('Search')
     const goToClose = () => navigation.navigate('Menu')

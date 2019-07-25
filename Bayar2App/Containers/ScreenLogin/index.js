@@ -4,7 +4,7 @@ import LoginScreenAction, {LoginSelectors} from '../../Containers/ScreenLogin/re
 import {SessionSelectors} from '../../Redux/SessionRedux'
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('state========>', state.session)
+  console.log('state login========>', state.session)
   // const foo = params.get('foo'); // bar
   return {
     sessionToken: SessionSelectors.getSessionToken(state.session)
@@ -25,3 +25,5 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(LoginScreen)
+
+

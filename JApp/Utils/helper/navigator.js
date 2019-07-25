@@ -68,6 +68,7 @@ function setMenuNavigationRoutes(menuRoutes) {
  * @returns {*} whether or not the route is available
  */
 function isMenuNavigationAllowed(routeName) {
+  console.log('routeName===>', routeName)
   if (_menuRouteNames) {
     return _menuRouteNames.includes(routeName)
   }

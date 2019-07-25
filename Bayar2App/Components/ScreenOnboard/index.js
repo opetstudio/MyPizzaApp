@@ -17,7 +17,7 @@ class ScreenOnboard extends React.PureComponent {
           </View>
           <View style={{marginTop: 30}}>
             <PrimaryButton colors={'gradient'} onPress={() => this.props.navigation.navigate('ScreenLogin')} title={'LOGIN'} />
-            <PrimaryButton title={'SIGNUP'} />
+            <PrimaryButton title={'SIGNUP'} onPress={()=> this.props.navigation.navigate('ScreenSignup')} />
           </View>
         </ScrollView>
       </View>

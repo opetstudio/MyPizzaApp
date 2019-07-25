@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StackNavigator, DrawerNavigator } from 'react-navigation'
+import { createStackNavigator as StackNavigator, createDrawerNavigator as DrawerNavigator } from 'react-navigation'
 // import DrawerFooter from '../Containers/DrawerFooter'
 // import DrawerHeader from '../Containers/DrawerHeader'
 import LoginMethodScreen from '../Containers/Auth/LoginMethodScreen'

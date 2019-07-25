@@ -5,6 +5,8 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1
   },
+  link: {},
+  text: {},
   button: {
     alignItems: 'center',
     paddingVertical: 10

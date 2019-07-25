@@ -6,11 +6,11 @@ import Drawer from '../../Components/Drawer'
 
 import { Images } from '../../Themes'
 
-// const isiSaldoIcon = Images.
-// const riwayatIcon = Images.
-// const pengaturanIcon = Images.
-// const mengundangIcon = Images.
-// const pusatBantuanIcon = Images.
+const isiSaldoIcon = Images.logoIsiSaldo
+const riwayatIcon = Images.logoRiwayat
+const pengaturanIcon = Images.logoSetting
+const mengundangIcon = Images.logoMail
+const pusatBantuanIcon = Images.logoHelp
 const globeIcon = Images.globe
 
 const datas = [
@@ -20,7 +20,7 @@ const datas = [
     icon: 'heart',
     bg: '#C5F442',
     fontColor: '#00bfff',
-    // iconPicture: globeIcon
+    iconPicture: isiSaldoIcon
   },
   {
     name: 'Riwayat',
@@ -28,7 +28,7 @@ const datas = [
     icon: 'heart',
     bg: '#C5F442',
     fontColor: '#00bfff',
-    // iconPicture: globeIcon
+    iconPicture: riwayatIcon
   },
   {
     name: 'Pengaturan',
@@ -36,16 +36,16 @@ const datas = [
     icon: 'heart',
     bg: '#C5F442',
     fontColor: '#00bfff',
-    // iconPicture: globeIcon
+    iconPicture: pengaturanIcon
   },
   {
     name: 'Mengundang',
     route: 'MovieScreen',
     icon: 'heart',
     bg: '#477EEA',
-    fontColor: '#00bfff'
+    fontColor: '#00bfff',
         // types: "10",
-    // iconPicture: globeIcon
+    iconPicture: mengundangIcon
   },
   {
     name: 'Pusat Bantuan',
@@ -53,7 +53,7 @@ const datas = [
     icon: 'heart',
     bg: '#C5F442',
     fontColor: '#00bfff',
-    // iconPicture: globeIcon
+    iconPicture: pusatBantuanIcon
   }
 ]
 

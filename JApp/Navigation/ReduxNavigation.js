@@ -3,14 +3,24 @@ import { BackHandler, Platform } from 'react-native'
 import { addNavigationHelpers, NavigationActions } from 'react-navigation'
 // import { NavigationActions } from 'react-navigation';
 import NavigatorHelper from '../Utils/helper/navigator'
-import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
+// import { createReduxBoundAddListener } from 'react-navigation-redux-helpers'
+import {
+  createReactNavigationReduxMiddleware,
+  reduxifyNavigator
+} from 'react-navigation-redux-helpers'
 import { connect } from 'react-redux'
 import AppNavigation from './AppNavigation'
 // import ScreenTracker from './ScreenTracker'
 import {reducer as NavReducer} from '../Redux/NavigationRedux'
 
+export const appNavigatorMiddleware = createReactNavigationReduxMiddleware(
+  'root',
+  (state) => state.nav
+)
+const ReduxAppNavigator = reduxifyNavigator(AppNavigation, 'root')
+
 class ReduxNavigation extends React.Component {
-  componentWillMount () {
+  componentDidMount () {
     if (Platform.OS === 'ios') return
     // BackHandler.addEventListener('hardwareBackPress', () => {
     //   const { dispatch, nav } = this.props
@@ -55,29 +65,30 @@ class ReduxNavigation extends React.Component {
   }
 
   render () {
-    return <AppNavigation
-      screenProps={{ locale: 'ID' }}
-      navigation={addNavigationHelpers({ dispatch: this.props.dispatch, state: this.props.nav, addListener: createReduxBoundAddListener('root') })}
-      // onNavigationStateChange={(prevState, currentState) => {
-      // //   // this.props.dispatch()
-      // //   // NavigationActions.navigate({
-      // //   //   type: 'Navigation/NAVIGATE',
-      // //   //   routeName,
-      // //   //   params,
-      // //   //   key,
-      // //   // })
-      // // {type: "Navigation/NAVIGATE", routeName: "RenunganpagiScreen"}
-      //   // NavReducer(this.props.nav, this.props.dispatch({type: NavigationActions.NAVIGATE}))
-      // //   // const state = reducer(INITIAL_STATE, Actions.userRequest(username))
-      //   ScreenTracker({ prevState, currentState, dispatch: this.props.dispatch, state: this.props.nav
-      //     // this.props.profile,
-      //     // this.props.myPackagesList,
-      //   })
-      // }}
-      ref={navigatorRef => {
-        NavigatorHelper.setContainer(navigatorRef)
-      }}
-    />
+    return <ReduxAppNavigator dispatch={this.props.dispatch} state={this.props.nav} />
+    // return <AppNavigation
+    //   screenProps={{ locale: 'ID' }}
+    //   navigation={addNavigationHelpers({ dispatch: this.props.dispatch, state: this.props.nav, addListener: createReduxBoundAddListener('root') })}
+    //   // onNavigationStateChange={(prevState, currentState) => {
+    //   // //   // this.props.dispatch()
+    //   // //   // NavigationActions.navigate({
+    //   // //   //   type: 'Navigation/NAVIGATE',
+    //   // //   //   routeName,
+    //   // //   //   params,
+    //   // //   //   key,
+    //   // //   // })
+    //   // // {type: "Navigation/NAVIGATE", routeName: "RenunganpagiScreen"}
+    //   //   // NavReducer(this.props.nav, this.props.dispatch({type: NavigationActions.NAVIGATE}))
+    //   // //   // const state = reducer(INITIAL_STATE, Actions.userRequest(username))
+    //   //   ScreenTracker({ prevState, currentState, dispatch: this.props.dispatch, state: this.props.nav
+    //   //     // this.props.profile,
+    //   //     // this.props.myPackagesList,
+    //   //   })
+    //   // }}
+    //   ref={navigatorRef => {
+    //     NavigatorHelper.setContainer(navigatorRef)
+    //   }}
+    // />
   }
 }
 

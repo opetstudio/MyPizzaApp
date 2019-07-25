@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
 import { View, Text } from 'react-native'
-import {TabNavigator} from 'react-navigation'
+import {createBottomTabNavigator as TabNavigator} from 'react-navigation'
 import styles, {tabNavigationStyles} from './Styles/DetailTabsStyle'
 
 import I18n from '../I18n'
@@ -41,7 +41,7 @@ const generateTabs = () => {
 
 const DetailTabs = TabNavigator(generateTabs(), {
   lazy: true,
-  ...TabNavigator.Presets.AndroidTopTabs,
+  // ...TabNavigator.Presets.AndroidTopTabs,
   swipeEnabled: false,
   tabBarOptions: {
     upperCaseLabel: false,

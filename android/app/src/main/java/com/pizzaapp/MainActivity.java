@@ -9,9 +9,20 @@ import com.facebook.react.ReactActivity;
       import com.facebook.react.ReactRootView;
       import com.swmansion.gesturehandler.react.RNGestureHandlerEnabledRootView;
 
+import android.content.Intent; // <--- import
+import android.content.res.Configuration; // <--- import
+
 import org.devio.rn.splashscreen.SplashScreen; // here
 
 public class MainActivity extends ReactActivity {
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        Intent intent = new Intent("onConfigurationChanged");
+        intent.putExtra("newConfig", newConfig);
+        this.sendBroadcast(intent);
+    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
