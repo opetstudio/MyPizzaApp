@@ -40,6 +40,30 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb267685973617313</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>267685973617313</string>
+	<key>FacebookDisplayName</key>
+	<string>JemaatApp</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<true/>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<true/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fbapi</string>
+		<string>fb-messenger-share-api</string>
+		<string>fbauth2</string>
+		<string>fbshareextension</string>
+	</array>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
@@ -88,6 +112,8 @@
 		<string>tselicon.woff</string>
 	</array>
 	<key>CodePushDeploymentKey</key>
-	<string>deployment-key-here</string>
+	<string>SmzbNJW8Y4bb9MzWtz43dTXfE-zLr1P4-Uty7</string>
+	<key>GADApplicationIdentifier</key>
+	<string>ca-app-pub-3940256099942544~1458002511</string>
 </dict>
 </plist>
