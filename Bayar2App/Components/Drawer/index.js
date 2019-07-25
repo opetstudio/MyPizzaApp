@@ -77,7 +77,7 @@ export default class Drawer extends Component {
                   >
                     <Left>
                       {data.iconPicture &&
-                        <Thumbnail source={data.iconPicture} small square />
+                        <Thumbnail source={data.iconPicture} small square style={{width: 30, height: 30}}/>
                       }
                       {!data.iconPicture && <Icon
                         active

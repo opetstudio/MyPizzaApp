@@ -9,5 +9,9 @@
     BFy95cnuhb/U2+ZdDlJAuvYQJoR75Pk6pbQ2LYwKz+NtQ2SPtx6AnQ0CAwEAAQ==
     -----END PUBLIC KEY-----
   </string>
+
+    <string name="fb_app_id">267685973617313</string>
+    <string name="facebook_app_id">267685973617313</string>
+    <string name="fb_login_protocol_scheme">fb267685973617313</string>
   
 </resources>

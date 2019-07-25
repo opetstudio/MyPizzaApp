@@ -38,6 +38,7 @@ export default class StyledTouchableOpacity extends Component {
 
     let prevTimeStamp = 0 // this tracks of the last click
     const onPressHandler = e => {
+      console.log('onPressHandler')
       const currentTimeStamp = e.nativeEvent.timestamp
       const currentTarget = e.nativeEvent.target
       const isFastClick = currentTimeStamp - prevTimeStamp <= 2000

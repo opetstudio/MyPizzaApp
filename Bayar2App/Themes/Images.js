@@ -47,7 +47,31 @@ const images = {
   chevronRight2: require('../Images/chevron_right.png'),
   landingPageBan: require('../Images/landingPageBanner.png'),
   globe: require('../Images/globe.png'),
-  logoBayar2: require('../Images/bayar2.png')
+  logoBayar2: require('../Images/bayar2.png'),
+
+  // sidebar
+  logoIsiSaldo: require('../Images/sidebar_icon/isiSaldo.png'),
+  logoRiwayat: require('../Images/sidebar_icon/riwayat.png'),
+  logoSetting: require('../Images/sidebar_icon/setting.png'),
+  logoMail: require('../Images/sidebar_icon/mail.png'),
+  logoHelp: require('../Images/sidebar_icon/help.png'),
+  logoSignout: require('../Images/sidebar_icon/logout.png'),
+
+  // mainmenu
+  logoPln: require('../Images/menu_icon/pln.png'),
+  logoTokenPln: require('../Images/menu_icon/tokenPln.png'),
+  logoBpjs: require('../Images/menu_icon/bpjs.png'),
+  logoPascaBayar: require('../Images/menu_icon/pascaBayar.png'),
+  logoPraBayar: require('../Images/menu_icon/praBayar.png'),
+  logoPam: require('../Images/menu_icon/pam.png'),
+  logoInternet: require('../Images/menu_icon/internet.png'),
+  logoTvKabel: require('../Images/menu_icon/tbKabel.png'),
+  logoTelepon: require('../Images/menu_icon/telepon.png'),
+  logoAsuransi: require('../Images/menu_icon/asuransi.png'),
+  logoTiket: require('../Images/menu_icon/tiket.png'),
+  logoCicilan: require('../Images/menu_icon/cicilan.png'),
+  logoCc: require('../Images/menu_icon/cc.png')
+
 }
 
 export default images

@@ -314,8 +314,8 @@ const style = {
     style: {
       fontSize: fontSize.h3,
       fontFamily: fontFamily.regular,
-      color: colors.grey.secondary,
-      opacity: colors.grey.secondaryOpacity
+      color: colors.grey.secondary
+      // opacity: colors.grey.secondaryOpacity
     },
     props: {
       letterSpacing: 0.01

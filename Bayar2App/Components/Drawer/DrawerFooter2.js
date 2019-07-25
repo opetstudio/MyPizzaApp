@@ -5,6 +5,9 @@ import _ from 'lodash'
 import styles from './Styles'
 
 import { Text, List, ListItem, Icon, Left, Right, Badge, Thumbnail, Button, Body } from 'native-base'
+import { Images } from '../../Themes'
+
+const signoutIcon = Images.logoSignout
 
 class DrawerFooter2 extends Component {
   static propTypes = {
@@ -34,14 +37,10 @@ class DrawerFooter2 extends Component {
       <View style={styles.drawerFooter2}>
         <ListItem button noBorder onPress={() => this.props.sessionLogout()}>
           <Left>
-            <Icon
-              active
-              name='heart'
-              style={{ color: '#00bfff', fontSize: 26, width: 30 }}
-              type='FontAwesome' />
+            <Thumbnail source={signoutIcon} small square style={{width: 30, height: 30}}/>
             <Text style={styles.text}>
-                        Keluar
-                      </Text>
+              Keluar
+            </Text>
           </Left>
         </ListItem>
       </View>

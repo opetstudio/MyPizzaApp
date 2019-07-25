@@ -9,7 +9,7 @@ import I18n from '../../I18n'
 export default class StyledText extends Component {
   // // Prop type warnings
   static propTypes = {
-    addedStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    addedStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     children: PropTypes.node,
     ellipse: PropTypes.string,
     i18nKey: PropTypes.string,

@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { View, Text } from 'react-native'
-import styles from './styles'
+import {styles} from './styles'
 import StyledText from '../StyledText'
 import StyledTouchableOpacity from '../StyledTouchableOpacity'
 
 export default class StyledButton extends Component {
   // // Prop type warnings
   static propTypes = {
-    addedStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
-    addedTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+    addedStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
+    addedTextStyle: PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.array]),
     children: PropTypes.node,
     i18nKey: PropTypes.string,
     isInactive: PropTypes.bool,
@@ -17,7 +17,8 @@ export default class StyledButton extends Component {
     onPress: PropTypes.func,
     textStyle: PropTypes.string,
     type: PropTypes.string,
-    upperCase: PropTypes.bool
+    upperCase: PropTypes.bool,
+    isMultipleTapAllowed: PropTypes.bool
   }
   //
   // // Defaults for props
@@ -46,6 +47,7 @@ export default class StyledButton extends Component {
           activeOpacity={noFeedback ? 1 : 0.2}
           onPress={onPress}
           style={[styles.link, addedStyle]}
+          isMultipleTapAllowed
         >
           <StyledText
             addedStyle={[styles.text, addedTextStyle]}

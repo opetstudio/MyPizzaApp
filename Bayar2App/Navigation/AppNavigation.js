@@ -9,6 +9,9 @@ import ScreenAuthLoading from '../Components/ScreenAuthLoading'
 import ScreenOnboard from '../Components/ScreenOnboard'
 import ScreenHome from '../Containers/ScreenHome'
 import ScreenLogin from '../Containers/ScreenLogin'
+import ScreenForgetpassword from '../Components/ScreenForgetpassword'
+import ScreenSignup from '../Containers/ScreenSignup'
+import ScreenBillpayment from '../Containers/ScreenBillpayment';
 
 import styles from './Styles/NavigationStyles'
 
@@ -39,7 +42,9 @@ const loggedinNavigator = StackNavigator({
 })
 const unloggedinNavigator = StackNavigator({
   ScreenOnboard: { screen: ScreenOnboard },
-  ScreenLogin: { screen: ScreenLogin }
+  ScreenLogin: { screen: ScreenLogin },
+  ScreenForgetpassword: { screen: ScreenForgetpassword },
+  ScreenSignup: { screen: ScreenSignup }
 }, {
     // Default config for all screens
   headerMode: 'none',
