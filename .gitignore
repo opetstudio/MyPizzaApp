@@ -60,3 +60,5 @@ buck-out/
 .env
 
 App2/
+db.js
+FirebaseConstants.js

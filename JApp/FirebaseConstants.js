@@ -1,3 +1,0 @@
-export default {
-    KEY: 'AAAAhLwJuwo:APA91bE6bUTBO7lfxLK9M3XRhDGHyrIqvuobo6DaLglQHdzdBO31gro8iDvKLREztVe1-SlikZxuDTr4VMnAvr3zaHoUrliC8aTMNlyMrSG-5xVpy8NGGsoIZ9ZxTYujUkrW1l7RDSRG'
-}
