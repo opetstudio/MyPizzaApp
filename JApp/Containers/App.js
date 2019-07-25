@@ -28,7 +28,7 @@ class App extends Component {
   constructor (props) {
     super(props)
     this._handleAppStateChange = this._handleAppStateChange.bind(this)
-    firebase.admob().initialize(AppConfig.adPubID)
+    // firebase.admob().initialize(AppConfig.adPubID)
   }
   componentWillMount () {
     AppState.addEventListener('change', this._handleAppStateChange)

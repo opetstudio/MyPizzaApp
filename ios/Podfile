@@ -6,17 +6,20 @@ target 'PizzaApp' do
   # use_frameworks!
 
   # Pods for PizzaApp
-  pod 'Firebase/Core'
+  pod 'Firebase/Core', '~> 6.3.0'
   pod 'Firebase/Messaging'
   pod 'Firebase/Database'
   pod 'Firebase/Auth'
+  pod 'Firebase/AdMob', '~> 6.3.0'
+
+  # pod 'RNFirebase', :path => '../node_modules/react-native-firebase/ios'
 
   # pod 'FacebookSDK' 
   pod 'FBSDKCoreKit'
   pod 'FBSDKLoginKit'
   pod 'FBSDKShareKit'
 
-  pod 'Google-Mobile-Ads-SDK'
+  # pod 'Google-Mobile-Ads-SDK'
 
   pod 'XCDYouTubeKit', '~> 2.5'
 
@@ -39,7 +42,6 @@ target 'PizzaApp' do
   #   inherit! :search_paths
   #   # Pods for testing
   # end
-
 end
 
 target 'PizzaApp-tvOS' do
@@ -54,3 +56,10 @@ target 'PizzaApp-tvOS' do
   end
 
 end
+
+# post_install do |installer|
+#   rnfirebase = installer.pods_project.targets.find { |target| target.name == 'RNFirebase' }
+#   rnfirebase.build_configurations.each do |config|
+#     config.build_settings['HEADER_SEARCH_PATHS'] = '$(inherited) ${PODS_ROOT}/Headers/Public/**'
+#   end
+# end
