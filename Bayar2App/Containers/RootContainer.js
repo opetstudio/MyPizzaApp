@@ -54,7 +54,7 @@ class RootContainer extends Component {
             hidePopup={this.props.hidePopup}
           />
           {isIphoneX ? (
-            <SafeArea navigator={navigator} />
+            <SafeArea>{navigator}</SafeArea>
           ) : (
             navigator
           )}
