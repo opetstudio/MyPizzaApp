@@ -45,7 +45,8 @@ const sendMessage = (json) => {
 let socket = null
 
 let connectToMgm = (cb) => {
-  socket = new W3cwebsocket('wss://10.1.2.130:13472/Webapp10/endpoint')
+  // socket = new W3cwebsocket('wss://10.1.2.130:13472/Webapp10/endpoint')
+  socket = new W3cwebsocket('wss://10.1.2.130:13472/Webapp11/endpoint')
   socket.onopen = (e) => {
     console.log('mgmclient open websocket connection success.')
   //   console.log('on open e=', e)
