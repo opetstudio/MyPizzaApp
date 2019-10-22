@@ -3,6 +3,7 @@ package com.pizzaapp;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.horcrux.svg.SvgPackage;
 import com.microsoft.codepush.react.CodePush;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -37,6 +38,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new SvgPackage(),
             new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG, R.string.CodePushPublicKey),
             new SplashScreenReactPackage(),
             new LinearGradientPackage(),
