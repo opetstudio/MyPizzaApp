@@ -1,4 +1,4 @@
-#Fri Oct 25 11:51:12 WIB 2019
+#Fri Oct 25 12:14:31 WIB 2019
 base.0=/Users/erevnauser/workspace/MyPizzaApp/android/app/build/intermediates/transforms/dexMerger/debug/0
 path.0=classes.dex
 renamed.0=classes.dex
