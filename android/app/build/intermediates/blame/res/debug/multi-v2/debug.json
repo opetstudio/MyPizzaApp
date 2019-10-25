@@ -949,21 +949,6 @@
             ]
         },
         {
-            "outputFile": "/Users/erevnauser/workspace/MyPizzaApp/android/app/build/intermediates/res/merged/debug/values-port_values-port.arsc.flat",
-            "map": [
-                {
-                    "source": "/Users/erevnauser/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/8dcb308abde4726e824c33e67652742a/res/values-port/values-port.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "55",
-                        "endOffsets": "106"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "/Users/erevnauser/workspace/MyPizzaApp/android/app/build/intermediates/res/merged/debug/values-en-rAU_values-en-rAU.arsc.flat",
             "map": [
                 {
@@ -991,6 +976,21 @@
                         "startOffsets": "2846",
                         "endColumns": "100",
                         "endOffsets": "2942"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/erevnauser/workspace/MyPizzaApp/android/app/build/intermediates/res/merged/debug/values-port_values-port.arsc.flat",
+            "map": [
+                {
+                    "source": "/Users/erevnauser/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0.aar/8dcb308abde4726e824c33e67652742a/res/values-port/values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
                     }
                 }
             ]
