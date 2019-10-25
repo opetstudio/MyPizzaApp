@@ -5,7 +5,7 @@ import { withNavigation } from 'react-navigation'
 class MaterialButtonViolet8 extends Component {
   render() {
     return (
-      <TouchableOpacity style={[styles.root, this.props.style]} onPress={() => this.props.navigation.navigate('ScreenTransactionsuccess')}>
+      <TouchableOpacity style={[styles.root, this.props.style]} onPress={() => this.props.navigation.navigate('ScreenSuccessBind')}>
         <Text style={styles.caption}>Request OTP</Text>
       </TouchableOpacity>
     );

@@ -10,18 +10,18 @@ export default class Untitled4 extends Component {
       <View style={styles.root}>
         <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}>
           <View style={styles.rect} />
-          <Icon onPress={() => this.props.navigation.navigate('ScreenTransactiondetail')}
+          <Icon onPress={() => this.props.navigation.navigate('ScreenCard')}
             name='arrow-left'
             style={styles.icon}
         />
-          <Icon type={'Ionicons'} name={'md-apps'} style={styles.icon2} />
           <Text style={styles.text}>OTP</Text>
           <Center horizontal>
             <TextInput style={styles.rect2}
-              underlineColorAndroid='rgba(0,0,0,0.5)'
               selectionColor='#000'
               textAlign={'center'}
               maxLength={6}
+              placeholder='******'
+              secureTextEntry
               />
           </Center>
           <Text style={styles.text3}>6 DIGITS</Text>

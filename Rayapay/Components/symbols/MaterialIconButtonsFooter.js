@@ -7,32 +7,25 @@ class MaterialIconButtonsFooter extends Component {
   render() {
     return (
       <View style={[styles.root, this.props.style]}>
-        <TouchableOpacity style={styles.buttonWrapper1} onPress={() => this.props.navigation.navigate('ScreenDashboard')}>
+        <TouchableOpacity style={styles.buttonWrapper1} onPress={() => this.props.navigation.navigate('ScreenScanThisQR')} >
           <Icon
-            name={"home"}
-            type={"MaterialCommunityIcons"}
+            name={'qrcode'}
+            type={'MaterialCommunityIcons'}
             style={styles.icon1}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonWrapper2}>
+        <TouchableOpacity style={styles.buttonWrapper2} onPress={() => this.props.navigation.navigate('ScreenQr')}>
           <Icon
-            name={"history"}
+            name={"crop-free"}
             type={"MaterialCommunityIcons"}
             style={styles.activeIcon}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonWrapper3}>
+        <TouchableOpacity style={styles.buttonWrapper3} onPress={() => this.props.navigation.navigate('ScreenHome')} >
           <Icon
-            name={"book"}
+            name={"logout"}
             type={"MaterialCommunityIcons"}
             style={styles.icon3}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonWrapper4}>
-          <Icon
-            name={"account"}
-            type={"MaterialCommunityIcons"}
-            style={styles.icon4}
           />
         </TouchableOpacity>
       </View>
@@ -86,18 +79,6 @@ const styles = StyleSheet.create({
     maxWidth: 168
   },
   icon3: {
-    backgroundColor: "transparent",
-    color: "#FFFFFF",
-    fontSize: 40,
-    opacity: 0.8
-  },
-  buttonWrapper4: {
-    flex: 1,
-    alignItems: "center",
-    minWidth: 80,
-    maxWidth: 168
-  },
-  icon4: {
     backgroundColor: "transparent",
     color: "#FFFFFF",
     fontSize: 40,

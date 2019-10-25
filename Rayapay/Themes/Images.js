@@ -50,6 +50,8 @@ const images = {
   logoBayar2: require('../Images/Raya_Pay.png'),
   logo1: require('../Images/bg/bayar2.png'),
   logo2: require('../Images/logotitle.png'),
+  logo3: require('../Images/Rayapay1.png'),
+  qrcode: require('../Images/Qrcode.png'),
 
   // sidebar
   logoIsiSaldo: require('../Images/sidebar_icon/isiSaldo.png'),

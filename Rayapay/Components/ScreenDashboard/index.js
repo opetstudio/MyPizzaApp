@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, ImageBackground, Text, StatusBar } from 'react-native'
+import { StyleSheet, View, ImageBackground, Text, StatusBar, Image } from 'react-native'
 import { Center } from '@builderx/utils'
 import Svg, { Ellipse } from 'react-native-svg'
-import MaterialButtonViolet from '../symbols/ScreenDashboard/MaterialButtonViolet'
-import MaterialButtonViolet1 from '../symbols/ScreenDashboard/MaterialButtonViolet1'
-import MaterialButtonViolet2 from '../symbols/ScreenDashboard/MaterialButtonViolet2'
-import MaterialButtonViolet3 from '../symbols/ScreenDashboard/MaterialButtonViolet3'
 import MaterialIconButtonsFooter from '../symbols/MaterialIconButtonsFooter'
+import Icon from '@builderx/icons'
+import { Images, Metrics } from '../../Themes'
 
 export default class Untitled1 extends Component {
   render () {
@@ -29,14 +27,30 @@ export default class Untitled1 extends Component {
           </Center>
           <Center horizontal>
             <Text style={styles.text}>Berty Tumatangtang</Text>
-          </Center>
-          <Center horizontal>
             <Text style={styles.text2}>2.730,330,00</Text>
+            <Text style={styles.text3}>Choose Your Payment Card</Text>
           </Center>
-          <MaterialButtonViolet style={styles.materialButtonViolet} />
-          <MaterialButtonViolet1 style={styles.materialButtonViolet1} />
-          <MaterialButtonViolet2 style={styles.materialButtonViolet2} />
-          <MaterialButtonViolet3 style={styles.materialButtonViolet3} />
+          <View style={styles.centered}>
+            <Image source={Images.logo3} style={styles.logo} />
+          </View>
+          <Icon
+            type={'MaterialCommunityIcons'}
+            name={'chevron-left'}
+            style={styles.icon}
+        />
+          <Icon
+            type={'MaterialCommunityIcons'}
+            name={'chevron-right'}
+            style={styles.icon2}
+        />
+        <Icon onPress={() => this.props.navigation.navigate('ScreenCard')}
+            type={'MaterialCommunityIcons'}
+            name={'credit-card-plus'}
+            style={styles.icon3}
+        />
+          <Center horizontal>
+            <Text style={styles.text4}>Rayapay (Default)</Text>
+          </Center>
           <MaterialIconButtonsFooter style={styles.materialIconButtonsFooter} />
         </ImageBackground>
         <StatusBar
@@ -86,41 +100,42 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 30
   },
-  materialButtonViolet: {
-    width: 118.71,
-    height: 81.74,
-    backgroundColor: '#aaaaaa',
+  text3: {
+    top: '40.48%',
     position: 'absolute',
-    right: '57.06%',
-    bottom: '39.07%',
-    borderRadius: 25
+    fontSize: 30
   },
-  materialButtonViolet1: {
-    left: '57.08%',
-    width: 118.69,
-    height: 81.77,
-    backgroundColor: '#aaaaaa',
+  text4: {
+    top: '80.48%',
     position: 'absolute',
-    bottom: '39.07%',
-    borderRadius: 25
+    fontSize: 20
   },
-  materialButtonViolet2: {
-    width: 118.71,
-    height: 81.76,
-    backgroundColor: '#aaaaaa',
+  icon: {
+    top: '60.00%',
+    left: 0,
     position: 'absolute',
-    right: '57.06%',
-    bottom: '19.68%',
-    borderRadius: 25
+    fontSize: 60
   },
-  materialButtonViolet3: {
-    left: '57.4%',
-    width: 116.35,
-    height: 81.77,
-    backgroundColor: '#aaaaaa',
+  icon2: {
+    top: '60.00%',
+    right: 0,
     position: 'absolute',
-    bottom: '19.68%',
-    borderRadius: 25
+    fontSize: 60
+  },
+  icon3: {
+    top: '78.00%',
+    left: 20,
+    position: 'absolute',
+    fontSize: 60
+  },
+  logo: {
+    marginTop: '80.00%',
+    height: 300,
+    width: 300,
+    resizeMode: 'contain'
+  },
+  centered: {
+    alignItems: 'center'
   },
   materialIconButtonsFooter: {
     left: 0,

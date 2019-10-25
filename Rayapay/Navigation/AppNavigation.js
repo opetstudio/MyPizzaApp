@@ -12,7 +12,11 @@ import ScreenTransactiondetail from '../Components/ScreenTransactiondetail'
 import ScreenOTP from '../Components/ScreenOTP'
 import ScreenTransactionsuccess from '../Components/ScreenTransactionsuccess'
 import ScreenSignup from '../Components/ScreenSignup'
-
+import ScreenScanThisQR from '../Components/ScreenScanThisQR'
+import ScreenAmount from '../Components/ScreenAmount'
+import ScreenEmailconfirm from '../Components/ScreenEmailconfirm'
+import ScreenCard from '../Components/ScreenCard'
+import ScreeSuccessBind from '../Components/ScreenSuccessBind'
 import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
@@ -35,7 +39,12 @@ const loggedinNavigator = StackNavigator({
   ScreenQr: { screen: ScreenQr},
   ScreenTransactiondetail: { screen: ScreenTransactiondetail},
   ScreenOTP: { screen: ScreenOTP},
-  ScreenTransactionsuccess: { screen: ScreenTransactionsuccess}
+  ScreenTransactionsuccess: { screen: ScreenTransactionsuccess},
+  ScreenScanThisQR: { screen: ScreenScanThisQR},
+  ScreenAmount: { screen: ScreenAmount},
+  ScreenEmailconfirm: { screen: ScreenEmailconfirm},
+  ScreenCard: { screen: ScreenCard},
+  ScreenSuccessBind: { screen: ScreeSuccessBind}
 
 }, {
   // Default config for all screens
