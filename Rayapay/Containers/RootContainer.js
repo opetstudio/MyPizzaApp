@@ -19,6 +19,7 @@ import SafeArea from '../Components/SafeArea'
 import { Colors } from '../Themes'
 
 import PopupActions, { PopupSelectors } from '../Redux/PopupRedux'
+import AppActions, {AppSelectors} from '../Redux/AppRedux'
 
 class RootContainer extends Component {
   constructor (props) {
@@ -32,12 +33,13 @@ class RootContainer extends Component {
       this.props.startup()
     }
     this.props.websocketSetup({timestamp: new Date()})
+    this.props.appPatch({loading: false})
   }
   render () {
     const navigator = (<ReduxNavigation />)
     return (
       <Root>
-        <StyledView style={{ paddingHorizontal: 0 }} isLoading={false}>
+        <StyledView style={{ paddingHorizontal: 0 }} isLoading={this.props.loading}>
           <StyledStatusBar
             translucent
             backgroundColor={
@@ -69,7 +71,7 @@ const mapStateToProps = (state) => {
     // isLoggedIn: state.login
     message: PopupSelectors.getPopupMessage(state.popup),
     isOpen: PopupSelectors.getPopupOpen(state.popup),
-    loading: false,
+    loading: AppSelectors.loading(state.app),
     appState: 'active',
     appUpdate: false
   }
@@ -79,7 +81,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
   startup: () => dispatch(StartupActions.startup()),
   websocketSetup: (action) => dispatch(WebsocketActions.websocketSetup(action)),
-  hidePopup: () => dispatch(PopupActions.popupHide())
+  hidePopup: () => dispatch(PopupActions.popupHide()),
+  appPatch: data => dispatch(AppActions.appPatch(data))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(RootContainer)
