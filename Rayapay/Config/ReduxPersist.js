@@ -1,5 +1,7 @@
 import immutablePersistenceTransform from '../Services/ImmutablePersistenceTransform'
 import { AsyncStorage } from 'react-native'
+import AppConfig from './AppConfig'
+import {setSession, getSession} from '../Lib/Utils'
 
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
@@ -15,6 +17,13 @@ const REDUX_PERSIST = {
     // whitelist: [],
     transforms: [immutablePersistenceTransform]
   }
+}
+
+const currentReducerVersion = getSession('currentReducerVersion')
+console.log('currentReducerVersionSession===>', currentReducerVersion)
+const nextReducerVersion = REDUX_PERSIST.reducerVersion
+if (currentReducerVersion !== nextReducerVersion) {
+  setSession({currentReducerVersion: nextReducerVersion, [AppConfig.loginFlag]: false})
 }
 
 export default REDUX_PERSIST

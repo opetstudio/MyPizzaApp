@@ -3,7 +3,7 @@ import { createStackNavigator as StackNavigator, createDrawerNavigator as Drawer
 import Drawer from '../Containers/Drawer'
 import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
-import ScreenAuthLoading from '../Components/ScreenAuthLoading'
+import ScreenAuthLoading from '../Containers/Login/ScreenAuthLoading'
 
 import ScreenLogin from '../Components/ScreenLogin'
 import ScreenHome from '../Components/ScreenHome'
@@ -22,7 +22,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const menuRoutes = {
-  ScreenHome: { screen: ScreenHome, navigationOptions: { drawerLabel: 'Home' } }
+  ScreenHome: { screen: ScreenDashboard, navigationOptions: { drawerLabel: 'Home' } }
 }
 navigatorHelper.setMenuNavigationRoutes(menuRoutes)
 const DrawerMenuNavigator = DrawerNavigator(menuRoutes, {

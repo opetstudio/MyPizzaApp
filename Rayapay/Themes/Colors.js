@@ -23,7 +23,10 @@ const colors = {
   banner: '#5F3E63',
   text: '#E0D7E5',
   backgroundDark: '#202020',
-  colorPrimaryDark: '#008395',
+  
+  // colorPrimaryDark: '#008395',
+  colorPrimaryDark: 'rgba(189,12,12,1)',
+
   colorPrimary: '#00BAD4',
   colorPrimary1: '#17DFFB',
   cadetblue: '#5f9ea0',
@@ -48,6 +51,7 @@ const colors = {
   whiteTertiary: '#ffffff',
   whiteTertiaryOpacity: 'rgba(255,255,255,0.3)',
 
+  redPrimary2: '#eb1c24',
   redPrimary: '#e5131d',
   redSecondary: '#790000',
   redPrimaryOpacity: 'rgba(229,19,29,0.3)',

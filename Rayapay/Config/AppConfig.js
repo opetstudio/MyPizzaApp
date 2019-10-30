@@ -2,10 +2,11 @@
 import DeviceInfo from 'react-native-device-info'
 import '../I18n/I18n'
 
+const env = (__DEV__) ? 'development' : 'production'
+
 export default {
   // font scaling override - RN default is on
   allowTextFontScaling: true,
-  authHeader: '',
   websocketEndpoin: {
     server1: 'ws://10.0.2.2:3000'
   },
@@ -26,8 +27,15 @@ export default {
   getContributorSpace: (contributorSpace) => {
     return `<div style="border: solid blue 2px; padding: 5px; margin-bottom: 70px;">${contributorSpace}</div>`
   },
+  env,
   isContributorSpaceActive: true,
   isCommentActive: true,
   isDrawerFooterActive: true,
-  isAdsActive: true
+  isAdsActive: true,
+  authHeader: env === 'development' ? 'Authorization' : 'Authorization',
+  authTokenType: 'Bearer',
+  publicToken: 'publicToken',
+  sessionToken: 'st',
+  loginFlag: 'il',
+  sessionData: 'ssst'
 }

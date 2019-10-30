@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TextInput } from "react-native";
 
-export default class MaterialFixedLabelTextbox6 extends Component {
-  render() {
+export default class MaterialFixedLabelTextbox extends Component {
+  render () {
     return (
       <View style={[styles.container, this.props.style]}>
-        <TextInput style={styles.inputStyle}
-          placeholder='No.HP'
+        <TextInput onChangeText={(v) => this.props.onChangeText(this.props.name, v)} style={styles.inputStyle}
+          placeholder={this.props.placeholder}
         />
       </View>
-    );
+    )
   }
 }
 

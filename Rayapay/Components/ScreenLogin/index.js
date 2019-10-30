@@ -75,12 +75,12 @@ class ScreenLogin extends React.Component {
             </View>
           </ScrollView>
         </ImageBackground>
-        <StatusBar
+        {/* <StatusBar
           animated
           hidden={false}
           backgroundColor={'rgba(189,12,12,1)'}
           style={styles.statusBar}
-        />
+        /> */}
       </View>
     )
   }
