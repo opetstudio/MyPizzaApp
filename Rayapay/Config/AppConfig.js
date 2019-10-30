@@ -10,6 +10,7 @@ export default {
   websocketEndpoin: {
     server1: 'ws://10.0.2.2:3000'
   },
+  backendHost: env === 'development' ? 'http://10.0.2.2:8762' : 'http://159.65.131.214:30397',
   youtubeApiKey: 'AIzaSyC_o3QtJkKXN5WUWu1nL8I2zwWwmopEjm8',
   appVersion: '2.3.2',
   appVersionBuild: '44',

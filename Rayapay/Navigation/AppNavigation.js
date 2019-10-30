@@ -5,7 +5,7 @@ import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
 import ScreenAuthLoading from '../Containers/Login/ScreenAuthLoading'
 
-import ScreenLogin from '../Components/ScreenLogin'
+import ScreenLogin from '../Containers/Login/ScreenLogin'
 import ScreenHome from '../Components/ScreenHome'
 import ScreenDashboard from '../Components/ScreenDashboard'
 import ScreenQr from '../Components/ScreenQr'

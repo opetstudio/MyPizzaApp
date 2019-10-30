@@ -19,7 +19,7 @@ class ScreenAuthLoading extends React.Component {
   _bootstrapAsync = async () => {
     const isLogin = isLoggedIn(this.props.isLoggedIn)
     console.log('isLogin=', isLogin)
-    this.props.navigation.navigate(!isLogin ? 'loggedinNavigator' : 'unloggedinNavigator')
+    this.props.navigation.navigate(isLogin ? 'loggedinNavigator' : 'unloggedinNavigator')
   };
 
   // Render any loading content that you like here

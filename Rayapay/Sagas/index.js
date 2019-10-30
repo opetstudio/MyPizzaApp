@@ -32,10 +32,9 @@ import {
 // The API we use is only used from Sagas, so we create it here and pass along
 // to the sagas which need it.
 const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
-const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'http://159.65.131.214:30397'
 // const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'https://api.erevnaraya.com'
-const apiDashboard = API.create(hostBackend + '/dashboard-api/')
-const apiDashboardPy = API.create(hostBackend + '/dashboard-api/py/')
+const apiDashboard = API.create(AppConfig.backendHost + '/dashboard-api/')
+const apiDashboardPy = API.create(AppConfig.backendHost + '/dashboard-api/py/')
 
 /* ------------- Connect Types To Sagas ------------- */
 

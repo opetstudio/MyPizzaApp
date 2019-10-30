@@ -35,7 +35,7 @@ class ScreenLogin extends React.Component {
     let password = this.state.password
 
     if (username !== '' && password !== '') {
-      this.props.loginRequest({userid: username, password: password})
+      this.props.loginDoLogin({userid: username, password: password})
     } else {
       Alert.alert('invalid userid or password')
     }
@@ -66,7 +66,7 @@ class ScreenLogin extends React.Component {
               />
               </View>
               <View style={{marginTop: 20}}>
-                <PrimarynButton colors={'darkgrey'} title={'LOGIN'} onPress={() => this.props.navigation.navigate('ScreenDashboard')} />
+                <PrimarynButton colors={'darkgrey'} title={'LOGIN'} onPress={() => this._doLogin()} />
               </View>
               <View style={styles.centered}>
                 <Text>Dont have an acoount yet?</Text>
