@@ -90,6 +90,11 @@ export default class HeaderMenu extends Component {
             source={Images.logo2}
           />
         )}
+        {!noTitle && (
+          <StyledText textStyle='h21MedWhiteT2NLS' upperCase>
+            {title ? textMessage(title) : 'PizzaApp'}
+          </StyledText>
+        )}
       </View>
     )
     return (

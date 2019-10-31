@@ -114,25 +114,25 @@ const styles = StyleSheet.create({
     position: 'absolute'
   },
   text2: {
-    top: '50.48%',
+    top: 350,
     color: 'rgba(255,255,255,1)',
     position: 'absolute',
     fontSize: 30
   },
   text3: {
-    top: '55.48%',
+    top: 380,
     color: 'rgba(255,255,255,1)',
     position: 'absolute',
     fontSize: 40
   },
   text4: {
-    top: '68.00%',
+    top: 450,
     color: 'rgba(255,255,255,1)',
     position: 'absolute',
     fontSize: 25
   },
   textinput: {
-    top: '75.05%',
+    top: 500,
     width: 350.00,
     height: 52.67,
     borderRadius: 10,

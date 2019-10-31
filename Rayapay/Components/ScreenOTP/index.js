@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text, TextInput, ImageBackground } from 'react-native'
 import Icon from '@builderx/icons'
 import { Center } from '@builderx/utils'
-import MaterialButtonViolet8 from '../symbols/ScreenOTP/MaterialButtonViolet8'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
 
 export default class Untitled4 extends Component {
   render () {
@@ -23,9 +23,10 @@ export default class Untitled4 extends Component {
               placeholder='******'
               secureTextEntry
               />
-          </Center>
+          
           <Text style={styles.text3}>6 DIGITS</Text>
-          <MaterialButtonViolet8 style={styles.materialButtonViolet8} />
+          <MaterialButtonViolet title={'Request OTP'} style={styles.materialButtonViolet8} onPress={() => this.props.navigation.navigate('ScreenSuccessBind')} />
+          </Center>
         </ImageBackground>
       </View>
     )
@@ -52,13 +53,6 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,1)',
     fontSize: 35
   },
-  icon2: {
-    top: 7,
-    position: 'absolute',
-    color: 'rgba(255,255,255,1)',
-    fontSize: 35,
-    right: 20
-  },
   text: {
     top: 12,
     left: 60,
@@ -67,8 +61,8 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   rect2: {
-    top: '32.05%',
-    width: 193.14,
+    top: 230,
+    width: 350,
     height: 52.67,
     borderRadius: 5,
     backgroundColor: 'rgba(230, 230, 230,1)',
@@ -76,22 +70,18 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   text3: {
-    top: '42.05%',
-    left: '39.01%',
+    top: 290,
     color: 'rgba(208,2,27,1)',
     position: 'absolute',
     fontSize: 20,
     fontWeight: 'bold'
   },
   materialButtonViolet8: {
-    top: '52.05%',
-    left: '27.84%',
+    top: 350,
     width: '44.321399264865455%',
-    height: 36,
-    backgroundColor: '#f6f6f6',
+    height: 46,
+    backgroundColor: '#eb1c24',
     position: 'absolute',
-    borderRadius: 5,
-    borderColor: 'rgba(208,2,27,1)',
-    borderWidth: 3
+    borderRadius: 5
   }
 })

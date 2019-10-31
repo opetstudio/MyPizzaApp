@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, ImageBackground, Text, TextInput } from 'react-native'
 import Icon from '@builderx/icons'
-import MaterialButtonViolet1 from '../symbols/ScreenAmount/MaterialButtonViolet1'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
 import { Center } from '@builderx/utils'
 
 export default class Untitled2 extends Component {
@@ -16,6 +16,7 @@ export default class Untitled2 extends Component {
               style={styles.icon}
         />
           </Center>
+          <Text style={styles.text}>Amount</Text>
           <Center horizontal>
             <TextInput style={styles.textinput}
               placeholder='Amount'
@@ -30,7 +31,7 @@ export default class Untitled2 extends Component {
               textAlign={'left'}
               />
           </Center>
-          <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
+          <MaterialButtonViolet title={'Ok'} style={styles.ButtonVioletOk} onPress={() => this.props.navigation.navigate('ScreenTransactiondetail')} />
         </ImageBackground>
       </View>
     )
@@ -57,8 +58,15 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,1)',
     fontSize: 35
   },
+  text: {
+    top: 12,
+    left: 60,
+    color: 'rgba(255,255,255,1)',
+    position: 'absolute',
+    fontSize: 20
+  },
   textinput: {
-    top: '35.05%',
+    top: 230,
     width: 350.00,
     height: 52.67,
     borderRadius: 10,
@@ -67,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   textinput1: {
-    top: '45.05%',
+    top: 300,
     width: 350.00,
     height: 52.67,
     borderRadius: 10,
@@ -81,6 +89,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#eb1c24',
     borderRadius: 5,
     alignSelf: 'center',
-    top: '105.05%',
+    top: 400,
   }
 })

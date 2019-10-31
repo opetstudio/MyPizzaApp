@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Center } from '@builderx/utils'
 import Icon from '@builderx/icons'
-import MaterialButtonViolet1 from '../symbols/ScreenTransactionsuccess/MaterialButtonViolet1'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
 
 export default class Untitled5 extends Component {
   render () {
@@ -21,7 +21,7 @@ export default class Untitled5 extends Component {
         <Center horizontal>
           <Text style={styles.text2}>Bind Card</Text>
         </Center>
-        <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
+        <MaterialButtonViolet title={'Ok'} style={styles.ButtonVioletOk} onPress={() => this.props.navigation.navigate('ScreenDashboard')} />
       </View>
     )
   }
@@ -64,6 +64,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#eb1c24',
     borderRadius: 5,
     alignSelf: 'center',
-    top: '150.05%',
+    top: '140.05%',
+    borderWidth: 2,
+    borderColor: '#fff'
   },
 })

@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { StyleSheet, TouchableOpacity, Text } from "react-native";
 import { withNavigation } from 'react-navigation' 
 
-class MaterialButtonViolet1 extends Component {
+class MaterialButtonViolet extends Component {
   render() {
     return (
-      <TouchableOpacity style={[styles.container, this.props.style]} onPress={() => this.props.navigation.navigate('ScreenDashboard')}>
-        <Text style={styles.caption}>Ok</Text>
+      // <TouchableOpacity style={[styles.container, this.props.style]} onPress={() => this.props.navigation.navigate('ScreenEmailconfirm')}>
+      <TouchableOpacity style={[styles.container, this.props.style]} onPress={this.props.onPress}>
+        <Text style={styles.caption}>{this.props.title}</Text>
       </TouchableOpacity>
     );
   }
@@ -22,9 +23,7 @@ const styles = StyleSheet.create({
     paddingLeft: 16,
     elevation: 2,
     minWidth: 88,
-    borderRadius: 5,
-    borderWidth: 2,
-    borderColor: '#fff',
+    borderRadius: 2,
     shadowOffset: {
       height: 1,
       width: 0
@@ -38,4 +37,4 @@ const styles = StyleSheet.create({
     fontSize: 20
   }
 });
-export default withNavigation(MaterialButtonViolet1)
+export default withNavigation(MaterialButtonViolet)

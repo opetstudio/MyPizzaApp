@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, ImageBackground, Text, TextInput } from 'react-native'
 import Icon from '@builderx/icons'
-import MaterialButtonViolet1 from '../symbols/ScreenCard/MaterialButtonViolet1'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
 import { Center } from '@builderx/utils'
 
 export default class Untitled2 extends Component {
@@ -15,6 +15,7 @@ export default class Untitled2 extends Component {
               name='arrow-left'
               style={styles.icon}
         />
+         <Text style={styles.text}>Add New Card</Text>
           </Center>
           <Center horizontal>
             <TextInput style={styles.textinput}
@@ -37,7 +38,7 @@ export default class Untitled2 extends Component {
               textAlign={'left'}
               />
           </Center>
-          <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
+          <MaterialButtonViolet title={'Submit'} style={styles.ButtonVioletOk} onPress={() => this.props.navigation.navigate('ScreenOTP')} />
         </ImageBackground>
       </View>
     )
@@ -64,8 +65,15 @@ const styles = StyleSheet.create({
     color: 'rgba(255,255,255,1)',
     fontSize: 35
   },
+  text: {
+    top: 12,
+    left: 60,
+    color: 'rgba(255,255,255,1)',
+    position: 'absolute',
+    fontSize: 20
+  },
   textinput: {
-    top: '25.05%',
+    top: 200,
     width: 350.00,
     height: 52.67,
     borderRadius: 10,
@@ -74,7 +82,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   textinput1: {
-    top: '40.05%',
+    top: 265,
     width: 350.00,
     height: 52.67,
     borderRadius: 10,
@@ -83,7 +91,7 @@ const styles = StyleSheet.create({
     fontSize: 20
   },
   textinput2: {
-    top: '55.05%',
+    top: 330,
     width: 350.00,
     height: 52.67,
     borderRadius: 10,
@@ -97,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eb1c24',
     borderRadius: 5,
     alignSelf: 'center',
-    top: '70.05%',
+    top: 425,
     position: 'absolute'
   }
 })

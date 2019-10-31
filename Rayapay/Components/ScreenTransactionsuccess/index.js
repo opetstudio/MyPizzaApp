@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Center } from '@builderx/utils'
 import Icon from '@builderx/icons'
-import MaterialButtonViolet1 from '../symbols/ScreenTransactionsuccess/MaterialButtonViolet1'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
 
 export default class Untitled5 extends Component {
   render () {
@@ -26,7 +26,7 @@ export default class Untitled5 extends Component {
         <Text style={styles.text5}>2. Marchandise OP</Text>
         <Text style={styles.text6}>1.000.000.00</Text>
         <Text style={styles.text7}>250.000.00</Text>
-        <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
+        <MaterialButtonViolet title={'Ok'} style={styles.ButtonVioletOk} onPress={() => this.props.navigation.navigate('ScreenDashboard')} />
       </View>
     )
   }
@@ -90,20 +90,15 @@ const styles = StyleSheet.create({
     position: 'absolute',
     fontSize: 16
   },
-  materialIconButtonsFooter: {
-    left: 0,
-    width: '100%',
-    height: 55.97,
-    backgroundColor: '#2d2d2d',
-    position: 'absolute',
-    bottom: 0.03
-  },
   ButtonVioletOk: {
     width: 350,
     height: 59,
     backgroundColor: '#eb1c24',
     borderRadius: 5,
     alignSelf: 'center',
-    top: '150.05%',
+    position: 'absolute',
+    top: '87.30%',
+    borderWidth: 2,
+    borderColor: '#fff'
   },
 })
