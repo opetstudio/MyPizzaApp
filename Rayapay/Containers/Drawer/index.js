@@ -61,7 +61,7 @@ const mapStateToProps = (state) => {
   return {
     datas,
     currentUser: SessionSelectors.getCurrentUser(state.session),
-    sessionToken: SessionSelectors.getSessionToken(state.session)
+    sessionToken: SessionSelectors.sessionToken(state.session)
   }
 }
 

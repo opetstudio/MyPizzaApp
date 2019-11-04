@@ -1,46 +1,81 @@
-import React, { Component } from 'react';
-import { Footer, FooterTab, Button, Text, Tab, Tabs, TabHeading, Icon} from 'native-base'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import {
+    Container,
+    Header,
+    Title,
+    Content,
+    Button,
+    Footer,
+    FooterTab,
+    Text,
+    Body,
+    Left,
+    Right,
+    Icon,
+    Badge
+  } from 'native-base'
+import _ from 'lodash'
 
-export default class FooterMenu extends Component{
-    constructor(props) {
-    super(props);
-     this.state = {
-         tab1: true,
-        tab2: false,
-        };
+export default class FooterComponent extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      tab1: false,
+      tab2: false
     }
-    toggleTab1() {
-        this.setState({
-        tab1: true,
-        tab2: false,
-        });
+  }
+  componentDidMount () {
+    if (this.props.initialTab === 'tab1') this.toggleTab1()
+    if (this.props.initialTab === 'tab2') this.toggleTab2()
+  }
+  componentDidUpdate (prevProps) {
+    console.log('componentDidUpdate ===> prevProps=', prevProps)
+    console.log('componentDidUpdate ===> this.props=', this.props)
+    if (this.props.isLoggedIn !== null && !_.isEqual(prevProps.isLoggedIn, this.props.isLoggedIn)) {
+      if (!this.props.isLoggedIn) this.props.navigation.navigate('unloggedinNavigator')
     }
-    toggleTab2() {
-        this.setState({
-        tab1: false,
-        tab2: true,
-        });
-    }
-    render(){
-        return(
-
-            <Footer>
-                {/*<Tabs tabBarUnderlineStyle={{ backgroundColor: '#00CBFF', width: 100, marginHorizontal: 37}}>
-                    <Tab heading="Beranda" tabStyle={{backgroundColor: 'white', border: 0}} textStyle={{color: '#505050'}} activeTabStyle={{backgroundColor: 'white'}} activeTextStyle={{color: '#00CBFF', fontWeight: 'normal'}}>
-                    </Tab>
-                    <Tab heading="Bill Payment" tabStyle={{backgroundColor: 'white', border: 0}} textStyle={{color: '#505050'}} activeTabStyle={{backgroundColor: 'white'}} activeTextStyle={{color: '#00CBFF', fontWeight: 'normal'}}>
-                    </Tab>
-                </Tabs> */}
-                <FooterTab>
-                    <Button active={this.state.tab1} onPress={() => this.toggleTab1()}>
-                        <Text>Beranda</Text>
-                    </Button>
-                    <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
-                        <Text>Bill Payment</Text>
-                    </Button>
-                </FooterTab>
-            </Footer>
-
-        )
-    }
-} 
+  }
+  toggleTab1 () {
+    this.setState({
+      tab1: true,
+      tab2: false
+    })
+    this.props.onSelectTab('tab1')
+  }
+  toggleTab2 () {
+    this.setState({
+      tab1: false,
+      tab2: true
+    })
+    this.props.onSelectTab('tab2')
+  }
+  render () {
+    return (
+      <Footer>
+        <FooterTab>
+          <Button
+            active={this.state.tab1}
+            onPress={() => this.toggleTab1()}
+            vertical
+            badge
+          >
+            <Badge>
+              <Text>2</Text>
+            </Badge>
+            <Icon active={this.state.tab1} name='apps' />
+            <Text>Apps</Text>
+          </Button>
+          <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
+            <Icon active={this.state.tab2} name='camera' />
+            <Text>Camera</Text>
+          </Button>
+          <Button active={this.state.tab2} onPress={() => this.props.sessionLogout()}>
+            <Icon active={this.state.tab2} name='camera' />
+            <Text>Logout</Text>
+          </Button>
+        </FooterTab>
+      </Footer>
+    )
+  }
+}

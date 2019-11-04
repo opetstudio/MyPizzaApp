@@ -1,21 +1,20 @@
 import { connect } from 'react-redux'
-import Footer from '../../Components/Footer'
+import ScreenHome from '../../Components/ScreenHome'
 import SessionAction, {SessionSelectors} from '../../Redux/SessionRedux'
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    sessionToken: SessionSelectors.sessionToken(state.session),
     isLoggedIn: SessionSelectors.isLoggedIn(state.session)
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    sessionLogout: () => dispatch(SessionAction.sessionLogout())
+    sessionLogout: (data) => dispatch(SessionAction.sessionLogout(data))
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Footer)
+)(ScreenHome)

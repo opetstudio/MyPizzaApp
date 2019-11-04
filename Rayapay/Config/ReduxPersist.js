@@ -6,7 +6,7 @@ import {setSession, getSession} from '../Lib/Utils'
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
   active: true,
-  reducerVersion: '1',
+  reducerVersion: '6',
   storeConfig: {
     key: 'primary',
     storage: AsyncStorage,
@@ -19,11 +19,27 @@ const REDUX_PERSIST = {
   }
 }
 
-const currentReducerVersion = getSession('currentReducerVersion')
-console.log('currentReducerVersionSession===>', currentReducerVersion)
-const nextReducerVersion = REDUX_PERSIST.reducerVersion
-if (currentReducerVersion !== nextReducerVersion) {
-  setSession({currentReducerVersion: nextReducerVersion, [AppConfig.loginFlag]: false})
+function getCurrentReducerVersion () {
+  return new Promise((resolve) => {
+    const currentReducerVersion = getSession('currentReducerVersion')
+    // const socket = new WebSocket("ws://localhost:1555");
+    resolve(currentReducerVersion)
+  })
 }
+const nextReducerVersion = REDUX_PERSIST.reducerVersion
+async function checkVersion () {
+  const currentReducerVersion = await getCurrentReducerVersion()
+  console.log('currentReducerVersionSession===>', currentReducerVersion)
+  console.log('nextReducerVersion===>', nextReducerVersion)
+  if (currentReducerVersion !== nextReducerVersion) {
+    setSession({currentReducerVersion: nextReducerVersion, [AppConfig.loginFlag]: false})
+  }
+}
+checkVersion()
+// console.log('currVersion===>', currVersion)
+// console.log('nextReducerVersion===>', nextReducerVersion)
+// if (currVersion !== nextReducerVersion) {
+//   setSession({currentReducerVersion: nextReducerVersion, [AppConfig.loginFlag]: false})
+// }
 
 export default REDUX_PERSIST
