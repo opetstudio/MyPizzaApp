@@ -13,7 +13,7 @@ import Footer from '../../Components/Footer'
 
 class ScreenHome extends React.PureComponent {
   static propTypes = {
-    sessionToken: PropTypes.string.isRequired,
+    sessionToken: PropTypes.string,
     navigation: PropTypes.object.isRequired,
     sessionLogout: PropTypes.func.isRequired
   }
@@ -72,6 +72,7 @@ class ScreenHome extends React.PureComponent {
     this.setState({activeTab: activeTab})
   }
   render () {
+    console.log('render ScreenHome')
     return (
       <Container>
         <Header
@@ -80,27 +81,29 @@ class ScreenHome extends React.PureComponent {
           hasSearch
           isHomePage
         />
-        <View>
+        <ScrollView style={{ flex: 1 }}>
           <View>
-              <Text style={styles.username}>Catur</Text>
+            <View>
+                <Text style={styles.username}>Catur</Text>
+            </View>
+            <View>
+                <Text style={styles.saldo}>Rp. 1.000.000</Text>
+            </View>
+            <View>
+                <Text style={styles.title}>Quick Pay</Text>
+            </View>
           </View>
-          <View>
-              <Text style={styles.saldo}>Rp. 1.000.000</Text>
-          </View>
-          <View>
-              <Text style={styles.title}>Quick Pay</Text>
-          </View>
-        </View>
-        {this.state.activeTab === 'tab1' &&
-          <FlatList
-            keyExtractor={this.keyExtractor}
-            data={this.state.billPaymentMenu}
-            renderItem={this.renderItem}
-          />
-        }
-        {this.state.activeTab === 'tab2' &&
-          <View><Text>Yang active adalah tab2</Text></View>
-        }
+          {this.state.activeTab === 'tab1' &&
+            <FlatList
+              keyExtractor={this.keyExtractor}
+              data={this.state.billPaymentMenu}
+              renderItem={this.renderItem}
+            />
+          }
+          {this.state.activeTab === 'tab2' &&
+            <View><Text>Yang active adalah tab2</Text></View>
+          }
+        </ScrollView>
         {/* <FooterMenu /> */}
         <Footer onSelectTab={this._onSelectTab} initialTab={'tab1'} />
       </Container>

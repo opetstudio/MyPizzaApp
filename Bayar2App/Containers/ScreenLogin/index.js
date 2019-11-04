@@ -1,13 +1,14 @@
 import { connect } from 'react-redux'
 import LoginScreen from '../../Components/ScreenLogin'
 import LoginScreenAction, {LoginSelectors} from '../../Containers/ScreenLogin/redux'
-import {SessionSelectors} from '../../Redux/SessionRedux'
+import SessionAction, {SessionSelectors} from '../../Redux/SessionRedux'
 
 const mapStateToProps = (state, ownProps) => {
   console.log('state login========>', state.session)
   // const foo = params.get('foo'); // bar
   return {
-    sessionToken: SessionSelectors.getSessionToken(state.session)
+    isLoggedIn: SessionSelectors.isLoggedIn(state.session),
+    sessionToken: SessionSelectors.sessionToken(state.session)
   }
 }
 
@@ -17,7 +18,7 @@ const mapDispatchToProps = dispatch => {
     // loginRequest: data => {
     //     alert('cek')
     // }
-    loginRequest: data => dispatch(LoginScreenAction.loginRequest(data))
+    loginRequest: data => dispatch(SessionAction.sessionLogin(data))
   }
 }
 

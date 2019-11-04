@@ -1,10 +1,12 @@
 import immutablePersistenceTransform from '../Services/ImmutablePersistenceTransform'
 import { AsyncStorage } from 'react-native'
+import AppConfig from './AppConfig'
+import {setSession, getSession} from '../Lib/Utils'
 
 // More info here:  https://shift.infinite.red/shipping-persistant-reducers-7341691232b1
 const REDUX_PERSIST = {
   active: true,
-  reducerVersion: '1.0',
+  reducerVersion: '4',
   storeConfig: {
     key: 'primary',
     storage: AsyncStorage,
@@ -16,5 +18,28 @@ const REDUX_PERSIST = {
     transforms: [immutablePersistenceTransform]
   }
 }
+
+function getCurrentReducerVersion () {
+  return new Promise((resolve) => {
+    const currentReducerVersion = getSession('currentReducerVersion')
+    // const socket = new WebSocket("ws://localhost:1555");
+    resolve(currentReducerVersion)
+  })
+}
+const nextReducerVersion = REDUX_PERSIST.reducerVersion
+async function checkVersion () {
+  const currentReducerVersion = await getCurrentReducerVersion()
+  console.log('currentReducerVersionSession===>', currentReducerVersion)
+  console.log('nextReducerVersion===>', nextReducerVersion)
+  if (currentReducerVersion !== nextReducerVersion) {
+    setSession({currentReducerVersion: nextReducerVersion, [AppConfig.loginFlag]: false})
+  }
+}
+checkVersion()
+// console.log('currVersion===>', currVersion)
+// console.log('nextReducerVersion===>', nextReducerVersion)
+// if (currVersion !== nextReducerVersion) {
+//   setSession({currentReducerVersion: nextReducerVersion, [AppConfig.loginFlag]: false})
+// }
 
 export default REDUX_PERSIST

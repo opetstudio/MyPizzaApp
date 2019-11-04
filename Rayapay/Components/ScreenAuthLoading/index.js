@@ -13,12 +13,13 @@ class ScreenAuthLoading extends React.Component {
     this._bootstrapAsync = this._bootstrapAsync.bind(this)
   }
   componentWillMount () {
+    console.log('componentWillMount=')
     this._bootstrapAsync()
   }
   // Fetch the token from storage then navigate to our appropriate place
   _bootstrapAsync = async () => {
     const isLogin = isLoggedIn(this.props.isLoggedIn)
-    console.log('isLogin=', isLogin)
+    console.log('isLogin=>>>>>>>', isLogin)
     this.props.navigation.navigate(isLogin ? 'loggedinNavigator' : 'unloggedinNavigator')
   };
 

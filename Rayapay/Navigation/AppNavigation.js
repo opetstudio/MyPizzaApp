@@ -7,7 +7,7 @@ import ScreenAuthLoading from '../Containers/Login/ScreenAuthLoading'
 
 import ScreenLogin from '../Containers/Login/ScreenLogin'
 import ScreenHome from '../Components/ScreenHome'
-import ScreenDashboard from '../Components/ScreenDashboard'
+import ScreenDashboard from '../Containers/ScreenDashboard'
 import ScreenQr from '../Components/ScreenQr'
 import ScreenTransactiondetail from '../Components/ScreenTransactiondetail'
 import ScreenOTP from '../Components/ScreenOTP'

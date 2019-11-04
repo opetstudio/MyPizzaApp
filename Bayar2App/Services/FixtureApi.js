@@ -20,5 +20,17 @@ export default {
       ok: true,
       data: username.toLowerCase() === 'gantman' ? gantmanData : skellockData
     }
+  },
+  sessionLogin: (data) => {
+    return {
+      ok: true,
+      data: require('../Fixtures/sessionLogin.json')
+    }
+  },
+  sessionLogout: (data) => {
+    return {
+      ok: true,
+      data: require('../Fixtures/sessionLogout.json')
+    }
   }
 }
