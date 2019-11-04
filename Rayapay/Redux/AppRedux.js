@@ -7,7 +7,8 @@ const { Types, Creators } = createActions({
   appRequest: ['data'],
   appSuccess: ['payload'],
   appStatusbar: ['statusBarIsHidden'],
-  appFailure: null
+  appFailure: null,
+  appPatch: ['data']
 })
 
 export const AppTypes = Types
@@ -20,14 +21,18 @@ export const INITIAL_STATE = Immutable({
   fetching: null,
   payload: null,
   error: null,
-  statusBarIsHidden: false
+  statusBarIsHidden: false,
+  loading: false,
+  version: 0
 })
 
 /* ------------- Selectors ------------- */
 
 export const AppSelectors = {
   getData: state => state.data,
-  getIsStatusBarHidden: state => state.statusBarIsHidden
+  getIsStatusBarHidden: state => state.statusBarIsHidden,
+  loading: st => st.loading,
+  version: st => st.version
 }
 
 /* ------------- Reducers ------------- */
@@ -49,11 +54,19 @@ export const failure = state =>
 export const setstatusbar = (state, {statusBarIsHidden}) =>
   state.merge({ statusBarIsHidden })
 
+export const appPatch = (state, {data}) => {
+  let mergeData = {}
+  if (data.hasOwnProperty('loading')) mergeData.loading = data.loading
+  mergeData.version = state.version + 1
+  return state.merge(mergeData)
+}
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.APP_REQUEST]: request,
   [Types.APP_SUCCESS]: success,
   [Types.APP_STATUSBAR]: setstatusbar,
-  [Types.APP_FAILURE]: failure
+  [Types.APP_FAILURE]: failure,
+  [Types.APP_PATCH]: appPatch
 })

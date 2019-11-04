@@ -5,6 +5,7 @@ import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
 import ScreenAuthLoading from '../Components/ScreenAuthLoading'
 
+import ScreenLogin from '../Components/ScreenLogin'
 import ScreenHome from '../Components/ScreenHome'
 import ScreenDashboard from '../Components/ScreenDashboard'
 import ScreenQr from '../Components/ScreenQr'
@@ -56,12 +57,12 @@ const loggedinNavigator = StackNavigator({
   cardStyle: isIphoneX ? { shadowColor: 'transparent' } : {}
 })
 const unloggedinNavigator = StackNavigator({
-  ScreenHome: { screen: ScreenHome },
+  ScreenLogin: { screen: ScreenLogin },
   ScreenSignup: {screen: ScreenSignup}
 }, {
     // Default config for all screens
   headerMode: 'none',
-  initialRouteName: 'ScreenHome',
+  initialRouteName: 'ScreenLogin',
   navigationOptions: {
     headerStyle: styles.header
   },
