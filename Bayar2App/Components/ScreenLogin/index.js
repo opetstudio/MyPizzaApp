@@ -10,11 +10,13 @@ import AppConfig from '../../Config/AppConfig'
 import PrimarynButton from '../Button/PrimaryButton'
 import Button from '../Button/StyledButton'
 import HeaderMenu from '../Header'
+import {isLoggedIn} from '../../Lib/Utils'
 
 class ScreenLogin extends React.Component {
   static propTypes = {
     loginRequest: PropTypes.func,
-    sessionToken: PropTypes.string
+    sessionToken: PropTypes.string,
+    isLoggedIn: PropTypes.bool
   }
   static defaultProps = {
     loginRequest: () => {}
@@ -29,9 +31,14 @@ class ScreenLogin extends React.Component {
     }
     this._doLogin = this._doLogin.bind(this)
   }
-  componentDidUpdate (prevProps) {
-    if (this.props.sessionToken !== null && !_.isEqual(prevProps.sessionToken, this.props.sessionToken)) {
-      this.props.navigation.navigate('loggedinNavigator')
+  async componentDidUpdate (prevProps) {
+    // console.log('ScreenLogincomponentDidUpdate  prevProps===>', prevProps)
+    // console.log('ScreenLogincomponentDidUpdate  this.props===>', this.props)
+    if (this.props.isLoggedIn !== null && !_.isEqual(prevProps.isLoggedIn, this.props.isLoggedIn)) {
+      const isLogin = await isLoggedIn()
+      console.log('isLogin=', isLogin)
+      if (this.props.isLoggedIn) this.props.navigation.navigate('loggedinNavigator')
+      // if (isLogin) this.props.navigation.navigate('loggedinNavigator')
     }
   }
   _doLogin () {
@@ -80,7 +87,7 @@ class ScreenLogin extends React.Component {
             <Button
               type='link'
               onPress={() => { this.props.navigation.navigate('ScreenForgetpassword') }}
-              i18nKey='Lupa kata sandi?'
+              i18nKey='lupa-kata-sandi'
               // noFeedback
               textStyle={'h10LtGreyS'}
               isMultipleTapAllowed

@@ -26,8 +26,10 @@ class ScreenLogin extends React.Component {
     this._doLogin = this._doLogin.bind(this)
   }
   componentDidUpdate (prevProps) {
+    console.log('componentDidUpdate this.props.sessionToken=', this.props.sessionToken)
+    console.log('componentDidUpdate prevProps.sessionToken=', prevProps.sessionToken)
     if (this.props.sessionToken !== null && !_.isEqual(prevProps.sessionToken, this.props.sessionToken)) {
-      this.props.navigation.navigate('App')
+      this.props.navigation.navigate('loggedinNavigator')
     }
   }
   _doLogin () {
@@ -35,7 +37,7 @@ class ScreenLogin extends React.Component {
     let password = this.state.password
 
     if (username !== '' && password !== '') {
-      this.props.loginRequest({userid: username, password: password})
+      this.props.loginDoLogin({userid: username, password: password})
     } else {
       Alert.alert('invalid userid or password')
     }
@@ -66,7 +68,7 @@ class ScreenLogin extends React.Component {
               />
               </View>
               <View style={{marginTop: 20}}>
-                <PrimarynButton colors={'darkgrey'} title={'LOGIN'} onPress={() => this.props.navigation.navigate('ScreenDashboard')} />
+                <PrimarynButton colors={'darkgrey'} title={'LOGIN'} onPress={() => this._doLogin()} />
               </View>
               <View style={styles.centered}>
                 <Text>Dont have an acoount yet?</Text>
@@ -75,12 +77,12 @@ class ScreenLogin extends React.Component {
             </View>
           </ScrollView>
         </ImageBackground>
-        <StatusBar
+        {/* <StatusBar
           animated
           hidden={false}
           backgroundColor={'rgba(189,12,12,1)'}
           style={styles.statusBar}
-        />
+        /> */}
       </View>
     )
   }

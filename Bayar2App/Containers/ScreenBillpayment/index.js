@@ -58,7 +58,7 @@ import SessionAction, {SessionSelectors} from '../../Redux/SessionRedux'
 const mapStateToProps = (state) => {
   return {
     // datas,
-    sessionToken: SessionSelectors.getSessionToken(state.session)
+    sessionToken: SessionSelectors.sessionToken(state.session)
   }
 }
 

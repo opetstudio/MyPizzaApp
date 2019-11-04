@@ -49,38 +49,10 @@ class ScreenLogin extends React.Component {
               <Image source={Images.logoBayar2} style={styles.logo} />
             </View>
             <View style={{marginTop: 80}}>
-              <View style={styles.centered}>
-                <TextInput style={styles.inputBox}
-                  placeholder='Email'
-                  underlineColorAndroid='rgba(0,0,0,0.5)'
-                  selectionColor='#000'
-                  keyboardType='email-address'
-                  onChangeText={(v) => this.setState({userid: v})}
-              />
-                <TextInput style={styles.inputBox}
-                  placeholder='Password'
-                  underlineColorAndroid='rgba(0,0,0,0.5)'
-                  selectionColor='#000'
-                  secureTextEntry
-                  onChangeText={(v) => this.setState({password: v})}
-              />
-              </View>
-              <View style={{marginTop: 20}}>
-                <PrimarynButton colors={'darkgrey'} title={'LOGIN'} onPress={() => this.props.navigation.navigate('ScreenDashboard')} />
-              </View>
-              <View style={styles.centered}>
-                <Text>Dont have an acoount yet?</Text>
-                <Text style={styles.textSignup} onPress={() => this.props.navigation.navigate('ScreenSignup')} >SignUp</Text>
-              </View>
+              <Text>Home</Text>
             </View>
           </ScrollView>
         </ImageBackground>
-        <StatusBar
-          animated
-          hidden={false}
-          backgroundColor={'rgba(189,12,12,1)'}
-          style={styles.statusBar}
-        />
       </View>
     )
   }

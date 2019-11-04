@@ -1,38 +1,55 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, ScrollView, Image, Text, ImageBackground, StatusBar } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import MaterialFixedLabelTextbox2 from '../symbols/ScreenSignup/MaterialFixedLabelTextbox2'
-import MaterialFixedLabelTextbox3 from '../symbols/ScreenSignup/MaterialFixedLabelTextbox3'
-import MaterialFixedLabelTextbox4 from '../symbols/ScreenSignup/MaterialFixedLabelTextbox4'
-import MaterialFixedLabelTextbox5 from '../symbols/ScreenSignup/MaterialFixedLabelTextbox5'
-import MaterialFixedLabelTextbox6 from '../symbols/ScreenSignup/MaterialFixedLabelTextbox6'
-import MaterialButtonViolet1 from '../symbols/ScreenSignup/MaterialButtonViolet1'
+import MaterialFixedLabelTextbox from '../symbols/MaterialFixedLabelTextbox'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
 import {Images, Colors, Metrics} from '../../Themes'
+import Header from '../Header'
 
 export default class ScreenSingup extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      form: {}
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleChange (name, value) {
+    this.setState({form: {...this.state.form, [name]: value}})
+  }
+  handleSubmit () {
+    console.log('submit form ', this.state.form)
+    
+  }
   render () {
     return (
       <View style={styles.mainContainer}>
         <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}>
+        <Header
+          hasBack
+          // hasHamburger
+          // hasSearch
+          navigation={this.props.navigation}
+          title={'Signup'}
+        />
           <ScrollView style={styles.container}>
-            <View style={styles.rect}>
-              <Icon name='arrow-left' style={styles.iconBack} onPress={() => this.props.navigation.navigate('ScreenHome')} />
-            </View>
-            <Text style={styles.text}>SignUp</Text>
-            <MaterialFixedLabelTextbox2 style={styles.TextboxEmail} />
-            <MaterialFixedLabelTextbox3 style={styles.TextboxFullname} />
-            <MaterialFixedLabelTextbox4 style={styles.TextboxNoID} />
-            <MaterialFixedLabelTextbox5 style={styles.TextboxAddress} />
-            <MaterialFixedLabelTextbox6 style={styles.TextboxNoHP} />
-            <MaterialButtonViolet1 style={styles.ButtonVioletSignUp} />
+
+            <MaterialFixedLabelTextbox name='email' onChangeText={this.handleChange} placeholder={'Email'} style={styles.TextboxEmail} />
+            <MaterialFixedLabelTextbox name='fullname' onChangeText={this.handleChange} placeholder={'Full Name'} style={styles.TextboxFullname} />
+            <MaterialFixedLabelTextbox name='noId' onChangeText={this.handleChange} placeholder={'No. ID'} style={styles.TextboxNoID} />
+            <MaterialFixedLabelTextbox name='address' onChangeText={this.handleChange} placeholder={'Address'} style={styles.TextboxAddress} />
+            <MaterialFixedLabelTextbox name='phoneNumber' onChangeText={this.handleChange} placeholder={'Phone Number'} style={styles.TextboxNoHP} />
+            <MaterialButtonViolet onPress={this.handleSubmit} style={styles.ButtonVioletSignUp} />
+
           </ScrollView>
         </ImageBackground>
-        <StatusBar
+        {/* <StatusBar
           animated
           hidden={false}
           backgroundColor={'rgba(189,12,12,1)'}
           style={styles.statusBar}
-        />
+        /> */}
       </View>
     )
   }
@@ -108,7 +125,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#eb1c24',
     borderRadius: 5,
     alignSelf: 'center',
-    marginTop: 113
+    marginTop: 24
   },
   statusBar: {}
 })
