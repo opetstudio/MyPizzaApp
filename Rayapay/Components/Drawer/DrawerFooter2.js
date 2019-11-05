@@ -13,7 +13,7 @@ class DrawerFooter2 extends Component {
     popupHide: PropTypes.func.isRequired,
     sessionLogout: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
-    sessionToken: PropTypes.string.isRequired
+    sessionToken: PropTypes.string
   }
   constructor (props) {
     super(props)

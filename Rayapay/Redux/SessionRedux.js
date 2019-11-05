@@ -1,6 +1,8 @@
 import {AsyncStorage} from 'react-native'
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
+import {setSession} from '../Lib/Utils'
+import AppConfig from '../Config/AppConfig'
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -10,7 +12,17 @@ const { Types, Creators } = createActions({
   sessionRegserver: ['data'],
   sessionSuccess: ['payload'],
   sessionFailure: ['errorMessage'],
-  sessionLogout: null
+  // logout
+  sessionLogout: null,
+  sessionLogoutSuccess: ['data'],
+  sessionLogoutFailed: ['data'],
+
+  // login
+  sessionLogin: ['data'],
+  sessionLoginSuccess: ['data'],
+  sessionLoginFailed: ['data'],
+
+  sessionPatch: ['data']
 })
 
 export const SessionTypes = Types
@@ -27,7 +39,10 @@ export const INITIAL_STATE = Immutable({
   payload: null,
   error: null,
   errorMessage: null,
-  isLoginCompleted: true
+  isLoginCompleted: true,
+  isLoggedIn: null,
+  sessionLoginMSG: {ir: false, rc: '', rm: '', rd: ''}, // ir=isRequesting rc=responseCode rd=redponseDescription
+  sessionLogoutMSG: {ir: false, rc: '', rm: '', rd: ''} // ir=isRequesting rc=responseCode rd=redponseDescription
 })
 
 /* ------------- Selectors ------------- */
@@ -35,11 +50,14 @@ export const INITIAL_STATE = Immutable({
 export const SessionSelectors = {
   getData: state => state.data,
   getCurrentUser: state => state.currentUser,
-  getSessionToken: state => state.sessionToken,
+  sessionToken: state => state.sessionToken,
   getFetching: state => state.fetching,
   getIsLoginCompleted: state => state.isLoginCompleted,
   isError: state => state.error,
-  getErrorMessage: state => state.errorMessage
+  getErrorMessage: state => state.errorMessage,
+  sessionLoginMSG: st => st.sessionLoginMSG,
+  sessionLogoutMSG: st => st.sessionLogoutMSG,
+  isLoggedIn: state => state.isLoggedIn
 }
 
 /* ------------- Reducers ------------- */
@@ -82,9 +100,61 @@ export const logout = (state) => {
   return state.merge({ isLoginCompleted: true, fetching: false, error: false, payload: null, currentUser: null, sessionToken: '' })
 }
 
+
+export const sessionPatch = (state, { data }) => {
+  // console.log('merchantRequestPatch invoked. dataMerchant=', data.dataMerchant)
+  let mergeData = {}
+  // if (data.hasOwnProperty('sessionToken')) mergeData.sessionToken = data.sessionToken
+  if (data.hasOwnProperty('isLoggedIn')) mergeData.isLoggedIn = data.isLoggedIn
+  if (data.hasOwnProperty('sessionLoginMSG')) mergeData.sessionLoginMSG = data.sessionLoginMSG
+  // if (data.pageSize) mergeData.pageSize = data.pageSize
+  return state.merge(mergeData)
+}
+export const sessionLogin = (state, { data }) => {
+  data.sessionLoginMSG = {ir: true, rc: '', rm: '', rd: ''}
+  return sessionPatch(state, {data})
+}
+export const sessionLoginSuccess = (state, { data }) => {
+  console.log('sessionLoginSuccess')
+  data.isLoggedIn = true
+  setSession({[AppConfig.loginFlag]: true, 'userRole': data.userRole, [AppConfig.sessionToken]: data.sessionToken})
+  return sessionPatch(state, { data })
+}
+export const sessionLoginFailed = (state, { data }) => {
+  console.log('sessionLoginFailed')
+  data.isLoggedIn = false
+  setSession({[AppConfig.loginFlag]: false, 'userRole': '', [AppConfig.sessionToken]: ''})
+  return sessionPatch(state, { data })
+}
+export const sessionLogout = (state, { data }) => {
+  data.sessionLogoutMSG = {ir: true, rc: '', rm: '', rd: ''}
+  return sessionPatch(state, {data})
+}
+export const sessionLogoutSuccess = (state, { data }) => {
+  console.log('sessionLogoutSuccess')
+  data.isLoggedIn = false
+  setSession({[AppConfig.loginFlag]: false, 'userRole': '', [AppConfig.sessionToken]: ''})
+  return sessionPatch(state, { data })
+}
+export const sessionLogoutFailed = (state, { data }) => {
+  console.log('sessionLogoutFailed')
+  return sessionPatch(state, { data })
+}
+
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
+  // logout
+  [Types.SESSION_LOGOUT]: sessionLogout,
+  [Types.SESSION_LOGOUT_SUCCESS]: sessionLogoutSuccess,
+  [Types.SESSION_LOGOUT_FAILED]: sessionLogoutFailed,
+
+  // login
+  [Types.SESSION_LOGIN]: sessionLogin,
+  [Types.SESSION_LOGIN_SUCCESS]: sessionLoginSuccess,
+  [Types.SESSION_LOGIN_FAILED]: sessionLoginFailed,
+
+  [Types.SESSION_PATCH]: sessionPatch,
   [Types.SESSION_LOGIN_WITH_SOCMED]: loginWithSocmed,
   [Types.SESSION_REQUEST]: request,
   [Types.SESSION_REGSERVER]: regserver,

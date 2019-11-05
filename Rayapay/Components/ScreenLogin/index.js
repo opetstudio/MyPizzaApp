@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import _ from 'lodash'
 import {Images, Colors, Metrics} from '../../Themes'
 import Icon from 'react-native-vector-icons/dist/Ionicons'
+import {isLoggedIn} from '../../Lib/Utils'
 
 import PrimarynButton from '../Button/PrimaryButton'
 
 class ScreenLogin extends React.Component {
   static propTypes = {
     loginRequest: PropTypes.func,
-    sessionToken: PropTypes.string
+    sessionToken: PropTypes.string,
+    isLoggedIn: PropTypes.bool
   }
   static defaultProps = {
     loginRequest: () => {}
@@ -25,11 +27,14 @@ class ScreenLogin extends React.Component {
     }
     this._doLogin = this._doLogin.bind(this)
   }
-  componentDidUpdate (prevProps) {
+  async componentDidUpdate (prevProps) {
     console.log('componentDidUpdate this.props.sessionToken=', this.props.sessionToken)
     console.log('componentDidUpdate prevProps.sessionToken=', prevProps.sessionToken)
-    if (this.props.sessionToken !== null && !_.isEqual(prevProps.sessionToken, this.props.sessionToken)) {
-      this.props.navigation.navigate('loggedinNavigator')
+    if (this.props.isLoggedIn !== null && !_.isEqual(prevProps.isLoggedIn, this.props.isLoggedIn)) {
+      const isLogin = await isLoggedIn()
+      console.log('isLogin=', isLogin)
+      if (this.props.isLoggedIn) this.props.navigation.navigate('loggedinNavigator')
+      // if (isLogin) this.props.navigation.navigate('loggedinNavigator')
     }
   }
   _doLogin () {
@@ -37,7 +42,7 @@ class ScreenLogin extends React.Component {
     let password = this.state.password
 
     if (username !== '' && password !== '') {
-      this.props.loginDoLogin({userid: username, password: password})
+      this.props.loginRequest({userid: username, password: password})
     } else {
       Alert.alert('invalid userid or password')
     }
@@ -58,6 +63,7 @@ class ScreenLogin extends React.Component {
                   selectionColor='#000'
                   keyboardType='email-address'
                   onChangeText={(v) => this.setState({userid: v})}
+                  textAlign={'center'}
               />
                 <TextInput style={styles.inputBox}
                   placeholder='Password'
@@ -65,6 +71,7 @@ class ScreenLogin extends React.Component {
                   selectionColor='#000'
                   secureTextEntry
                   onChangeText={(v) => this.setState({password: v})}
+                  textAlign={'center'}
               />
               </View>
               <View style={{marginTop: 20}}>

@@ -32,7 +32,7 @@ export default class Drawer extends Component {
     popupHide: PropTypes.func.isRequired,
     sessionLogout: PropTypes.func.isRequired,
     navigation: PropTypes.object.isRequired,
-    sessionToken: PropTypes.string.isRequired
+    sessionToken: PropTypes.string
   }
   //
   // // Defaults for props

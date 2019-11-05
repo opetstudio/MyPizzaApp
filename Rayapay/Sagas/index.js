@@ -8,24 +8,13 @@ import AppConfig from '../Config/AppConfig'
 
 import { StartupTypes } from '../Redux/StartupRedux'
 import { WebsocketTypes } from '../Redux/WebsocketRedux'
-// begin Ignite-Entity-Login
-import { LoginTypes } from '../Containers/Login/redux'
-// end Ignite-Entity-Login
+import { SessionTypes } from '../Redux/SessionRedux'
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
 import { websocketSetup } from './WebsocketSagas'
-// begin Ignite-Entity-Login
-import {
-  loginDoLogin, loginCheckStatus,
-  postLogin,
-  getLogins,
-  getLogin,
-  updateLogin,
-  removeLogin
-} from '../Containers/Login/sagas'
-// end Ignite-Entity-Login
+import { sessionLogin, sessionLogout } from './SessionSagas'
 
 /* ------------- API ------------- */
 
@@ -33,8 +22,8 @@ import {
 // to the sagas which need it.
 const api = DebugConfig.useFixtures ? FixtureAPI : API.create()
 // const hostBackend = AppConfig.env === 'development' ? 'http://localhost:8762' : 'https://api.erevnaraya.com'
-const apiDashboard = API.create(AppConfig.backendHost + '/dashboard-api/')
-const apiDashboardPy = API.create(AppConfig.backendHost + '/dashboard-api/py/')
+const apiDashboard = DebugConfig.useFixtures ? FixtureAPI : API.create(AppConfig.backendHost + '/dashboard-api/')
+const apiDashboardPy = DebugConfig.useFixtures ? FixtureAPI : API.create(AppConfig.backendHost + '/dashboard-api/py/')
 
 /* ------------- Connect Types To Sagas ------------- */
 
@@ -43,10 +32,7 @@ export default function * root () {
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
     takeLatest(WebsocketTypes.WEBSOCKET_SETUP, websocketSetup),
-    takeLatest(LoginTypes.LOGIN_CREATE, postLogin, apiDashboard),
-    takeLatest(LoginTypes.LOGIN_REMOVE, removeLogin, apiDashboard),
-
-    takeLatest(LoginTypes.LOGIN_DO_LOGIN, loginDoLogin, apiDashboard),
-    takeLatest(LoginTypes.LOGIN_CHECK_STATUS, loginCheckStatus, apiDashboard)
+    takeLatest(SessionTypes.SESSION_LOGIN, sessionLogin, apiDashboard),
+    takeLatest(SessionTypes.SESSION_LOGOUT, sessionLogout, apiDashboard)
   ])
 }

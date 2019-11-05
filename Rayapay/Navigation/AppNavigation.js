@@ -3,11 +3,11 @@ import { createStackNavigator as StackNavigator, createDrawerNavigator as Drawer
 import Drawer from '../Containers/Drawer'
 import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
-import ScreenAuthLoading from '../Containers/Login/ScreenAuthLoading'
+import ScreenAuthLoading from '../Containers/ScreenAuthLoading'
 
-import ScreenLogin from '../Containers/Login/ScreenLogin'
-import ScreenHome from '../Components/ScreenHome'
-import ScreenDashboard from '../Containers/ScreenDashboard'
+import ScreenLogin from '../Containers/ScreenLogin'
+// import ScreenHome from '../Components/ScreenHome'
+import ScreenHome from '../Containers/ScreenHome'
 import ScreenQr from '../Components/ScreenQr'
 import ScreenTransactiondetail from '../Components/ScreenTransactiondetail'
 import ScreenOTP from '../Components/ScreenOTP'
@@ -22,7 +22,7 @@ import styles from './Styles/NavigationStyles'
 
 // Manifest of possible screens
 const menuRoutes = {
-  ScreenHome: { screen: ScreenDashboard, navigationOptions: { drawerLabel: 'Home' } }
+  ScreenHome: { screen: ScreenHome, navigationOptions: { drawerLabel: 'Home' } }
 }
 navigatorHelper.setMenuNavigationRoutes(menuRoutes)
 const DrawerMenuNavigator = DrawerNavigator(menuRoutes, {
@@ -36,7 +36,7 @@ const DrawerMenuNavigator = DrawerNavigator(menuRoutes, {
 })
 const loggedinNavigator = StackNavigator({
   DrawerMenuNavigator: { screen: DrawerMenuNavigator },
-  ScreenDashboard: { screen: ScreenDashboard},
+  ScreenDashboard: { screen: ScreenHome},
   ScreenQr: { screen: ScreenQr},
   ScreenTransactiondetail: { screen: ScreenTransactiondetail},
   ScreenOTP: { screen: ScreenOTP},

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, ImageBackground, Text, StatusBar, Image, ScrollView } from 'react-native'
 import { Center } from '@builderx/utils'
 import Svg, { Ellipse } from 'react-native-svg'
+import _ from 'lodash'
 import {
   Container
 } from 'native-base'
@@ -10,7 +11,15 @@ import Footer from '../../Containers/Footer'
 import Icon from '@builderx/icons'
 import { Images, Metrics } from '../../Themes'
 
-export default class Untitled1 extends Component {
+export default class ScreenDashboard extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+    this._onSelectTab = this._onSelectTab.bind(this)
+  }
+  _onSelectTab (activeTab) {
+    this.setState({activeTab: activeTab})
+  }
   render () {
     return (
       <Container>
@@ -105,7 +114,11 @@ export default class Untitled1 extends Component {
           
           </ImageBackground>
         </ScrollView>
-        <Footer />
+        <Footer
+          onSelectTab={this._onSelectTab}
+          initialTab={'tab1'}
+          navigation={this.props.navigation}
+          />
       {/* </View> */}
       </Container>
     )

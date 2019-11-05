@@ -59,7 +59,9 @@ export const decryptAt = (msg, key) => {
 }
 export const isLoggedIn = async (isLoggedInState) => {
     console.log('isLoggedIn isLoggedInState1===>', isLoggedInState)
+  if (isLoggedInState) return true
   let loginFlag = await getSession(AppConfig.loginFlag)
+  console.log('isLoggedIn loginFlag===>', loginFlag)
     // isLoggedInState = isLoggedInState || loginFlag || false
   isLoggedInState = loginFlag || false
   if ((isLoggedInState === 'true' || isLoggedInState === true)) isLoggedInState = true
@@ -71,6 +73,8 @@ export const generateHmac = (msg) => {
   return hmacSha256(msg, 'prismalink2019').toString()
 }
 export const setSession = async (newSession, cb) => {
+  console.log('setSession')
+  console.log('newSession==>', setSession)
   let encryptedCurrentSession = await AsyncStorage.getItem(AppConfig.sessionData)
   let currentSessionJson = {}
   if (encryptedCurrentSession) {
@@ -79,26 +83,29 @@ export const setSession = async (newSession, cb) => {
     var decryptedData = bytes.toString(EncUtf8)
     currentSessionJson = JSON.parse(decryptedData)
     currentSessionJson = merge(currentSessionJson, newSession)
+    console.log('currentSessionJson===>', currentSessionJson)
   }
-    console.log('currentSessionJson1==>', currentSessionJson)
+  console.log('currentSessionJson1==>', currentSessionJson)
   var ciphertext = AES.encrypt(JSON.stringify(currentSessionJson), 'prismalink2019')
   var encryptedData = ciphertext.toString()
   await AsyncStorage.setItem(AppConfig.sessionData, encryptedData)
   if (cb) cb()
+  return encryptedData
 }
-export const getSession = async (parameter) => {
+export const getSession = async (parameter, parameterInState) => {
+  if (parameterInState !== null && parameterInState !== '' && parameterInState !== undefined) return parameterInState
   let encryptedCurrentSession = await AsyncStorage.getItem(AppConfig.sessionData)
-console.log('encryptedCurrentSession=', encryptedCurrentSession)
+  console.log('encryptedCurrentSession=', encryptedCurrentSession)
   let currentSessionJson = {}
   if (encryptedCurrentSession) {
     // decrypt
     var bytes = AES.decrypt(encryptedCurrentSession, 'prismalink2019')
     var decryptedData = bytes.toString(EncUtf8)
-        console.log('decryptedData=', decryptedData)
+    console.log('decryptedData=', decryptedData)
     currentSessionJson = JSON.parse(decryptedData)
   }
   let sessionValue = path([parameter], currentSessionJson) || ''
-console.log('getSession parameter=', parameter)
-console.log('getSession sessionValue=', sessionValue)
+  console.log('getSession parameter=', parameter)
+  console.log('getSession sessionValue=', sessionValue)
   return sessionValue
 }
