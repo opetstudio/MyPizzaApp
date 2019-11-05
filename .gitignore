@@ -62,3 +62,4 @@ buck-out/
 App2/
 db.js
 FirebaseConstants.js
+ios/Pods

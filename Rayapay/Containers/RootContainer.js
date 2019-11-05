@@ -40,7 +40,7 @@ class RootContainer extends Component {
     return (
       <Root>
         <StyledView style={{ paddingHorizontal: 0 }} isLoading={this.props.loading}>
-          <StyledStatusBar
+          {!isIphoneX && <StyledStatusBar
             translucent
             backgroundColor={
             isIphoneX
@@ -49,7 +49,7 @@ class RootContainer extends Component {
           }
             barStyle='light-content'
             StatusBarAnimation='fade'
-          />
+          />}
           <Dialog
             message={this.props.message}
             isOpen={this.props.isOpen}

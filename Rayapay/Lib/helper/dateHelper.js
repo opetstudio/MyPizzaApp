@@ -1,7 +1,7 @@
 import Moment from 'moment'
 import { isEmpty } from 'lodash'
 import { textMessage } from './languageSelector'
-import { defaultTime } from '../../config'
+// import { defaultTime } from '../../config'
 
 export function getDate (ISODate) {
   const date = Moment(ISODate)
@@ -39,19 +39,19 @@ export function checkIsCurrentTimeBetween (momentStart, momentEnd) {
   return Moment().isBetween(momentStart, momentEnd)
 }
 
-export function getTimeWithinRange (timestamp) {
-  if (getCurrentTimestamp() - timestamp > defaultTime) {
-    return true
-  }
-  return false
-}
+// export function getTimeWithinRange (timestamp) {
+//   if (getCurrentTimestamp() - timestamp > defaultTime) {
+//     return true
+//   }
+//   return false
+// }
 
-export function checkTimeout (timestamp, maxTime = defaultTime) {
-  if (getCurrentTimestamp() - timestamp > maxTime) {
-    return true
-  }
-  return false
-}
+// export function checkTimeout (timestamp, maxTime = defaultTime) {
+//   if (getCurrentTimestamp() - timestamp > maxTime) {
+//     return true
+//   }
+//   return false
+// }
 
 export function inMinutes (minutes) {
   if (isEmpty(minutes)) {

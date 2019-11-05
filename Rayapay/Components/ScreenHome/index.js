@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, ImageBackground, Text, StatusBar, Image, ScrollView } from 'react-native'
+import PropTypes from 'prop-types'
 import { Center } from '@builderx/utils'
 import Svg, { Ellipse } from 'react-native-svg'
 import _ from 'lodash'
@@ -8,8 +9,42 @@ import {
 } from 'native-base'
 import MaterialIconButtonsFooter from '../symbols/MaterialIconButtonsFooter'
 import Footer from '../../Containers/Footer'
+import CardList from '../CardList'
 import Icon from '@builderx/icons'
 import { Images, Metrics } from '../../Themes'
+import Header from '../Header'
+import AppConfig from '../../Config/AppConfig'
+
+const datastructure = require('../../Data/datastructure.json')
+
+
+const propTypes = {
+  featuredData: PropTypes.array,
+  wcmsUrl: PropTypes.string,
+  locale: PropTypes.string,
+  providers: PropTypes.array,
+  categoriesConfig: PropTypes.array,
+  genresConfigList: PropTypes.array,
+  carousalData: PropTypes.array,
+  onClickMoreCategory: PropTypes.func,
+  onClickMoreGenre: PropTypes.func,
+  showPopup: PropTypes.func
+  // onClickItem: PropTypes.func.isRequired
+}
+const defaultProps = {
+  featuredData: datastructure.featuredData,
+  wcmsUrl: '',
+  providers: [
+    {
+      tid: 'resourceId1',
+      name: 'providername'
+    }
+  ],
+  categoriesConfig: [],
+  genresConfigList: [],
+  carousalData: [],
+  locale: ''
+}
 
 export default class ScreenHome extends Component {
   constructor (props) {
@@ -20,110 +55,91 @@ export default class ScreenHome extends Component {
   _onSelectTab (activeTab) {
     this.setState({activeTab: activeTab})
   }
+  navigateToContentDetailScreen (id) {
+    this.props.onClickItem(id)
+  }
   render () {
+    const {
+      featuredData,
+      wcmsUrl,
+      locale,
+      providers
+    } = this.props
     return (
       <Container>
-      {/* <View style={styles.root}> */}
-        {/* <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}> */}
-          {/* <View style={styles.rect} />
-          <Center horizontal>
-            <Svg viewBox={NaN} style={styles.ellipse2}>
-              <Ellipse
-                strokeWidth={1}
-                fill={'rgba(230, 230, 230,1)'}
-                stroke={'rgba(230, 230, 230,1)'}
-                cx={50}
-                cy={50}
-                rx={49.5}
-                ry={49.5}
+        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1, width: null, height: null}}>
+          {/* <Header
+            // isHomePage
+            // hasHamburger
+            // hasSearch
+            navigation={this.props.navigation}
+            noBackground
+            noTitle
+            // title={AppConfig.appName}
+          /> */}
+          <ScrollView style={{ flex: 1 }}>
+            <CardList
+              items={featuredData}
+              onItemPress={this.navigateToContentDetailScreen}
+              rootURL={wcmsUrl}
+              locale={locale}
+              providers={providers}
             />
-            </Svg>
-          </Center>
-          <Center horizontal>
-            <Text style={styles.text}>Berty Tumatangtangggg</Text>
-            <Text style={styles.text2}>2.730,330,00</Text>
-            <Text style={styles.text3}>Choose Your Payment Card</Text>
-          </Center>
-          <View style={styles.centered}>
-            <Image source={Images.logo3} style={styles.logo} />
-          </View>
-          <Icon
-            type={'MaterialCommunityIcons'}
-            name={'chevron-left'}
-            style={styles.icon}
-        />
-          <Icon
-            type={'MaterialCommunityIcons'}
-            name={'chevron-right'}
-            style={styles.icon2}
-        />
-        <Icon onPress={() => this.props.navigation.navigate('ScreenCard')}
-            type={'MaterialCommunityIcons'}
-            name={'credit-card-plus'}
-            style={styles.icon3}
-        />
-          <Center horizontal>
-            <Text style={styles.text4}>Rayapay (Default)</Text>
-          </Center> */}
-          {/* <MaterialIconButtonsFooter style={styles.materialIconButtonsFooter} /> */}
-          
-        {/* </ImageBackground> */}
-        <ScrollView style={{ flex: 1 }}>
-          <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}>
-            <View style={styles.rect} />
-          <Center horizontal>
-            <Svg viewBox={NaN} style={styles.ellipse2}>
-              <Ellipse
-                strokeWidth={1}
-                fill={'rgba(230, 230, 230,1)'}
-                stroke={'rgba(230, 230, 230,1)'}
-                cx={50}
-                cy={50}
-                rx={49.5}
-                ry={49.5}
+            {/* <View style={styles.rect} />
+            <Center horizontal>
+              <Svg viewBox={NaN} style={styles.ellipse2}>
+                <Ellipse
+                  strokeWidth={1}
+                  fill={'rgba(230, 230, 230,1)'}
+                  stroke={'rgba(230, 230, 230,1)'}
+                  cx={50}
+                  cy={50}
+                  rx={49.5}
+                  ry={49.5}
+                />
+              </Svg>
+            </Center>
+            <Center horizontal>
+              <Text style={styles.text}>Berty Tumatangtangggg</Text>
+              <Text style={styles.text2}>2.730,330,00</Text>
+              <Text style={styles.text3}>Choose Your Payment Card</Text>
+            </Center>
+            <View style={styles.centered}>
+              <Image source={Images.logo3} style={styles.logo} />
+            </View> */}
+            {/* <Icon
+              type={'MaterialCommunityIcons'}
+              name={'chevron-left'}
+              style={styles.icon}
+            /> */}
+            {/* <Icon
+              type={'MaterialCommunityIcons'}
+              name={'chevron-right'}
+              style={styles.icon2}
             />
-            </Svg>
-          </Center>
-          <Center horizontal>
-            <Text style={styles.text}>Berty Tumatangtangggg</Text>
-            <Text style={styles.text2}>2.730,330,00</Text>
-            <Text style={styles.text3}>Choose Your Payment Card</Text>
-          </Center>
-          <View style={styles.centered}>
-            <Image source={Images.logo3} style={styles.logo} />
-          </View>
-          <Icon
-            type={'MaterialCommunityIcons'}
-            name={'chevron-left'}
-            style={styles.icon}
-        />
-          <Icon
-            type={'MaterialCommunityIcons'}
-            name={'chevron-right'}
-            style={styles.icon2}
-        />
-        <Icon onPress={() => this.props.navigation.navigate('ScreenCard')}
-            type={'MaterialCommunityIcons'}
-            name={'credit-card-plus'}
-            style={styles.icon3}
-        />
-          <Center horizontal>
-            <Text style={styles.text4}>Rayapay (Default)</Text>
-          </Center>
-          {/* <MaterialIconButtonsFooter style={styles.materialIconButtonsFooter} /> */}
-          
-          </ImageBackground>
-        </ScrollView>
+            <Icon onPress={() => this.props.navigation.navigate('ScreenCard')}
+              type={'MaterialCommunityIcons'}
+              name={'credit-card-plus'}
+              style={styles.icon3}
+            /> */}
+            {/* <Center horizontal>
+              <Text style={styles.text4}>Rayapay (Default)</Text>
+            </Center> */}
+            {/* <MaterialIconButtonsFooter style={styles.materialIconButtonsFooter} /> */}
+          </ScrollView>
+        </ImageBackground>
         <Footer
           onSelectTab={this._onSelectTab}
           initialTab={'tab1'}
           navigation={this.props.navigation}
           />
-      {/* </View> */}
       </Container>
     )
   }
 }
+
+ScreenHome.propTypes = propTypes
+ScreenHome.defaultProps = defaultProps
 
 const styles = StyleSheet.create({
   root: {

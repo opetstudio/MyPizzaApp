@@ -63,6 +63,7 @@ class ScreenLogin extends React.Component {
                   selectionColor='#000'
                   keyboardType='email-address'
                   onChangeText={(v) => this.setState({userid: v})}
+                  textAlign={'center'}
               />
                 <TextInput style={styles.inputBox}
                   placeholder='Password'
@@ -70,6 +71,7 @@ class ScreenLogin extends React.Component {
                   selectionColor='#000'
                   secureTextEntry
                   onChangeText={(v) => this.setState({password: v})}
+                  textAlign={'center'}
               />
               </View>
               <View style={{marginTop: 20}}>

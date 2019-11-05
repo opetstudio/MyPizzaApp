@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {SafeAreaView, View} from 'react-navigation'
+import {SafeAreaView, View} from 'react-native'
 import PropTypes from 'prop-types'
 
 import styles from './styles'

@@ -26,7 +26,7 @@ class ScreenAuthLoading extends React.Component {
     const isLogin = await isLoggedIn(this.props.sessionToken)
     console.log('_bootstrapAsync isLogin=>>>>>>>', isLogin)
     console.log('_bootstrapAsync this.props.isLoggedIn=>>>>>>>', this.props.isLoggedIn)
-    if (isLogin && (this.props.isLoggedIn === null || !this.props.isLoggedIn)) {
+    if (isLogin && !this.props.isLoggedIn) {
       this.props.sessionPatch({isLoggedIn: true})
     }
     if (!isLogin && this.props.isLoggedIn) {
