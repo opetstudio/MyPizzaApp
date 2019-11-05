@@ -74,7 +74,12 @@ const images = {
   logoAsuransi: require('../Images/menu_icon/asuransi.png'),
   logoTiket: require('../Images/menu_icon/tiket.png'),
   logoCicilan: require('../Images/menu_icon/cicilan.png'),
-  logoCc: require('../Images/menu_icon/cc.png')
+  logoCc: require('../Images/menu_icon/cc.png'),
+
+  // footer menu
+  scan: require('../Images/Scan/scanIcon.png'),
+  QR: require('../Images/QR/qrIcon.png'),
+  logout: require('../Images/Logout/logoutIcon.png')
 
 }
 
