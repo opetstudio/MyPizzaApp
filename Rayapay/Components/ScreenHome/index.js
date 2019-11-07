@@ -14,6 +14,11 @@ import Icon from '@builderx/icons'
 import { Images, Metrics } from '../../Themes'
 import Header from '../Header'
 import AppConfig from '../../Config/AppConfig'
+import BoxStatus from '../../Containers/ScreenHome/BoxStatus'
+
+import MaterialIconTextButtonsFooter from '../MaterialIconTextButtonsFooter'
+import {MaterialCardWithContentAndActionButtons} from '../ProfileComponent'
+
 
 const datastructure = require('../../Data/datastructure.json')
 
@@ -66,8 +71,15 @@ export default class ScreenHome extends Component {
       providers
     } = this.props
     return (
-      <Container>
-        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1, width: null, height: null}}>
+      <Container> 
+      <View style={{backgroundColor: 'yellow', flex: 1}}>
+        <MaterialCardWithContentAndActionButtons />
+      {/* <View style={styles.container}> */}
+         {/* <MaterialIconTextButtonsFooter
+          style={styles.materialIconTextButtonsFooter}
+        /> */}
+        {/* <Container> */}
+        {/* <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1, width: null, height: null}}> */}
           {/* <Header
             // isHomePage
             // hasHamburger
@@ -77,14 +89,15 @@ export default class ScreenHome extends Component {
             noTitle
             // title={AppConfig.appName}
           /> */}
-          <ScrollView style={{ flex: 1 }}>
-            <CardList
+          {/* <ScrollView style={{ flex: 1 }}> */}
+            {/* <BoxStatus /> */}
+            {/* <CardList
               items={featuredData}
               onItemPress={this.navigateToContentDetailScreen}
               rootURL={wcmsUrl}
               locale={locale}
               providers={providers}
-            />
+            /> */}
             {/* <View style={styles.rect} />
             <Center horizontal>
               <Svg viewBox={NaN} style={styles.ellipse2}>
@@ -126,13 +139,20 @@ export default class ScreenHome extends Component {
               <Text style={styles.text4}>Rayapay (Default)</Text>
             </Center> */}
             {/* <MaterialIconButtonsFooter style={styles.materialIconButtonsFooter} /> */}
-          </ScrollView>
-        </ImageBackground>
-        <Footer
+          {/* </ScrollView> */}
+        {/* </ImageBackground> */}
+        {/* <Footer
           onSelectTab={this._onSelectTab}
           initialTab={'tab1'}
           navigation={this.props.navigation}
-          />
+          /> */}
+      {/* </Container> */}
+        
+      {/* </View> */}
+      <View style={{backgroundColor: 'blue', height: 50}}>
+        <Text>home</Text>
+      </View>
+      </View>
       </Container>
     )
   }
@@ -142,6 +162,15 @@ ScreenHome.propTypes = propTypes
 ScreenHome.defaultProps = defaultProps
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  materialIconTextButtonsFooter: {
+    width: 375,
+    height: 78,
+    marginTop: 734,
+    alignSelf: "center"
+  },
   root: {
     flex: 1
   },

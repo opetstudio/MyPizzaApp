@@ -25,7 +25,8 @@ const colors = {
   backgroundDark: '#202020',
   
   // colorPrimaryDark: '#008395',
-  colorPrimaryDark: 'rgba(189,12,12,1)',
+  colorPrimaryDark: '#eb1c24',
+  // colorPrimaryDark: 'rgba(189,12,12,1)',
 
   colorPrimary: '#00BAD4',
   colorPrimary1: '#17DFFB',

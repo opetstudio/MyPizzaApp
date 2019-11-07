@@ -17,7 +17,9 @@ import {
   } from 'native-base'
 import _ from 'lodash'
 import {Image} from 'react-native'
+import {isIphoneX} from '../../Lib/helper/platform'
 import {Images} from '../../Themes'
+import {styles} from './styles'
 
 export default class FooterComponent extends Component {
   constructor (props) {
@@ -66,7 +68,7 @@ export default class FooterComponent extends Component {
   }
   render () {
     return (
-      <Footer style={{backgroundColor: '#434343', height: 25}}>
+      <Footer style={isIphoneX ? styles.footerIos : styles.footerAndro}>
         <FooterTab tabActiveBgColor='yellow'>
           <Button
             active={this.state.tab1}
