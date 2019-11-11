@@ -4,6 +4,7 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
 import com.horcrux.svg.SvgPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
@@ -24,7 +25,6 @@ import com.BV.LinearGradient.LinearGradientPackage;
 import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
-import com.oblador.vectoricons.VectorIconsPackage;
 import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -62,6 +62,7 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new VectorIconsPackage(),
                 new SvgPackage(),
                 new RCTPdfView(),
                 new ReactNativeYouTube(),
@@ -82,7 +83,6 @@ public class MainApplication extends Application implements ReactApplication {
                 new ReactNativeConfigPackage(),
                 new RNDeviceInfo(),
                 new RNI18nPackage(),
-                new VectorIconsPackage(),
                 new RNGestureHandlerPackage()
           );
         }

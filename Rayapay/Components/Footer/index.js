@@ -17,7 +17,9 @@ import {
   } from 'native-base'
 import _ from 'lodash'
 import {Image} from 'react-native'
+import {isIphoneX} from '../../Lib/helper/platform'
 import {Images} from '../../Themes'
+import {styles} from './styles'
 
 export default class FooterComponent extends Component {
   constructor (props) {
@@ -66,28 +68,38 @@ export default class FooterComponent extends Component {
   }
   render () {
     return (
-      <Footer style={{backgroundColor: '#434343', height: 25}}>
+      <Footer style={isIphoneX ? styles.footerIos : styles.footerAndro}>
         <FooterTab tabActiveBgColor='yellow'>
           <Button
             active={this.state.tab1}
             onPress={() => this.toggleTab1()}
             vertical
-            style={{backgroundColor: 'blue'}}
+            style={{backgroundColor: this.state.tab1 ? 'blue' : '#434343'}}
             // badge
           >
             {/* <Badge>
               <Text>2</Text>
             </Badge> */}
-            <Icon active={this.state.tab1} name='apps' />
-            <Text>Apps</Text>
+            {/* <Icon active={this.state.tab1} name='apps' /> */}
+            <Image source={Images.QR} />
+            {/* <Text>Apps</Text> */}
           </Button>
-          <Button active={this.state.tab2} onPress={() => this.toggleTab2()}>
+          <Button
+            active={this.state.tab2}
+            onPress={() => this.toggleTab2()}
+            style={{backgroundColor: this.state.tab2 ? 'blue' : '#434343'}}
+          >
             {/* <Icon active={this.state.tab2} name='camera' /> */}
-            <Image source={Images.upcomingIcon} />
+            <Image source={Images.scan} />
             {/* <Text>Pay</Text> */}
           </Button>
-          <Button active={this.state.tab3} onPress={() => this.props.sessionLogout()}>
-            <Icon active={this.state.tab2} name='camera' />
+          <Button
+            active={this.state.tab3}
+            onPress={() => this.props.sessionLogout()}
+            style={{backgroundColor: this.state.tab3 ? 'blue' : '#434343'}}
+          >
+            {/* <Icon active={this.state.tab2} name='camera' /> */}
+            <Image source={Images.logout} />
             {/* <Text>Logout</Text> */}
           </Button>
         </FooterTab>

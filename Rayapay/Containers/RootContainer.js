@@ -15,11 +15,16 @@ import StyledView from '../Components/StyledView'
 import StyledStatusBar from './StyledStatusBar'
 import SafeArea from '../Components/SafeArea'
 
+import {View, SafeAreaView, Text, StyleSheet} from 'react-native'
+import {Metrics} from '../Themes'
+
 // Styles
 import { Colors } from '../Themes'
 
 import PopupActions, { PopupSelectors } from '../Redux/PopupRedux'
 import AppActions, {AppSelectors} from '../Redux/AppRedux'
+import MaterialIconTextButtonsFooter from './MaterialIconTextButtonsFooter'
+import metrics from '../Themes/Metrics'
 
 class RootContainer extends Component {
   constructor (props) {
@@ -60,11 +65,20 @@ class RootContainer extends Component {
           ) : (
             navigator
           )}
+          <MaterialIconTextButtonsFooter style={styles.materialIconTextButtonsFooter} />
         </StyledView>
       </Root>
     )
   }
 }
+const styles = StyleSheet.create({
+  materialIconTextButtonsFooter: {
+    width: metrics.screenWidth,
+    height: isIphoneX ? 78 : 40,
+    marginTop: 734,
+    alignSelf: 'center'
+  }
+})
 
 const mapStateToProps = (state) => {
   return {
