@@ -1,90 +1,90 @@
-import React, { Component } from "react";
-import { StyleSheet, View, Image, Text } from "react-native";
-import { Center } from "@builderx/utils";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
+import { Center } from '@builderx/utils'
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import {isIphoneX} from '../../../../Lib/helper/platform'
+import {Images} from '../../../../Themes'
 
 export default class MaterialCardWithContentAndActionButtons extends Component {
-  render() {
+  static propTypes = {
+    showSaldo: PropTypes.bool
+  }
+  //
+  // // Defaults for props
+  static defaultProps = {
+    showSaldo: true
+  }
+  constructor (props) {
+    super(props)
+    this.state = {
+      showSaldo: this.props.showSaldo
+    }
+    this._toggleShowSaldo = this._toggleShowSaldo.bind(this)
+  }
+  _toggleShowSaldo () {
+    this.setState({showSaldo: !this.state.showSaldo})
+  }
+  render () {
     return (
       <View style={[styles.container, this.props.style]}>
         <Image
-          source={require("../assets/images/cardImage2.png")}
+          source={require('../assets/images/cardImage2.png')}
           style={styles.image}
         />
-        <Center horizontal>
-          <Text style={styles.text}>Julian</Text>
-        </Center>
-        <Center horizontal>
+        {/* <Center horizontal> */}
+        <Text style={styles.text}>Julian</Text>
+        {/* </Center> */}
+        {/* <Center horizontal> */}
+        {/* </Center> */}
+        {this.state.showSaldo && (<TouchableOpacity style={styles.iconStack} onPress={this._toggleShowSaldo}>
           <Text style={styles.text2}>My wallet</Text>
-        </Center>
-        <View style={styles.iconStack}>
-          <Icon name="chevron-down" style={styles.icon} />
           <Text style={styles.text3}>IDR 900,000</Text>
-        </View>
+        </TouchableOpacity>)}
+        {!this.state.showSaldo && (<TouchableOpacity style={styles.iconStack} onPress={this._toggleShowSaldo}>
+          <Image source={Images.walletIcon} />
+        </TouchableOpacity>)}
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "rgba(218,55,49,1)",
-    alignItems: "center",
-    flexWrap: "nowrap",
-    elevation: 3,
+    backgroundColor: 'rgba(218,55,49,1)',
+    alignItems: 'center',
     borderRadius: 2,
-    borderColor: "#CCC",
-    borderWidth: 1,
-    shadowOffset: {
-      height: 2,
-      width: -2
-    },
-    shadowColor: "#000",
-    shadowOpacity: 0.1,
-    shadowRadius: 1.5,
-    overflow: "hidden"
+    overflow: 'hidden'
   },
   image: {
     width: 103,
     height: 103,
-    backgroundColor: "#CCC",
-    margin: 62,
-    borderRadius: 100
+    backgroundColor: '#CCC',
+    borderRadius: isIphoneX ? 50 : 100,
+    margin: 20
   },
   text: {
-    top: 193,
-    color: "rgba(255,255,255,1)",
-    position: "absolute",
+    color: 'rgba(255,255,255,1)',
     fontSize: 25,
-    fontFamily: "roboto-700"
+    fontFamily: 'Roboto-Bold'
   },
   text2: {
-    top: 231,
-    color: "rgba(255,255,255,1)",
-    position: "absolute",
+    color: 'rgba(255,255,255,1)',
     fontSize: 15,
-    fontFamily: "roboto-300"
+    fontFamily: 'roboto-Light'
   },
   icon: {
-    top: 24,
-    position: "absolute",
-    color: "rgba(255,255,255,1)",
-    fontSize: 40,
-    left: 51
+    color: 'rgba(255,255,255,1)',
+    fontSize: 40
   },
   text3: {
-    top: 0,
-    color: "rgba(255,253,84,1)",
-    position: "absolute",
+    color: 'rgba(255,253,84,1)',
     fontSize: 25,
-    fontFamily: "helvetica-regular",
-    left: 0
+    fontFamily: 'roboto-Light'
   },
   iconStack: {
-    top: 255,
-    left: 109,
-    width: 141,
-    height: 64,
-    position: "absolute"
+    width: '100%',
+    alignItems: 'center',
+    margin: 10
   }
-});
+})

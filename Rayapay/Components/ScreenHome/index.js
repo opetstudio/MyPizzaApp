@@ -72,7 +72,7 @@ export default class ScreenHome extends Component {
     } = this.props
     return (
       <Container> 
-      <View style={{backgroundColor: 'yellow', flex: 1}}>
+      {/* <View style={{backgroundColor: 'yellow', flex: 1}}> */}
         <MaterialCardWithContentAndActionButtons />
       {/* <View style={styles.container}> */}
          {/* <MaterialIconTextButtonsFooter
@@ -149,10 +149,10 @@ export default class ScreenHome extends Component {
       {/* </Container> */}
         
       {/* </View> */}
-      <View style={{backgroundColor: 'blue', height: 50}}>
+      {/* <View style={{backgroundColor: 'blue', height: 50}}>
         <Text>home</Text>
-      </View>
-      </View>
+      </View> */}
+      {/* </View> */}
       </Container>
     )
   }

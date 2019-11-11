@@ -75,6 +75,8 @@ const images = {
   logoTiket: require('../Images/menu_icon/tiket.png'),
   logoCicilan: require('../Images/menu_icon/cicilan.png'),
   logoCc: require('../Images/menu_icon/cc.png'),
+  
+  walletIcon: require('../Images/Wallet/walletIcon.png'),
 
   // footer menu
   scan: require('../Images/Scan/scanIcon.png'),
