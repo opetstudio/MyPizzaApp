@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousal Item should render correctly 1`] = `
+<View>
+  <StyledTouchableOpacity
+    disabled={false}
+    onPress={[Function]}
+  >
+    <ImageWithDefault
+      defaultImage="test-file-stub"
+      imageUrl="https://i.ytimg.com/vi/tgBbT2c0hiI/hqdefault.jpg"
+    >
+      <View
+        style={
+          Object {
+            "alignSelf": "flex-start",
+            "marginLeft": 5,
+            "marginTop": 5,
+          }
+        }
+      />
+    </ImageWithDefault>
+  </StyledTouchableOpacity>
+</View>
+`;
