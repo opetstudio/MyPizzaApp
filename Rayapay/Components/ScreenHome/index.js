@@ -3,13 +3,12 @@ import { StyleSheet, View, ImageBackground, Text, StatusBar, Image, ScrollView }
 import PropTypes from 'prop-types'
 import { Center } from '@builderx/utils'
 import Svg, { Ellipse } from 'react-native-svg'
-import _ from 'lodash'
+import _, {concat, filter} from 'lodash'
 import {
   Container
 } from 'native-base'
 import MaterialIconButtonsFooter from '../symbols/MaterialIconButtonsFooter'
 import Footer from '../../Containers/Footer'
-import CardList from '../CardList'
 import Icon from '@builderx/icons'
 import { Images, Metrics } from '../../Themes'
 import Header from '../Header'
@@ -18,6 +17,7 @@ import BoxStatus from '../../Containers/ScreenHome/BoxStatus'
 
 import MaterialIconTextButtonsFooter from '../MaterialIconTextButtonsFooter'
 import {MaterialCardWithContentAndActionButtons} from '../ProfileComponent'
+import CardCarousels from '../CardCarousels'
 
 
 const datastructure = require('../../Data/datastructure.json')
@@ -68,12 +68,39 @@ export default class ScreenHome extends Component {
       featuredData,
       wcmsUrl,
       locale,
-      providers
+      providers,
+      categoriesConfig,
+      genresConfigList,
+      carousalData,
+      onClickMoreCategory,
+      onClickMoreGenre
     } = this.props
+
+    const combinedConfig = concat(categoriesConfig, genresConfigList)
+    const marketPlaceData = filter(carousalData, c => {
+      return c.tab === 'marketplace'
+    })
+
+    const sourceOfFund = (
+      <View>
+        <CardCarousels
+          config={combinedConfig}
+          data={marketPlaceData}
+          locale={locale}
+          onClickMoreCategory={onClickMoreCategory}
+          onClickMoreGenre={onClickMoreGenre}
+          onItemPress={this.navigateToContentDetailScreen}
+          wcmsUrl={wcmsUrl}
+          providers={providers}
+        />
+      </View>
+    )
+
     return (
       <Container> 
       {/* <View style={{backgroundColor: 'yellow', flex: 1}}> */}
         <MaterialCardWithContentAndActionButtons />
+        {sourceOfFund}
       {/* <View style={styles.container}> */}
          {/* <MaterialIconTextButtonsFooter
           style={styles.materialIconTextButtonsFooter}

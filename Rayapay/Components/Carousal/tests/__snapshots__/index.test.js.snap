@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Section should render correctly 1`] = `null`;
+
+exports[`Carousel Section should render correctly with mocked props 1`] = `null`;
+
+exports[`Carousel Section should render correctly with mocked props with displayMore 1`] = `null`;
+
+exports[`Carousel Section should render correctly with mocked props with icon 1`] = `null`;
+
+exports[`Carousel Section should render correctly with mocked props with titleInfo 1`] = `null`;
