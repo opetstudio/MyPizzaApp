@@ -155,16 +155,19 @@ android {
         pickFirst 'lib/x86_64/libc++_shared.so'
         pickFirst 'lib/armeabi-v7a/libc++_shared.so'
     }
+    dexOptions {
+       javaMaxHeapSize "3g"
+    }
 }
 
 dependencies {
+    implementation project(':react-native-orientation')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-svg')
     implementation project(':react-native-pdf')
     implementation project(':react-native-youtube')
     implementation project(':rn-fetch-blob')
     implementation project(':react-native-video')
-    implementation project(':react-native-orientation')
     implementation project(':react-native-fbsdk')
     implementation project(':react-native-firebase')
     implementation project(':react-native-code-push')

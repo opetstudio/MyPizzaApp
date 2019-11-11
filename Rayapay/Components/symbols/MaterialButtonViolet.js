@@ -7,7 +7,7 @@ class MaterialButtonViolet extends Component {
     return (
       // <TouchableOpacity style={[styles.container, this.props.style]} onPress={() => this.props.navigation.navigate('ScreenEmailconfirm')}>
       <TouchableOpacity style={[styles.container, this.props.style]} onPress={this.props.onPress}>
-        <Text style={styles.caption}>Sign Up</Text>
+        <Text style={styles.caption}>{this.props.title || 'Sign Up'}</Text>
       </TouchableOpacity>
     );
   }

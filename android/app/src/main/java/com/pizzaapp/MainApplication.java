@@ -4,13 +4,13 @@ import android.app.Application;
 
 import com.facebook.CallbackManager;
 import com.facebook.react.ReactApplication;
+import com.github.yamill.orientation.OrientationPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.horcrux.svg.SvgPackage;
 import org.wonday.pdf.RCTPdfView;
 import com.inprogress.reactnativeyoutube.ReactNativeYouTube;
 import com.RNFetchBlob.RNFetchBlobPackage;
 import com.brentvatne.react.ReactVideoPackage;
-import com.github.yamill.orientation.OrientationPackage;
 import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.admob.RNFirebaseAdMobPackage;
@@ -62,13 +62,13 @@ public class MainApplication extends Application implements ReactApplication {
         protected List<ReactPackage> getPackages() {
           return Arrays.<ReactPackage>asList(
               new MainReactPackage(),
+            new OrientationPackage(),
             new VectorIconsPackage(),
                 new SvgPackage(),
                 new RCTPdfView(),
                 new ReactNativeYouTube(),
                 new RNFetchBlobPackage(),
                 new ReactVideoPackage(),
-                new OrientationPackage(),
                 new FBSDKPackage(mCallbackManager),
                 new RNFirebasePackage(),
                 new RNFirebaseAdMobPackage(),
