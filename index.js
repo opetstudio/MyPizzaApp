@@ -1,11 +1,11 @@
-import './App/Config/ReactotronConfig'
-import { AppRegistry } from 'react-native'
-import App from './Rayapay/Containers/App'
-// import App from './MgmApp/Containers/App'
-// import App from './Bayar2App/Containers/App'
-// import App from './SkeletonApp/Containers/App'
-// import App from './App/Containers/App'
-// import App from './JApp/Containers/App'
-// import App from './storybook'
+/**
+ * @format
+ */
 
-AppRegistry.registerComponent('PizzaApp', () => App)
+import {AppRegistry} from 'react-native';
+// import App from './CameraApp';
+// import App from './App';
+import App from './xpay/Containers/App'
+import {name as appName} from './app.json';
+
+AppRegistry.registerComponent(appName, () => App);
