@@ -1,5 +1,7 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="com.pizzaapp">
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.pizzaapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> 
@@ -7,6 +9,7 @@
 
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <!--android:networkSecurityConfig="@xml/network_security_config"-->
     <application
@@ -16,7 +19,10 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme" android:launchMode="singleTop"
-      android:networkSecurityConfig="@xml/network_security_config">
+      android:networkSecurityConfig="@xml/network_security_config"
+        tools:replace="android:appComponentFactory"
+        android:appComponentFactory="whateverString"
+        >
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"
