@@ -14,6 +14,7 @@ import ScreenOTP from '../Components/ScreenOTP'
 import ScreenTransactionsuccess from '../Components/ScreenTransactionsuccess'
 import ScreenSignup from '../Components/ScreenSignup'
 import ScreenScanThisQR from '../Components/ScreenScanThisQR'
+import ScreenScanQr from '../Components/ScreenScanQr'
 import ScreenAmount from '../Components/ScreenAmount'
 import ScreenEmailconfirm from '../Components/ScreenEmailconfirm'
 import ScreenCard from '../Components/ScreenCard'
@@ -40,6 +41,7 @@ const loggedinNavigator = StackNavigator({
   ScreenQr: { screen: ScreenQr},
   ScreenTransactiondetail: { screen: ScreenTransactiondetail},
   ScreenOTP: { screen: ScreenOTP},
+  ScreenScanQr: { screen: ScreenScanQr},
   ScreenTransactionsuccess: { screen: ScreenTransactionsuccess},
   ScreenScanThisQR: { screen: ScreenScanThisQR},
   ScreenAmount: { screen: ScreenAmount},

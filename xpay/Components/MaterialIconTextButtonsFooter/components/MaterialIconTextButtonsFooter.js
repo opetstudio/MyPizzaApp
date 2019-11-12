@@ -12,7 +12,7 @@ export default class MaterialIconTextButtonsFooter extends Component {
           {/* <MaterialCommunityIconsIcon name='timer' style={styles.icon1} /> */}
           {/* <Text style={styles.btn1Text}>Recent</Text> */}
         </TouchableOpacity>
-        <TouchableOpacity style={styles.activeButtonWrapper}>
+        <TouchableOpacity style={styles.activeButtonWrapper} onPress={() => this.props.navigation.navigate('ScreenScanQr')}>
           <Image source={Images.scan} />
           {/* <MaterialCommunityIconsIcon name='heart' style={styles.activeIcon} /> */}
           {/* <Text style={styles.activeContent}>Favorites</Text> */}

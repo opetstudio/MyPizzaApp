@@ -16,6 +16,7 @@ export default class Index extends Component {
         <MaterialIconTextButtonsFooter
           style={styles.materialIconTextButtonsFooter}
           sessionLogout={this.props.sessionLogout}
+          navigation={this.props.navigation}
         />
       </View>
     )

@@ -74,7 +74,7 @@ export default class ScreenHome extends Component {
           <View style={{flex: 1}}>
             <MaterialCardWithContentAndActionButtons />
           </View>
-          <View style={{height: 250, width: Metrics.screenWidth, backgroundColor: 'blue'}}>
+          <View style={{height: 250, backgroundColor: 'blue'}}>
             <CardSwipe />
           </View>
           <MaterialButtonViolet title={'Add Card'} onPress={() => this.props.navigation.navigate('ScreenCard')} style={styles.ButtonVioletSignUp} />
