@@ -24,8 +24,6 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
-import { RNCamera, FaceDetector } from 'react-native-camera';
-
 const App: () => React$Node = () => {
   return (
     <>

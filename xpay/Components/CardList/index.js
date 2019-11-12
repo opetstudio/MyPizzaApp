@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, View } from 'react-native'
 import { isEmpty, isNull, isUndefined } from 'lodash'
-import Swiper from 'react-native-swiper' // eslint-disable-line import/default
+import Swiper from 'react-native-page-swiper' // eslint-disable-line import/default
 import LinearGradient from 'react-native-linear-gradient'
 import { Colors as colors, Images } from '../../Themes'
 import { styles, containerHeight } from './styles'

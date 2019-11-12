@@ -1,8 +1,8 @@
 platform :ios, '9.0'
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 
-target 'PizzaApp' do
-  # Pods for PizzaApp
+target 'MyPizzaApp' do
+  # Pods for MyPizzaApp
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -34,9 +34,7 @@ target 'PizzaApp' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-
-
-  target 'PizzaAppTests' do
+  target 'MyPizzaAppTests' do
     inherit! :search_paths
     # Pods for testing
   end
@@ -44,10 +42,10 @@ target 'PizzaApp' do
   use_native_modules!
 end
 
-target 'PizzaApp-tvOS' do
-  # Pods for PizzaApp-tvOS
+target 'MyPizzaApp-tvOS' do
+  # Pods for MyPizzaApp-tvOS
 
-  target 'PizzaApp-tvOSTests' do
+  target 'MyPizzaApp-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

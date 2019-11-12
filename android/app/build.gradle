@@ -128,7 +128,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.pizzaapp"
+        applicationId "com.mypizzaapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

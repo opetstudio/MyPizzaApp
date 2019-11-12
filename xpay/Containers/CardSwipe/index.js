@@ -8,7 +8,7 @@ import {
   Text
 } from 'react-native'
 import {Images, Metrics} from '../../Themes'
-import Swiper from 'react-native-swiper'
+import Swiper from 'react-native-page-swiper'
 
 const width = Metrics.screenWidth
 const height = Metrics.screenHeight

@@ -33,7 +33,7 @@ export default class MaterialCardWithContentAndActionButtons extends Component {
           style={styles.image}
         />
         {/* <Center horizontal> */}
-        <Text style={styles.text}>Julian</Text>
+        <Text style={styles.text}>Nofrets Poai</Text>
         {/* </Center> */}
         {/* <Center horizontal> */}
         {/* </Center> */}
