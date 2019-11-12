@@ -3,18 +3,22 @@ import { StyleSheet, View, Text, TextInput, ImageBackground } from 'react-native
 import Icon from '@builderx/icons'
 import { Center } from '@builderx/utils'
 import MaterialButtonViolet8 from '../symbols/ScreenOTP/MaterialButtonViolet8'
+import Header from '../Header'
 
 export default class Untitled4 extends Component {
   render () {
     return (
       <View style={styles.root}>
-        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}>
-          <View style={styles.rect} />
-          <Icon onPress={() => this.props.navigation.navigate('ScreenCard')}
-            name='arrow-left'
-            style={styles.icon}
-        />
-          <Text style={styles.text}>OTP</Text>
+        <Header
+          hasBack
+            // isHomePage
+            // hasHamburger
+            // hasSearch
+            navigation={this.props.navigation}
+            // noBackground
+            title='screen-title-input-otp'
+          />
+        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1}}>
           <Center horizontal>
             <TextInput style={styles.rect2}
               selectionColor='#000'
@@ -25,6 +29,7 @@ export default class Untitled4 extends Component {
               />
           </Center>
           <Text style={styles.text3}>6 DIGITS</Text>
+          <MaterialButtonViolet8 style={styles.materialButtonViolet8} />
           <MaterialButtonViolet8 style={styles.materialButtonViolet8} />
         </ImageBackground>
       </View>

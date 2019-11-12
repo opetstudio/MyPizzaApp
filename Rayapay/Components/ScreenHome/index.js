@@ -14,10 +14,12 @@ import { Images, Metrics } from '../../Themes'
 import Header from '../Header'
 import AppConfig from '../../Config/AppConfig'
 import BoxStatus from '../../Containers/ScreenHome/BoxStatus'
+import {isIphoneX} from '../../Lib/helper/platform'
 
-import MaterialIconTextButtonsFooter from '../MaterialIconTextButtonsFooter'
 import {MaterialCardWithContentAndActionButtons} from '../ProfileComponent'
-import CardCarousels from '../CardCarousels'
+import CardSwipe from '../../Containers/CardSwipe'
+import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
+import MaterialIconTextButtonsFooter from '../../Containers/MaterialIconTextButtonsFooter'
 
 
 const datastructure = require('../../Data/datastructure.json')
@@ -64,43 +66,20 @@ export default class ScreenHome extends Component {
     this.props.onClickItem(id)
   }
   render () {
-    const {
-      featuredData,
-      wcmsUrl,
-      locale,
-      providers,
-      categoriesConfig,
-      genresConfigList,
-      carousalData,
-      onClickMoreCategory,
-      onClickMoreGenre
-    } = this.props
-
-    const combinedConfig = concat(categoriesConfig, genresConfigList)
-    const marketPlaceData = filter(carousalData, c => {
-      return c.tab === 'marketplace'
-    })
-
-    const sourceOfFund = (
-      <View>
-        <CardCarousels
-          config={combinedConfig}
-          data={marketPlaceData}
-          locale={locale}
-          onClickMoreCategory={onClickMoreCategory}
-          onClickMoreGenre={onClickMoreGenre}
-          onItemPress={this.navigateToContentDetailScreen}
-          wcmsUrl={wcmsUrl}
-          providers={providers}
-        />
-      </View>
-    )
-
+    // const {} = this.props
     return (
       <Container> 
-      {/* <View style={{backgroundColor: 'yellow', flex: 1}}> */}
-        <MaterialCardWithContentAndActionButtons />
-        {sourceOfFund}
+        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={styles.backgroundImg}>
+        <ScrollView style={{ flex: 1 }}>
+          <View style={{flex: 1}}>
+            <MaterialCardWithContentAndActionButtons />
+          </View>
+          <View style={{height: 250, width: Metrics.screenWidth, backgroundColor: 'blue'}}>
+            <CardSwipe />
+          </View>
+          <MaterialButtonViolet title={'Add Card'} onPress={() => this.props.navigation.navigate('ScreenCard')} style={styles.ButtonVioletSignUp} />
+        </ScrollView>
+        {/* <CardList /> */}
       {/* <View style={styles.container}> */}
          {/* <MaterialIconTextButtonsFooter
           style={styles.materialIconTextButtonsFooter}
@@ -118,13 +97,15 @@ export default class ScreenHome extends Component {
           /> */}
           {/* <ScrollView style={{ flex: 1 }}> */}
             {/* <BoxStatus /> */}
-            {/* <CardList
-              items={featuredData}
-              onItemPress={this.navigateToContentDetailScreen}
-              rootURL={wcmsUrl}
-              locale={locale}
-              providers={providers}
-            /> */}
+            {/* <View style={{backgroundColor: 'blue'}}>
+              <CardList
+                items={featuredData}
+                onItemPress={this.navigateToContentDetailScreen}
+                rootURL={wcmsUrl}
+                locale={locale}
+                providers={providers}
+              />
+            </View> */}
             {/* <View style={styles.rect} />
             <Center horizontal>
               <Svg viewBox={NaN} style={styles.ellipse2}>
@@ -179,7 +160,12 @@ export default class ScreenHome extends Component {
       {/* <View style={{backgroundColor: 'blue', height: 50}}>
         <Text>home</Text>
       </View> */}
-      {/* </View> */}
+      </ImageBackground>
+        <MaterialIconTextButtonsFooter
+          navigation={this.props.navigation}
+          isLoggedIn={this.props.isLoggedIn}
+          style={styles.materialIconTextButtonsFooter} />
+        
       </Container>
     )
   }
@@ -192,12 +178,22 @@ const styles = StyleSheet.create({
   container: {
     flex: 1
   },
-  materialIconTextButtonsFooter: {
-    width: 375,
-    height: 78,
-    marginTop: 734,
-    alignSelf: "center"
+  backgroundImg: {
+    flex: 1,
+    width: Metrics.screenWidth
   },
+  materialIconTextButtonsFooter: {
+    width: Metrics.screenWidth,
+    height: isIphoneX ? 78 : 40,
+    marginTop: 734,
+    alignSelf: 'center'
+  },
+  // materialIconTextButtonsFooter: {
+  //   width: 375,
+  //   height: 78,
+  //   marginTop: 734,
+  //   alignSelf: "center"
+  // },
   root: {
     flex: 1
   },
@@ -278,5 +274,13 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 0.03
   },
-  statusBar: {}
+  statusBar: {},
+  ButtonVioletSignUp: {
+    width: 350,
+    height: 59,
+    backgroundColor: '#eb1c24',
+    borderRadius: 5,
+    alignSelf: 'center',
+    marginTop: 24
+  }
 })

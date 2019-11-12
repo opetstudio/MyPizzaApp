@@ -17,7 +17,7 @@ export default class MaterialIconTextButtonsFooter extends Component {
           {/* <MaterialCommunityIconsIcon name='heart' style={styles.activeIcon} /> */}
           {/* <Text style={styles.activeContent}>Favorites</Text> */}
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonWrapper2}>
+        <TouchableOpacity style={styles.buttonWrapper2} onPress={() => this.props.sessionLogout()}>
           <Image source={Images.logout} />
           {/* <MaterialCommunityIconsIcon
             name='map-marker-radius'

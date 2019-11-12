@@ -80,9 +80,12 @@ const images = {
 
   // footer menu
   scan: require('../Images/Scan/scanIcon.png'),
+  logout: require('../Images/Logout/logoutIcon.png'),
   QR: require('../Images/QR/qrIcon.png'),
-  logout: require('../Images/Logout/logoutIcon.png')
-
+  cardBni: require('../Images/Cards/bni.png'),
+  cardBri1: require('../Images/Cards/bri1.jpg'),
+  // cardBri2: require('../Images/Cards/bri2.png'),
+  mandiri: require('../Images/Cards/Mandiri.png')
 }
 
 export default images

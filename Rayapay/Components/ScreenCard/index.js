@@ -3,19 +3,30 @@ import { StyleSheet, View, ImageBackground, Text, TextInput } from 'react-native
 import Icon from '@builderx/icons'
 import MaterialButtonViolet1 from '../symbols/ScreenCard/MaterialButtonViolet1'
 import { Center } from '@builderx/utils'
+import Header from '../Header'
 
 export default class Untitled2 extends Component {
   render () {
     return (
       <View style={styles.root}>
-        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}>
-          <Center>
+        <Header
+          hasBack
+            // isHomePage
+            // hasHamburger
+            // hasSearch
+            navigation={this.props.navigation}
+            // noBackground
+            title='screen-title-addcard'
+          />
+        <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1}}>
+
+          {/* <Center>
             <View style={styles.rect} />
             <Icon onPress={() => this.props.navigation.navigate('ScreenDashboard')}
               name='arrow-left'
               style={styles.icon}
         />
-          </Center>
+          </Center> */}
           <Center horizontal>
             <TextInput style={styles.textinput}
               placeholder='Card Number'

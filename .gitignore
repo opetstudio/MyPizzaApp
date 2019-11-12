@@ -58,8 +58,9 @@ buck-out/
 # Misc
 #
 .env
-
+.hprof
 App2/
 db.js
 FirebaseConstants.js
 ios/Pods
+node_modules/

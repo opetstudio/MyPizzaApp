@@ -44,9 +44,8 @@ const loggedinNavigator = StackNavigator({
   ScreenScanThisQR: { screen: ScreenScanThisQR},
   ScreenAmount: { screen: ScreenAmount},
   ScreenEmailconfirm: { screen: ScreenEmailconfirm},
-  ScreenCard: { screen: ScreenCard},
-  ScreenSuccessBind: { screen: ScreeSuccessBind}
-
+  ScreenSuccessBind: { screen: ScreeSuccessBind},
+  ScreenCard: { screen: ScreenCard}
 }, {
   // Default config for all screens
   headerMode: 'none',

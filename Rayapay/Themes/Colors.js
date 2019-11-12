@@ -1,3 +1,4 @@
+const colorPrimaryDark = 'rgba(218,55,49,1)'
 const colors = {
   background: '#1F0808',
   clear: 'rgba(0,0,0,0)',
@@ -25,7 +26,7 @@ const colors = {
   backgroundDark: '#202020',
   
   // colorPrimaryDark: '#008395',
-  colorPrimaryDark: 'rgba(218,55,49,1)',
+  colorPrimaryDark,
   // colorPrimaryDark: '#eb1c24',
   // colorPrimaryDark: 'rgba(189,12,12,1)',
 
@@ -53,7 +54,7 @@ const colors = {
   whiteTertiary: '#ffffff',
   whiteTertiaryOpacity: 'rgba(255,255,255,0.3)',
 
-  redPrimary2: '#eb1c24',
+  redPrimary2: colorPrimaryDark,
   redPrimary: '#e5131d',
   redSecondary: '#790000',
   redPrimaryOpacity: 'rgba(229,19,29,0.3)',

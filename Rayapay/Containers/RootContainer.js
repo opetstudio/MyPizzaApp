@@ -8,6 +8,7 @@ import {isIphoneX} from '../Lib/helper/platform'
 import StartupActions from '../Redux/StartupRedux'
 import WebsocketActions from '../Redux/WebsocketRedux'
 import ReduxPersist from '../Config/ReduxPersist'
+import {SessionSelectors} from '../Redux/SessionRedux'
 
 // component
 import Dialog from '../Components/Dialog'
@@ -65,20 +66,11 @@ class RootContainer extends Component {
           ) : (
             navigator
           )}
-          <MaterialIconTextButtonsFooter style={styles.materialIconTextButtonsFooter} />
         </StyledView>
       </Root>
     )
   }
 }
-const styles = StyleSheet.create({
-  materialIconTextButtonsFooter: {
-    width: metrics.screenWidth,
-    height: isIphoneX ? 78 : 40,
-    marginTop: 734,
-    alignSelf: 'center'
-  }
-})
 
 const mapStateToProps = (state) => {
   return {
@@ -87,7 +79,8 @@ const mapStateToProps = (state) => {
     isOpen: PopupSelectors.getPopupOpen(state.popup),
     loading: AppSelectors.loading(state.app),
     appState: 'active',
-    appUpdate: false
+    appUpdate: false,
+    isLoggedIn: SessionSelectors.isLoggedIn(state.session)
   }
 }
 
