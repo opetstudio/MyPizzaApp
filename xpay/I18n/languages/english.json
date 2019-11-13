@@ -41,5 +41,6 @@
    "dashboard-view-more": "View More",
    "Signup": "Signup",
    "screen-title-addcard": "Add Card",
+   "screen-scanqr-top": "Scan qr code for payment",
    "screen-title-input-otp": "Otp",
 }

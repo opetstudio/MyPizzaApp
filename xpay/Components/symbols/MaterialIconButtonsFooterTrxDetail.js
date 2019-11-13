@@ -7,7 +7,7 @@ class MaterialIconButtonsFooter extends Component {
   render () {
     return (
       <View style={[styles.root, this.props.style]}>
-        <TouchableOpacity style={styles.buttonWrapper1} onPress={() => this.props.navigation.navigate('ScreenDashboard')} >
+        <TouchableOpacity style={styles.buttonWrapper1} onPress={() => this.props.navigation.replace('DrawerMenuNavigator')} >
           <Icon
             name={'close'}
             type={'MaterialCommunityIcons'}
@@ -16,7 +16,7 @@ class MaterialIconButtonsFooter extends Component {
         </TouchableOpacity>
         <TouchableOpacity style={styles.buttonWrapper2} >
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonWrapper3} onPress={() => this.props.navigation.navigate('ScreenTransactionsuccess')} >
+        <TouchableOpacity style={styles.buttonWrapper3} onPress={() => this.props.navigation.replace('ScreenTransactionsuccess')} >
           <Icon
             name={'check'}
             type={'MaterialCommunityIcons'}

@@ -8,13 +8,15 @@ import {
   Text
 } from 'react-native'
 import {Images, Metrics} from '../../Themes'
-import Swiper from 'react-native-page-swiper'
+// import Swiper from 'react-native-swiper'
+import ViewPager from '@react-native-community/viewpager'
 
 const width = Metrics.screenWidth
 const height = Metrics.screenHeight
 
 const styles = StyleSheet.create({
   wrapper: {
+    flex: 1
   },
   slide1: {
     flex: 1,
@@ -58,11 +60,7 @@ const styles = StyleSheet.create({
 export default class extends Component {
   render () {
     return (
-      <Swiper style={styles.wrapper}
-        showsButtons
-        showsPagination={false}
-        loop
-        >
+      <ViewPager style={styles.wrapper}>
         <View style={styles.slide1}>
           <View style={styles.imgWrap}>
             <Image source={Images.cardBni} style={styles.img} />
@@ -78,7 +76,7 @@ export default class extends Component {
             <Image source={Images.mandiri} style={styles.img} />
           </View>
         </View>
-      </Swiper>
+      </ViewPager>
     )
   }
 }
