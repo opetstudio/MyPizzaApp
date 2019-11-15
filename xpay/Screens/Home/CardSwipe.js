@@ -5,11 +5,13 @@ import {
   StatusBar,
   Dimensions,
   StyleSheet,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native'
 import {Images, Metrics} from '../../Themes'
 // import Swiper from 'react-native-swiper'
 import ViewPager from '@react-native-community/viewpager'
+import { withNavigation } from 'react-navigation'
 
 const width = Metrics.screenWidth
 const height = Metrics.screenHeight
@@ -18,23 +20,11 @@ const styles = StyleSheet.create({
   wrapper: {
     flex: 1
   },
-  slide1: {
+  slide: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center'
     // backgroundColor: '#9DD6EB'
-  },
-  slide2: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-    // backgroundColor: '#97CAE5'
-  },
-  slide3: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-    // backgroundColor: '#92BBD9'
   },
   text: {
     color: '#fff',
@@ -57,26 +47,27 @@ const styles = StyleSheet.create({
 //   cardBri1: require('../Images/Cards/bri1.png'),
 //   cardBri2: require('../Images/Cards/bri2.png'),
 //   mandiri: require('../Images/Cards/Mandiri.png')
-export default class extends Component {
+class CardSwipe extends Component {
   render () {
     return (
       <ViewPager style={styles.wrapper}>
-        <View style={styles.slide1}>
+        <TouchableOpacity key="1" style={styles.slide} onLongPress={() => this.props.navigation.navigate('ScreenShowqr')}>
           <View style={styles.imgWrap}>
             <Image source={Images.cardBni} style={styles.img} />
           </View>
-        </View>
-        <View style={styles.slide2}>
+        </TouchableOpacity>
+        <TouchableOpacity key="2" style={styles.slide} onLongPress={() => this.props.navigation.navigate('ScreenShowqr')}>
           <View style={styles.imgWrap}>
             <Image source={Images.cardBri1} style={styles.img} />
           </View>
-        </View>
-        <View style={styles.slide3}>
+        </TouchableOpacity>
+        <TouchableOpacity key="3" style={styles.slide} onLongPress={() => this.props.navigation.navigate('ScreenShowqr')}>
           <View style={styles.imgWrap}>
             <Image source={Images.mandiri} style={styles.img} />
           </View>
-        </View>
+        </TouchableOpacity>
       </ViewPager>
     )
   }
 }
+export default withNavigation(CardSwipe)

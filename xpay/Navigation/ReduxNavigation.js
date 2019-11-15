@@ -20,7 +20,7 @@ const ReduxAppNavigator = reduxifyNavigator(AppNavigation, 'root')
 class ReduxNavigation extends React.Component {
   componentDidMount () {
     if (Platform.OS === 'ios') return
-    BackHandler.addEventListener('hardwareBackPress', () => {
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', () => {
       const { dispatch, nav } = this.props
 
       // gets the current screen from navigation state
@@ -39,9 +39,12 @@ class ReduxNavigation extends React.Component {
       // if (nav.routes.length === 1 && (nav.routes[0].routeName === 'LaunchScreen')) {
       const currentRouteName = getCurrentRouteName(nav)
         console.log('back navigation getCurrentRouteName(nav)===', currentRouteName)
-      if (currentRouteName === 'HomeScreen' || currentRouteName === 'ScreenHome') {
+      if (currentRouteName === 'HomeScreen' || currentRouteName === 'ScreenHome' || currentRouteName == 'ScreenLogin') {
         console.log(nav.routes)
-        if (nav.routes.length > 0 && !nav.routes[0].isDrawerOpen) return false
+        if (nav.routes.length > 0 && !nav.routes[0].isDrawerOpen) {
+          this.backHandler.remove()
+          return false
+        }
           // if (nav.routes.length > 1 && (nav.routes[0].index === 0 && nav.index === 0)) {
         // return false
       }
@@ -57,8 +60,10 @@ class ReduxNavigation extends React.Component {
   }
 
   componentWillUnmount () {
+    console.log('componentWillUnmount')
     if (Platform.OS === 'ios') return
-    BackHandler.removeEventListener('hardwareBackPress', undefined)
+    // BackHandler.removeEventListener('hardwareBackPress', undefined)
+    this.backHandler.remove()
   }
 
   render () {

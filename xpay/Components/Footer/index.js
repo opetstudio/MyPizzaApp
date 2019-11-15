@@ -15,13 +15,14 @@ import {
     Icon,
     Badge
   } from 'native-base'
+import { withNavigation } from 'react-navigation' 
 import _ from 'lodash'
 import {Image} from 'react-native'
 import {isIphoneX} from '../../Lib/helper/platform'
 import {Images} from '../../Themes'
 import {styles} from './styles'
 
-export default class FooterComponent extends Component {
+class FooterComponent extends Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -48,7 +49,7 @@ export default class FooterComponent extends Component {
       tab2: false,
       tab3: false
     })
-    this.props.onSelectTab('tab1')
+    // this.props.onSelectTab('tab1')
   }
   toggleTab2 () {
     this.setState({
@@ -56,7 +57,7 @@ export default class FooterComponent extends Component {
       tab2: true,
       tab3: false
     })
-    this.props.onSelectTab('tab2')
+    // this.props.onSelectTab('tab2')
   }
   toggleTab3 () {
     this.setState({
@@ -64,17 +65,17 @@ export default class FooterComponent extends Component {
       tab2: false,
       tab3: true
     })
-    this.props.onSelectTab('tab3')
+    // this.props.onSelectTab('tab3')
   }
   render () {
+    let showCreateQr = false
     return (
-      <Footer style={isIphoneX ? styles.footerIos : styles.footerAndro}>
-        <FooterTab tabActiveBgColor='yellow'>
-          <Button
-            active={this.state.tab1}
+      <Footer>
+        <FooterTab>
+          {showCreateQr && <Button
+            // active={this.state.tab1}
             onPress={() => this.toggleTab1()}
-            vertical
-            style={{backgroundColor: this.state.tab1 ? 'blue' : '#434343'}}
+            // vertical
             // badge
           >
             {/* <Badge>
@@ -83,20 +84,18 @@ export default class FooterComponent extends Component {
             {/* <Icon active={this.state.tab1} name='apps' /> */}
             <Image source={Images.QR} />
             {/* <Text>Apps</Text> */}
-          </Button>
+          </Button>}
           <Button
-            active={this.state.tab2}
+            // active={this.state.tab2}
             onPress={() => this.toggleTab2()}
-            style={{backgroundColor: this.state.tab2 ? 'blue' : '#434343'}}
           >
             {/* <Icon active={this.state.tab2} name='camera' /> */}
             <Image source={Images.scan} />
             {/* <Text>Pay</Text> */}
           </Button>
           <Button
-            active={this.state.tab3}
+            // active={this.state.tab3}
             onPress={() => this.props.sessionLogout()}
-            style={{backgroundColor: this.state.tab3 ? 'blue' : '#434343'}}
           >
             {/* <Icon active={this.state.tab2} name='camera' /> */}
             <Image source={Images.logout} />
@@ -107,3 +106,4 @@ export default class FooterComponent extends Component {
     )
   }
 }
+export default withNavigation(FooterComponent)

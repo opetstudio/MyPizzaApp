@@ -11,9 +11,9 @@ export default class SafeArea extends Component {
   }
   render () {
     return (
-      <SafeAreaView style={{ flex: 1 }} forceInset={{ bottom: 'never' }}>
+      <SafeAreaView style={{ flex: 1, paddingBottom: 0 }} forceInset={{ bottom: 'never', top: 'never' }}>
         {this.props.navigator}
-        {<View style={styles.fixBackgroundTop} />}
+        {/* {<View style={styles.fixBackgroundTop} />} */}
       </SafeAreaView>
     )
   }

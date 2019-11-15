@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Root } from 'native-base'
+import { Root, StyleProvider } from 'native-base'
 import { connect } from 'react-redux'
 // import SplashScreen from 'react-native-splash-screen'
 
@@ -45,8 +45,8 @@ class RootContainer extends Component {
     const navigator = (<ReduxNavigation />)
     return (
       <Root>
-        <StyledView style={{ paddingHorizontal: 0 }} isLoading={this.props.loading}>
-          {!isIphoneX && <StyledStatusBar
+        {/* <StyledView style={{ paddingHorizontal: 0 }} isLoading={this.props.loading}> */}
+          {/* {isIphoneX && <StyledStatusBar
             translucent
             backgroundColor={
             isIphoneX
@@ -55,7 +55,7 @@ class RootContainer extends Component {
           }
             barStyle='light-content'
             StatusBarAnimation='fade'
-          />}
+          />} */}
           <Dialog
             message={this.props.message}
             isOpen={this.props.isOpen}
@@ -66,7 +66,8 @@ class RootContainer extends Component {
           ) : (
             navigator
           )}
-        </StyledView>
+          {/* {navigator} */}
+        {/* </StyledView> */}
       </Root>
     )
   }

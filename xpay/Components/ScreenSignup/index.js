@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { StyleSheet, View, ScrollView, Image, Text, ImageBackground, StatusBar } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import MaterialFixedLabelTextbox from '../symbols/MaterialFixedLabelTextbox'
-import MaterialButtonViolet from '../symbols/MaterialButtonViolet'
+import MaterialFixedLabelTextbox from '../InputText/MaterialFixedLabelTextbox'
+import MaterialButtonViolet from '../Button/MaterialButtonViolet'
 import {Images, Colors, Metrics} from '../../Themes'
 import Header from '../Header'
 
@@ -20,11 +20,11 @@ export default class ScreenSingup extends Component {
   }
   handleSubmit () {
     console.log('submit form ', this.state.form)
-    
+    this.props.navigation.navigate('ScreenEmailconfirm')
   }
   render () {
     return (
-      <View style={styles.mainContainer}>
+      <View style={styles.container}>
         <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{width: '100%', height: '100%'}}>
         <Header
           hasBack
@@ -33,14 +33,13 @@ export default class ScreenSingup extends Component {
           navigation={this.props.navigation}
           title={'Signup'}
         />
-          <ScrollView style={styles.container}>
-
-            <MaterialFixedLabelTextbox name='email' onChangeText={this.handleChange} placeholder={'Email'} style={styles.TextboxEmail} />
-            <MaterialFixedLabelTextbox name='fullname' onChangeText={this.handleChange} placeholder={'Full Name'} style={styles.TextboxFullname} />
-            <MaterialFixedLabelTextbox name='noId' onChangeText={this.handleChange} placeholder={'No. ID'} style={styles.TextboxNoID} />
-            <MaterialFixedLabelTextbox name='address' onChangeText={this.handleChange} placeholder={'Address'} style={styles.TextboxAddress} />
-            <MaterialFixedLabelTextbox name='phoneNumber' onChangeText={this.handleChange} placeholder={'Phone Number'} style={styles.TextboxNoHP} />
-            <MaterialButtonViolet onPress={this.handleSubmit} style={styles.ButtonVioletSignUp} />
+          <ScrollView>
+            <MaterialFixedLabelTextbox name='email' onChangeText={this.handleChange} placeholder={'Email'} />
+            <MaterialFixedLabelTextbox name='fullname' onChangeText={this.handleChange} placeholder={'Full Name'} />
+            <MaterialFixedLabelTextbox name='noId' onChangeText={this.handleChange} placeholder={'No. ID'} />
+            <MaterialFixedLabelTextbox name='address' onChangeText={this.handleChange} placeholder={'Address'} multiline style={styles.TextboxAddress} />
+            <MaterialFixedLabelTextbox name='phoneNumber' onChangeText={this.handleChange} placeholder={'Phone Number'} />
+            <MaterialButtonViolet onPress={this.handleSubmit} />
 
           </ScrollView>
         </ImageBackground>
@@ -57,7 +56,8 @@ export default class ScreenSingup extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    paddingBottom: Metrics.baseMargin
+    // paddingBottom: Metrics.baseMargin
+    flex: 1
   },
   rect: {
     width: '100%',
@@ -120,12 +120,12 @@ const styles = StyleSheet.create({
     marginTop: 12
   },
   ButtonVioletSignUp: {
-    width: 350,
-    height: 59,
-    backgroundColor: '#eb1c24',
-    borderRadius: 5,
-    alignSelf: 'center',
-    marginTop: 24
+    // width: 350,
+    // height: 59,
+    // backgroundColor: '#eb1c24',
+    // borderRadius: 5,
+    // alignSelf: 'center',
+    // marginTop: 24
   },
   statusBar: {}
 })

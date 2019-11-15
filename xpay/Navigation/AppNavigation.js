@@ -5,19 +5,22 @@ import navigatorHelper from '../Lib/helper/navigator'
 import {isIphoneX} from '../Lib/helper/platform'
 import ScreenAuthLoading from '../Containers/ScreenAuthLoading'
 
-import ScreenLogin from '../Containers/ScreenLogin'
+import ScreenLogin from '../Screens/Login/ScreenLogin'
+import ScreenOtpValidation from '../Screens/OtpValidation/ScreenOtpValidation'
+import ScreenAddCard from '../Screens/AddCard/ScreenAddCard'
+import ScreenHome from '../Screens/Home/ScreenHome'
+import ScreenSignup from '../Screens/Signup/ScreenSignup'
+import ScreenShowqr from '../Screens/Showqr/ScreenShowqr'
 // import ScreenHome from '../Components/ScreenHome'
-import ScreenHome from '../Containers/ScreenHome'
+// import ScreenHome from '../Containers/ScreenHome'
 import ScreenQr from '../Components/ScreenQr'
 import ScreenTransactiondetail from '../Components/ScreenTransactiondetail'
 import ScreenOTP from '../Components/ScreenOTP'
 import ScreenTransactionsuccess from '../Components/ScreenTransactionsuccess'
-import ScreenSignup from '../Components/ScreenSignup'
 import ScreenScanThisQR from '../Components/ScreenScanThisQR'
 import ScreenScanQr from '../Components/ScreenScanQr'
 import ScreenAmount from '../Components/ScreenAmount'
 import ScreenEmailconfirm from '../Components/ScreenEmailconfirm'
-import ScreenCard from '../Components/ScreenCard'
 import ScreeSuccessBind from '../Components/ScreenSuccessBind'
 import styles from './Styles/NavigationStyles'
 
@@ -39,15 +42,15 @@ const loggedinNavigator = StackNavigator({
   DrawerMenuNavigator: { screen: DrawerMenuNavigator },
   ScreenDashboard: { screen: ScreenHome},
   ScreenQr: { screen: ScreenQr},
+  ScreenShowqr: { screen: ScreenShowqr},
   ScreenTransactiondetail: { screen: ScreenTransactiondetail},
-  ScreenOTP: { screen: ScreenOTP},
+  ScreenOtpValidation: { screen: ScreenOtpValidation},
   ScreenScanQr: { screen: ScreenScanQr},
   ScreenTransactionsuccess: { screen: ScreenTransactionsuccess},
   ScreenScanThisQR: { screen: ScreenScanThisQR},
   ScreenAmount: { screen: ScreenAmount},
-  ScreenEmailconfirm: { screen: ScreenEmailconfirm},
   ScreenSuccessBind: { screen: ScreeSuccessBind},
-  ScreenCard: { screen: ScreenCard}
+  ScreenAddCard: { screen: ScreenAddCard}
 }, {
   // Default config for all screens
   headerMode: 'none',
@@ -59,7 +62,8 @@ const loggedinNavigator = StackNavigator({
 })
 const unloggedinNavigator = StackNavigator({
   ScreenLogin: { screen: ScreenLogin },
-  ScreenSignup: {screen: ScreenSignup}
+  ScreenSignup: {screen: ScreenSignup},
+  ScreenEmailconfirm: { screen: ScreenEmailconfirm}
 }, {
     // Default config for all screens
   headerMode: 'none',

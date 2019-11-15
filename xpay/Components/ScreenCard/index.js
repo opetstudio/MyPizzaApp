@@ -1,54 +1,41 @@
 import React, { Component } from 'react'
-import { StyleSheet, View, ImageBackground, Text, TextInput } from 'react-native'
+import { StyleSheet, View, ImageBackground, Text, TextInput, ScrollView } from 'react-native'
 import Icon from '@builderx/icons'
-import MaterialButtonViolet1 from '../symbols/ScreenCard/MaterialButtonViolet1'
+import MaterialButtonViolet from '../Button/MaterialButtonViolet'
+import MaterialFixedLabelTextbox from '../InputText/MaterialFixedLabelTextbox'
 import { Center } from '@builderx/utils'
 import Header from '../Header'
 
 export default class Untitled2 extends Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      form: {}
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+  handleSubmit () {
+    this.props.navigation.navigate('ScreenOTP')
+  }
   render () {
     return (
-      <View style={styles.root}>
-        <Header
-          hasBack
-            // isHomePage
-            // hasHamburger
-            // hasSearch
-            navigation={this.props.navigation}
-            // noBackground
-            title='screen-title-addcard'
-          />
+      <View style={styles.container}>
         <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1}}>
-
-          {/* <Center>
-            <View style={styles.rect} />
-            <Icon onPress={() => this.props.navigation.navigate('ScreenDashboard')}
-              name='arrow-left'
-              style={styles.icon}
-        />
-          </Center> */}
-          <Center horizontal>
-            <TextInput style={styles.textinput}
-              placeholder='Card Number'
-              selectionColor='#000'
-              textAlign={'left'}
-              />
-          </Center>
-          <Center horizontal>
-            <TextInput style={styles.textinput1}
-              placeholder='DD/MM/YYYY'
-              selectionColor='#000'
-              textAlign={'left'}
-              />
-          </Center>
-          <Center horizontal>
-            <TextInput style={styles.textinput2}
-              placeholder='SSC'
-              selectionColor='#000'
-              textAlign={'left'}
-              />
-          </Center>
-          <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
+          <Header
+            hasBack
+              // isHomePage
+              // hasHamburger
+              // hasSearch
+              navigation={this.props.navigation}
+              // noBackground
+              title='screen-title-addcard'
+            />
+          <ScrollView>
+            <MaterialFixedLabelTextbox name='cardnumber' onChangeText={this.handleChange} placeholder={'Card Number'} />
+            <MaterialFixedLabelTextbox name='expirydate' onChangeText={this.handleChange} placeholder={'Expiry Date'} />
+            <MaterialFixedLabelTextbox name='securecode' onChangeText={this.handleChange} placeholder={'secure code'} />
+            <MaterialButtonViolet title='Submit Card' onPress={this.handleSubmit} />
+          </ScrollView>
         </ImageBackground>
       </View>
     )
@@ -56,9 +43,8 @@ export default class Untitled2 extends Component {
 }
 
 const styles = StyleSheet.create({
-  root: {
-    flex: 1,
-    backgroundColor: 'rgb(255,255,255)'
+  container: {
+    flex: 1
   },
   rect: {
     top: 0,

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { StyleSheet, View, Text } from 'react-native'
 import { Center } from '@builderx/utils'
 import Icon from '@builderx/icons'
-import MaterialButtonViolet1 from '../symbols/ScreenEmailconfirm/MaterialButtonViolet1'
+import MaterialButtonViolet from '../Button/MaterialButtonViolet'
 
 export default class Untitled5 extends Component {
   render () {
@@ -18,7 +18,7 @@ export default class Untitled5 extends Component {
         <Center horizontal>
           <Text style={styles.text}>Email Confirm</Text>
         </Center>
-        <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
+        <MaterialButtonViolet title='Sign In' onPress={() => this.props.navigation.replace('ScreenLogin')} style={styles.ButtonVioletOk} />
       </View>
     )
   }
@@ -91,11 +91,6 @@ const styles = StyleSheet.create({
     bottom: 0.03
   },
   ButtonVioletOk: {
-    width: 350,
-    height: 59,
-    backgroundColor: '#eb1c24',
-    borderRadius: 5,
-    alignSelf: 'center',
-    top: '150.05%',
+    backgroundColor: "#3F51B5"
   },
 })

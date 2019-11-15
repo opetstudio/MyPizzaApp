@@ -32,5 +32,25 @@ export default {
       ok: true,
       data: require('../Fixtures/sessionLogout.json')
     }
+  },
+  otpvalidationFormSubmit: (data) => {
+    return {
+      ok: true,
+      data: {
+        responseCode: '00',
+        responseMessage: 'SUCCESS',
+        responseDescription: 'SUCCESS'
+      }
+    }
+  },
+  addcardFormSubmit: (data) => {
+    return {
+      ok: true,
+      data: {
+        responseCode: '00',
+        responseMessage: 'SUCCESS',
+        responseDescription: 'SUCCESS'
+      }
+    }
   }
 }
