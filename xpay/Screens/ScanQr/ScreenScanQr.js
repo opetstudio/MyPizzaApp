@@ -3,23 +3,34 @@ import QRCodeScanner from 'react-native-qrcode-scanner';
 import styles from './scanStyle'
 import {
     TouchableOpacity,
-    Text,
     StatusBar,
     Linking,
     View,
     ImageBackground
 } from 'react-native';
-import Header from '../Header'
-import StyledText from '../StyledText'
+import {
+    Container,
+    Content,
+    Header,
+    Left,
+    Button,
+    Title,
+    Body,
+    Right,
+    Text,
+    Icon,
+    Form,
+    Item,
+    Label,
+    Input
+  } from "native-base";
 import I18n from '../../I18n'
-import MaterialButtonViolet1 from '../symbols/ScreenCard/MaterialButtonViolet1'
 
 import {
     // Header,
     Colors,
 } from 'react-native/Libraries/NewAppScreen';
-
-class Scan extends Component {
+class ScreenScanQr extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -70,52 +81,27 @@ class Scan extends Component {
         const { scan, ScanResult, result } = this.state
         const desccription = 'QR code (abbreviated from Quick Response Code) is the trademark for a type of matrix barcode (or two-dimensional barcode) first designed in 1994 for the automotive industry in Japan. A barcode is a machine-readable optical label that contains information about the item to which it is attached. In practice, QR codes often contain data for a locator, identifier, or tracker that points to a website or application. A QR code uses four standardized encoding modes (numeric, alphanumeric, byte/binary, and kanji) to store data efficiently; extensions may also be used.'
         return (
-            <View style={styles.root}>
-              <Header
-                hasBack
-                // isHomePage
-                // hasHamburger
-                // hasSearch
-                navigation={this.props.navigation}
-                // noBackground
-                title='screen-title-addcard'
-              />
-              <ImageBackground source={require('../../Images/bg/bgrayapay1.png')} style={{flex: 1}}>
-                {/* <Fragment> */}
-                    {/* <StatusBar barStyle="dark-content" /> */}
-                    <Text style={styles.textTitle}>{textMessage('screen-scanqr-top')}</Text>
-                    {/* {!scan && !ScanResult &&
-                        <View style={styles.cardView} >
-                            <Text numberOfLines={8} style={styles.descText}>{desccription}</Text>
-
-                            <TouchableOpacity onPress={this.activeQR} style={styles.buttonTouchable}>
-                                <Text style={styles.buttonTextStyle}>Click to Scan !</Text>
-                            </TouchableOpacity>
-
-                        </View>
-                    } */}
-
-                    {/* {ScanResult &&
-                        <Fragment>
-                            <Text style={styles.textTitle1}>Result !</Text>
-                            <View style={ScanResult ? styles.scanCardView : styles.cardView}>
-                                <Text>Type : {result.type}</Text>
-                                <Text>Result : {result.data}</Text>
-                                <Text numberOfLines={1}>RawData: {result.rawData}</Text>
-                                <TouchableOpacity onPress={this.scanAgain} style={styles.buttonTouchable}>
-                                    <Text style={styles.buttonTextStyle}>Click to Scan again!</Text>
-                                </TouchableOpacity>
-                            </View>
-                        </Fragment>
-                    } */}
-
-
-                    {/* {scan && */}
-                        <QRCodeScanner
+            <Container style={styles.container}>
+                <StatusBar translucent backgroundColor={'#eb1c24'} />
+                <Header transparent>
+                <Left>
+                    <Button transparent onPress={() => this.props.navigation.goBack()}>
+                    <Icon name="arrow-back" />
+                    </Button>
+                </Left>
+                <Body>
+                    <Title>Scan QR Code</Title>
+                </Body>
+                <Right />
+                </Header>
+                <Content style={{}}>
+                    <View style={{flex: 1}}>
+                    <QRCodeScanner
                             reactivate={true}
                             showMarker={true}
                             ref={(node) => { this.scanner = node }}
                             onRead={this.onSuccess}
+                            style={{flex: 1, width: 100}}
 
                             // topContent={
                             //     <Text style={styles.centerText}>
@@ -136,13 +122,9 @@ class Scan extends Component {
 
                             // }
                         />
-                    {/* } */}
-                {/* </Fragment> */}
-                  {/* {ScanResult &&
-                    <MaterialButtonViolet1 style={styles.ButtonVioletOk} />
-                    } */}
-                </ImageBackground>
-            </View>
+                        </View>
+                </Content>
+            </Container>
 
         );
     }
@@ -150,4 +132,4 @@ class Scan extends Component {
 
 
 
-export default Scan;
+export default ScreenScanQr;

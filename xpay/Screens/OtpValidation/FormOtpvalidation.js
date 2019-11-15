@@ -34,7 +34,7 @@ class FormOtpvalidation extends Component {
     }
     render() {
         return (
-            <Content>
+            <Content padder>
               <Form>
                 <Text style={{alignSelf: 'center', marginBottom: 10}}>OTP</Text>
                 <Item fixedLabel regular>

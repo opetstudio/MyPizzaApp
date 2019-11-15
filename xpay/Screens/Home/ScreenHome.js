@@ -13,7 +13,7 @@ import StyledStatusBar from '../../Containers/StyledStatusBar'
 import CardSwipe from './CardSwipe'
 import Footer from '../../Containers/Footer'
 import {Images, Metrics, Colors} from '../../Themes'
-import {MaterialCardWithContentAndActionButtons} from './ProfileComponent'
+import UserProfile from './UserProfile'
 import MaterialButtonViolet from '../../Components/Button/MaterialButtonViolet'
 
 const styles = {
@@ -29,27 +29,27 @@ const styles = {
   render() {
     return (
       <Container style={styles.container}>
-        <Header style={{height: 1}}>
+        {/* <Header style={{height: 1}}>
           <StatusBar barStyle="light-content"/>
           <Left />
           <Body />
           <Right />
-        </Header>
+        </Header> */}
         {/* <StatusBar translucent backgroundColor={'#c41f19'} /> */}
-        {/* {isIphoneX && <StyledStatusBar
+        {isIphoneX && <StyledStatusBar
             translucent
             backgroundColor={
             isIphoneX
-              ? Colors.colorPrimaryDark
-              : Colors.colorPrimaryDark
+              ? '#c41f19'
+              : '#c41f19'
           }
             barStyle='light-content'
             StatusBarAnimation='fade'
-          />} */}
+          />}
         <ImageBackground source={Images.backgroundXpay} style={styles.backgroundImg}>
             <Content>
                 <View style={{flex: 1}}>
-                    <MaterialCardWithContentAndActionButtons />
+                    <UserProfile />
                 </View>
                 <View style={{height: 250}}>
                     <CardSwipe />

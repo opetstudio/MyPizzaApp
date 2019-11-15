@@ -74,7 +74,7 @@ class FooterComponent extends Component {
         <FooterTab>
           {showCreateQr && <Button
             // active={this.state.tab1}
-            onPress={() => this.toggleTab1()}
+            onPress={() => this.props.navigtion.navigate('ScreenScanQr')}
             // vertical
             // badge
           >
@@ -87,7 +87,7 @@ class FooterComponent extends Component {
           </Button>}
           <Button
             // active={this.state.tab2}
-            onPress={() => this.toggleTab2()}
+            onPress={() => this.props.navigation.navigate('ScreenScanQr')}
           >
             {/* <Icon active={this.state.tab2} name='camera' /> */}
             <Image source={Images.scan} />

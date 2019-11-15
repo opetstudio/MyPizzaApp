@@ -3,10 +3,10 @@ import PropTypes from 'prop-types'
 import { StyleSheet, View, Image, Text, TouchableOpacity } from 'react-native'
 import { Center } from '@builderx/utils'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import {isIphoneX} from '../../../../../Lib/helper/platform'
-import {Images} from '../../../../../Themes'
+import {isIphoneX} from '../../../Lib/helper/platform'
+import {Images} from '../../../Themes'
 
-export default class MaterialCardWithContentAndActionButtons extends Component {
+export default class UserProfile extends Component {
   static propTypes = {
     showSaldo: PropTypes.bool
   }
@@ -29,7 +29,7 @@ export default class MaterialCardWithContentAndActionButtons extends Component {
     return (
       <View style={[styles.container, this.props.style]}>
         <Image
-          source={require('../assets/images/cardImage2.png')}
+          source={Images.cardImage2}
           style={styles.image}
         />
         {/* <Center horizontal> */}

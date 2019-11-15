@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Dimensions } from 'react-native';
+import {Metrics} from '../../Themes'
 const deviceWidth = Dimensions.get('screen').width;
 const deviceHeight = Dimensions.get('screen').height;
 const styles = {
@@ -112,6 +113,28 @@ const styles = {
         alignSelf: 'center',
         top: '70.05%',
         position: 'absolute'
+      },
+      container: {
+        backgroundColor: '#eb1c24'
+    },
+    backgroundImg: {
+        flex: 1,
+        width: Metrics.screenWidth
+    },
+    icon2: {
+        color: 'rgba(255,255,255,1)',
+        fontSize: 35,
+    },
+    images: {
+        color: 'rgba(0,0,0,1)',
+        width: '100%',
+        marginTop: 40
+      },
+      text2: {
+        color: 'rgba(255,255,255,1)',
+        fontSize: 30,
+        alignSelf: 'center',
+        marginTop: 30
       }
 }
 export default styles;

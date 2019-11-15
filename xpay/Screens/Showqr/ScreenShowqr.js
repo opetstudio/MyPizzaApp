@@ -47,8 +47,7 @@ const styles = {
   render() {
     return (
       <Container style={styles.container}>
-          <StatusBar translucent backgroundColor={'#eb1c24'} />
-        {/* <ImageBackground source={Images.backgroundXpay} style={styles.backgroundImg}> */}
+            <StatusBar translucent backgroundColor={'#eb1c24'} />
             <Header transparent>
               <Left>
                 <Button transparent onPress={() => this.props.navigation.goBack()}>
@@ -62,8 +61,6 @@ const styles = {
                 <Text style={styles.text2}>Scan This QR Code</Text>
                 <Image source={Images.qrcode} style={styles.images} />
             </Content>
-            <Footer />
-        {/* </ImageBackground> */}
       </Container>
     );
   }
